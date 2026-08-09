@@ -25,6 +25,7 @@ export default function UserDashboardLayout({ children }: { children: React.Reac
     const checkUser = async () => {
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) {
+        setLoading(false);
         router.push('/login');
       } else {
         setUserName(user.user_metadata?.full_name || user.email?.split('@')[0] || 'User');

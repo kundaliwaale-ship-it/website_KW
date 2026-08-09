@@ -61,6 +61,23 @@ export default function RegisterPage() {
     }
   };
 
+  const handleGoogleLogin = async () => {
+    setIsLoading(true);
+    setError(null);
+    try {
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+          redirectTo: `${window.location.origin}/auth/callback?next=/dashboard`
+        }
+      });
+      if (error) throw error;
+    } catch (err: any) {
+      setError(err.message || 'Failed to sign in with Google');
+      setIsLoading(false);
+    }
+  };
+
   if (success) {
     return (
       <div className={styles.page}>
@@ -140,6 +157,35 @@ export default function RegisterPage() {
             {isLoading ? 'Creating Account...' : 'Sign Up'}
           </Button>
         </form>
+
+        <div style={{ display: 'flex', alignItems: 'center', margin: '1.5rem 0' }}>
+          <div style={{ flex: 1, height: '1px', background: 'var(--border-subtle)' }}></div>
+          <span className="font-sans" style={{ padding: '0 1rem', color: 'var(--text-muted)', fontSize: '0.9rem' }}>OR</span>
+          <div style={{ flex: 1, height: '1px', background: 'var(--border-subtle)' }}></div>
+        </div>
+
+        <button 
+          onClick={handleGoogleLogin} 
+          disabled={isLoading}
+          style={{
+            width: '100%',
+            padding: '0.75rem',
+            background: 'var(--bg-panel)',
+            color: 'var(--text-dark)',
+            border: 'none',
+            borderRadius: 'var(--radius-sm)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '0.75rem',
+            cursor: 'pointer',
+            fontWeight: 500,
+            transition: 'background var(--transition-fast)'
+          }}
+        >
+          <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" width="20" height="20" />
+          Continue with Google
+        </button>
 
         <div className={styles.footer}>
           <span className="font-sans">Already have an account?</span>

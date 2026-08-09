@@ -3,6 +3,7 @@ import { Italianno, Cormorant_Garamond, Montserrat } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import { AuthProvider } from "@/components/auth/AuthProvider";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -55,9 +56,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${montserrat.variable} ${italianno.variable} ${cormorant.variable} font-sans`}>
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
+        <AuthProvider>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+        </AuthProvider>
       </body>
     </html>
   );

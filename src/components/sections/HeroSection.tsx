@@ -14,7 +14,7 @@ export default function HeroSection() {
           <div className={`${styles.heroContent} slide-in-left`}>
             <div className={`${styles.heroLabel} font-sans`}>
               <span></span>
-              Trusted by 10 Lakh+ Customers
+              Your Trusted Cosmic Guide
             </div>
             <h1 className="font-serif">
               Authentic Guidance for <em>Vastu, Consultations</em> & Handwritten Kundli
@@ -48,27 +48,7 @@ export default function HeroSection() {
         </div>
       </section>
 
-      <div className={`${styles.statsBanner} scale-in`}>
-        <div className={styles.statItem}>
-          <h3 className="font-body">10 Lakh+</h3>
-          <p className="font-sans">Reports Delivered</p>
-        </div>
-        <div className={styles.divider} />
-        <div className={styles.statItem}>
-          <h3 className="font-body">4.9/5 <Star size={24} fill="currentColor" style={{ display: 'inline-block', verticalAlign: 'text-bottom' }}/></h3>
-          <p className="font-sans">Average Rating</p>
-        </div>
-        <div className={styles.divider} />
-        <div className={styles.statItem}>
-          <h3 className="font-body">15+ Years</h3>
-          <p className="font-sans">Experience</p>
-        </div>
-        <div className={styles.divider} />
-        <div className={styles.statItem}>
-          <h3 className="font-body">100%</h3>
-          <p className="font-sans">Personalized</p>
-        </div>
-      </div>
+
     </>
   );
 }
