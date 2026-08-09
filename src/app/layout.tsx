@@ -23,11 +23,11 @@ const cormorant = Cormorant_Garamond({
 
 export const metadata: Metadata = {
   title: {
-    default: "AstroSci — Your Cosmic Guide | Vedic Astrology & Vastu",
-    template: "%s | AstroSci",
+    default: "Kundaliwaale — Your Cosmic Guide | Vedic Astrology & Vastu",
+    template: "%s | Kundaliwaale",
   },
   description:
-    "Get premium personalized Kundli reports, expert Vastu consultations, and 1-on-1 astrology guidance from AstroSci. 10 lakh+ reports delivered. 4.9/5 rating.",
+    "Get premium personalized Kundli reports, expert Vastu consultations, and 1-on-1 astrology guidance from Kundaliwaale. 10 lakh+ reports delivered. 4.9/5 rating.",
   keywords: [
     "astrology",
     "kundli",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     "astrologer",
   ],
   openGraph: {
-    title: "AstroSci — Your Cosmic Guide",
+    title: "Kundaliwaale — Your Cosmic Guide",
     description:
       "Premium Vedic Astrology & Vastu consultations. Get your personalized Kundli today.",
     type: "website",

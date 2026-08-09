@@ -17,13 +17,11 @@ export default function AboutAcharya() {
 
         <div className={styles.content}>
           <h2 className="font-serif">
-            Meet <em>AstroSci</em>
+            Meet <em>Kundaliwaale</em>
           </h2>
           <p className="font-sans">
-            With over 15 years of dedicated practice in Vedic Jyotish Shastra, AstroSci
-            has guided more than 10 lakh individuals towards clarity, peace, and success. His
-            unique approach combines ancient Vedic wisdom with modern-day practicality, making
-            astrology accessible and actionable for everyone.
+            With over 15 years of dedicated practice, Kundaliwaale
+            has guided individuals towards clarity, peace, and success through authentic handwritten Kundali making, Vastu analysis, and personal consultations. His approach combines ancient Vedic wisdom with modern-day practicality, ensuring honest guidance without any fake predictions or false promises.
           </p>
 
           <div className={styles.credentials}>

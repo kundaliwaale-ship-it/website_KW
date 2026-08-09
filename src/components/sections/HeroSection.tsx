@@ -17,17 +17,15 @@ export default function HeroSection() {
               Trusted by 10 Lakh+ Customers
             </div>
             <h1 className="font-serif">
-              Accurate Predictions For <em>Love, Career</em> & More!
+              Authentic Guidance for <em>Vastu, Consultations</em> & Handwritten Kundli
             </h1>
             <p className="font-sans">
-              Feeling stuck in life or lost about your future? AstroSci&apos;s Accurate Vedic
-              Kundli Report reveals answers hidden in your Janam Kundli and shows when your luck
-              will transform.
+              Experience genuine Vedic wisdom without the false promises. We specialize in handwritten Kundli making, expert Vastu analysis, and personalized astrology consultations to bring real, practical clarity to your life.
             </p>
             <div className={styles.heroCtas}>
               <Link href="/services/kundali">
                 <Button variant="primary">
-                  Get Your Kundli Report →
+                  Get Your Handwritten Kundli →
                 </Button>
               </Link>
               <Link href="/services/consultation">

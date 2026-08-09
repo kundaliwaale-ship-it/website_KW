@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: { params: Promise<{ category:
   if (!tier) return { title: 'Not Found' };
 
   return {
-    title: `${tier.name} | AstroSci`,
+    title: `${tier.name} | Kundaliwaale`,
     description: tier.description,
   };
 }

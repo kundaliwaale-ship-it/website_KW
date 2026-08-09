@@ -12,11 +12,11 @@ export default function CallToAction() {
         </h2>
         <p className="font-sans">
           Take the first step towards a life of clarity and purpose.
-          Book your consultation or order your personalized Kundli today.
+          Book your consultation or order your handwritten Kundli today.
         </p>
         <div className={styles.ctas}>
           <Link href="/services/kundali">
-            <Button variant="primary">Order Kundli Report →</Button>
+            <Button variant="primary">Order Handwritten Kundli →</Button>
           </Link>
           <Link href="/services/consultation">
             <Button variant="outline">Book Consultation</Button>

@@ -15,24 +15,24 @@ interface CarouselItem {
 const items: CarouselItem[] = [
   {
     id: 'kundali',
-    title: 'Kundli Report',
-    shortDescription: 'Detailed Janam Kundli analysis for career, love, and life predictions.',
+    title: 'Handwritten Kundli',
+    shortDescription: 'Detailed handwritten Janam Kundli analysis for career, love, and life insights.',
     href: '/services/kundali',
-    bgImage: '/images/simple_kundli.png',
+    bgImage: '/images/Featured/kundli.jpg',
   },
   {
     id: 'consultation',
     title: 'Consultation',
-    shortDescription: 'Book a 1-on-1 session with AstroSci for personalized guidance.',
+    shortDescription: 'Book a 1-on-1 session with Kundaliwaale for personalized guidance.',
     href: '/services/consultation',
-    bgImage: '/images/simple_consultation.png',
+    bgImage: '/images/Featured/consultation.jpg',
   },
   {
     id: 'vastu',
     title: 'Vastu Analysis',
     shortDescription: 'Transform your home or office energy with expert Vastu assessment.',
     href: '/services/vastu',
-    bgImage: '/images/simple_vastu.png',
+    bgImage: '/images/Featured/vastu.jpg',
   }
 ];
 

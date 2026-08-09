@@ -8,8 +8,8 @@ export interface FAQItem {
 export const faqData: FAQItem[] = [
   {
     id: 1,
-    question: 'Who is AstroSci?',
-    answer: 'AstroSci is a renowned Vedic astrologer with over 15 years of experience. He has personally delivered over 10 lakh Kundli reports and helped millions of people find clarity and direction in life through Vedic astrology and Vastu Shastra.',
+    question: 'Who is Kundaliwaale?',
+    answer: 'Kundaliwaale is a renowned Vedic astrologer with over 15 years of experience. He has personally delivered over 10 lakh Kundli reports and helped millions of people find clarity and direction in life through Vedic astrology and Vastu Shastra.',
     category: 'general',
   },
   {
@@ -21,7 +21,7 @@ export const faqData: FAQItem[] = [
   {
     id: 3,
     question: 'What is the difference between the Premium and Digital Kundli?',
-    answer: 'The Premium Kundli is handwritten by AstroSci personally, includes 20+ years of Dasha predictions, and is delivered physically via courier. The Digital Kundli is a computer-generated report reviewed by our experts, covering 5 years of predictions, and delivered instantly as a PDF via email.',
+    answer: 'The Premium Kundli is handwritten by Kundaliwaale personally, includes 20+ years of Dasha analysis, and is delivered physically via courier. The Digital Kundli is a computer-generated report reviewed by our experts, covering 5 years of insights, and delivered instantly as a PDF via email.',
     category: 'kundali',
   },
   {
@@ -33,7 +33,7 @@ export const faqData: FAQItem[] = [
   {
     id: 5,
     question: 'What information do I need to provide for my Kundli?',
-    answer: 'You need to provide your full name, date of birth, exact time of birth, and place of birth. The more accurate your birth time, the more precise your Kundli predictions will be.',
+    answer: 'You need to provide your full name, date of birth, exact time of birth, and place of birth. The more accurate your birth time, the more precise your Kundli analysis will be.',
     category: 'kundali',
   },
   {

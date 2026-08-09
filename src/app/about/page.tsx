@@ -4,11 +4,11 @@ import styles from './about.module.css';
 
 export const metadata: Metadata = {
   title: 'About Us',
-  description: 'Learn about AstroSci — a renowned Vedic astrologer with 15+ years of experience, guiding millions towards clarity and purpose.',
+  description: 'Learn about Kundaliwaale — a renowned Vedic astrologer with 15+ years of experience, guiding millions towards clarity and purpose.',
 };
 
 const milestones = [
-  { year: '2010', title: 'Journey Begins', description: 'Started practicing Vedic Jyotish after completing AstroSci certification from Banaras Hindu University.' },
+  { year: '2010', title: 'Journey Begins', description: 'Started practicing Vedic Jyotish after completing Kundaliwaale certification from Banaras Hindu University.' },
   { year: '2013', title: 'First 10,000 Kundlis', description: 'Crossed the milestone of delivering 10,000 handwritten Kundli reports.' },
   { year: '2016', title: 'Vastu Expertise', description: 'Earned certification in Vastu Shastra and began offering home & office consultations.' },
   { year: '2019', title: 'Digital Expansion', description: 'Launched the online platform, making services accessible to clients across India and abroad.' },
@@ -31,7 +31,7 @@ export default function AboutPage() {
       {/* Hero */}
       <section className={styles.hero}>
         <div className={styles.heroInner}>
-          <h1 className="font-serif">About <em>AstroSci</em></h1>
+          <h1 className="font-serif">About <em>Kundaliwaale</em></h1>
           <p className="font-sans">
             Dedicated to illuminating lives through the ancient wisdom of Vedic astrology.
           </p>
@@ -52,16 +52,16 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* About the AstroSci */}
+      {/* About the Kundaliwaale */}
       <section className={styles.about}>
         <div className={styles.aboutInner}>
           <div className={styles.aboutImage}>
             <div className={styles.imagePlaceholder}><User size={64} color="var(--primary-gold)" /></div>
           </div>
           <div className={styles.aboutContent}>
-            <h2 className="font-serif">The AstroSci&apos;s <em>Story</em></h2>
+            <h2 className="font-serif">The Kundaliwaale&apos;s <em>Story</em></h2>
             <p className="font-sans">
-              Born into a family of Vedic scholars in Varanasi, AstroSci was introduced
+              Born into a family of Vedic scholars in Varanasi, Kundaliwaale was introduced
               to Jyotish Shastra at the age of 12. Under the guidance of his grandfather, a
               respected Pandit, he studied the ancient texts — Brihat Parashara Hora Shastra,
               Jataka Parijata, and Phaladeepika — mastering the art of reading planetary

@@ -90,7 +90,7 @@ export default function ContactPage() {
                 <span className={styles.infoIcon}><Mail size={24} /></span>
                 <div>
                   <h4 className="font-sans">Email</h4>
-                  <p className="font-sans">info@astrosci.com</p>
+                  <p className="font-sans">info@kundaliwaale.com</p>
                 </div>
               </div>
 

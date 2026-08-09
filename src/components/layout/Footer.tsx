@@ -11,7 +11,7 @@ export default function Footer() {
           {/* Brand Column */}
           <div className={styles.brand}>
             <Link href="/" className="font-serif" style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--text-light)' }}>
-              AstroSci
+              Kundaliwaale
             </Link>
             <p className="font-sans">
               Your trusted cosmic guide for Vedic astrology and Vastu. Finding clarity since 2010.
@@ -48,7 +48,7 @@ export default function Footer() {
             </div>
             <div className={styles.contactItem}>
               <span className={styles.contactIcon}><Mail size={18} /></span>
-              <span className="font-sans">info@astrosci.com</span>
+              <span className="font-sans">info@kundaliwaale.com</span>
             </div>
             <div className={styles.contactItem}>
               <span className={styles.contactIcon}><MapPin size={18} /></span>
@@ -60,7 +60,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className={styles.bottomBar}>
           <p className={`${styles.copyright} font-sans`}>
-            © {new Date().getFullYear()} AstroSci. All rights reserved.
+            © {new Date().getFullYear()} Kundaliwaale. All rights reserved.
           </p>
           <div className={styles.legalLinks}>
             <Link href="#" className="font-sans">Privacy Policy</Link>

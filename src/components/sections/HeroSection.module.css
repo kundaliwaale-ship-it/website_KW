@@ -83,8 +83,8 @@
 }
 
 .heroContent h1 {
-  font-size: 3.75rem;
-  line-height: 1.08;
+  font-size: 3.25rem;
+  line-height: 1.15;
   margin-bottom: 1.5rem;
   color: var(--text-light);
 }
@@ -176,7 +176,7 @@
   align-items: center;
   justify-content: space-evenly;
   padding: 2.5rem 5%;
-  margin: -50px 5% 0;
+  margin: 2rem 5% 0;
   position: relative;
   z-index: 20;
   border: 1px solid var(--bg-glass-border);

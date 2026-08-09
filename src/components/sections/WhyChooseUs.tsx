@@ -16,12 +16,12 @@ const reasons = [
   {
     icon: <PenTool size={32} color="var(--primary-gold)" />,
     title: 'Handwritten Reports',
-    description: 'Every premium Kundli is personally handwritten by AstroSci — not computer-generated.',
+    description: 'Every premium Kundli is personally handwritten by Kundaliwaale — not computer-generated.',
   },
   {
     icon: <ShieldCheck size={32} color="var(--primary-gold)" />,
-    title: '100% Personalized',
-    description: 'No generic templates. Each report and consultation is uniquely tailored to you.',
+    title: 'Honest & Transparent',
+    description: 'We do not believe in fake predictions. Expect only genuine, practical, and trustworthy guidance tailored to you.',
   },
 ];
 
@@ -34,7 +34,7 @@ export default function WhyChooseUs() {
             Why <em>Choose Us</em>
           </h2>
           <p className="font-sans">
-            What sets AstroSci apart from other astrology services.
+            What sets Kundaliwaale apart from other astrology services.
           </p>
         </div>
 

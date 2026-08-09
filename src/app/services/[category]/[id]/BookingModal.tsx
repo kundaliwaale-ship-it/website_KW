@@ -83,7 +83,7 @@ export default function BookingModal({ isOpen, onClose, category, tier, price, s
         key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || '', // Needs to be set in env
         amount: order.amount,
         currency: order.currency,
-        name: 'AstroSci',
+        name: 'Kundaliwaale',
         description: serviceName,
         order_id: order.id,
         handler: function (response: any) {

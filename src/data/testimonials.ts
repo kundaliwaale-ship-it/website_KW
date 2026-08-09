@@ -6,7 +6,7 @@ export const testimonials = [
     location: 'Delhi',
     rating: 5,
     service: 'Premium Kundli',
-    text: 'The handwritten Kundli I received was incredibly detailed. AstroSci predicted my career change perfectly — it happened exactly when he said it would. Truly life-changing!',
+    text: 'The handwritten Kundli I received was incredibly detailed. Kundaliwaale predicted my career change perfectly — it happened exactly when he said it would. Truly life-changing!',
     date: '2026-06-15',
   },
   {
@@ -26,7 +26,7 @@ export const testimonials = [
     location: 'Bangalore',
     rating: 5,
     service: 'Astrology Consultation',
-    text: 'I was going through a very difficult phase in my marriage. AstroSci\'s guidance and remedies brought peace back into our relationship. Forever grateful.',
+    text: 'I was going through a very difficult phase in my marriage. Kundaliwaale\'s guidance and remedies brought peace back into our relationship. Forever grateful.',
     date: '2026-07-01',
   },
   {
@@ -46,7 +46,7 @@ export const testimonials = [
     location: 'Ahmedabad',
     rating: 5,
     service: 'Premium Kundli',
-    text: 'My daughter\'s marriage was delayed for years. AstroSci identified the exact problem in her Kundli and suggested simple remedies. She got married within 6 months!',
+    text: 'My daughter\'s marriage was delayed for years. Kundaliwaale identified the exact problem in her Kundli and suggested simple remedies. She got married within 6 months!',
     date: '2026-03-28',
   },
   {
@@ -76,7 +76,7 @@ export const testimonials = [
     location: 'Hyderabad',
     rating: 5,
     service: 'Astrology Consultation',
-    text: 'AstroSci told me about an upcoming business opportunity in July 2026 during our consultation in March. It happened exactly as predicted. Incredible accuracy!',
+    text: 'Kundaliwaale told me about an upcoming business opportunity in July 2026 during our consultation in March. It happened exactly as predicted. Incredible accuracy!',
     date: '2026-07-15',
   },
 ];

@@ -76,7 +76,7 @@ export default function Navbar() {
     <>
       <nav className={`${styles.nav} ${scrolled ? styles.navScrolled : ''}`}>
         <Link href="/" className={styles.logo} onClick={() => setMobileOpen(false)}>
-          <span className="font-serif">AstroSci</span>
+          <span className="font-serif">Kundaliwaale</span>
           <small className="font-sans">Your Cosmic Guide</small>
         </Link>
 

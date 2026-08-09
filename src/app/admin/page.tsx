@@ -30,7 +30,7 @@ export default function AdminDashboard() {
   return (
     <div>
       <h1 className={`${styles.pageTitle} font-serif`}>Dashboard</h1>
-      <p className={`${styles.pageSubtitle} font-sans`}>Welcome back, AstroSci. Here&apos;s your business overview.</p>
+      <p className={`${styles.pageSubtitle} font-sans`}>Welcome back, Kundaliwaale. Here&apos;s your business overview.</p>
 
       {/* Stat Cards */}
       <div className={styles.statsGrid}>
