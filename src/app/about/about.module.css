@@ -4,8 +4,8 @@
 
 /* Hero */
 .hero {
-  padding: 8rem 5%;
-  background: radial-gradient(ellipse at 50% 50%, rgba(47, 29, 79, 0.8) 0%, rgba(10, 11, 28, 0.95) 100%), url('/images/Astral BG/as 1.jpg') center/cover;
+  padding: 6rem 5% 4rem;
+  background: radial-gradient(ellipse at 50% 50%, rgba(255, 255, 255, 0.8) 0%, rgba(250, 250, 252, 0.95) 100%), url('/images/Astral BG/as 1.jpg') center/cover;
   text-align: center;
   border-bottom: 1px solid rgba(255, 206, 115, 0.1);
 }
@@ -21,29 +21,29 @@
 }
 
 .hero h1 em {
-  color: var(--primary-gold);
+  color: var(--color-gold);
   font-style: normal;
 }
 
 .hero p {
   font-size: 1.15rem;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   line-height: 1.6;
 }
 
 /* Mission */
 .mission {
-  padding: var(--section-padding);
-  background: var(--primary-dark);
+  padding: 2rem 5% 4rem;
+  background: var(--bg-primary);
 }
 
 .missionInner {
-  max-width: 800px;
+  max-width: 600px;
   margin: 0 auto;
   text-align: center;
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 206, 115, 0.15);
-  padding: 4rem 3rem;
+  padding: 3rem 2rem;
   border-radius: var(--radius-lg);
   backdrop-filter: blur(10px);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -55,14 +55,14 @@
 
 .missionInner h2 {
   font-size: 2.2rem;
-  color: var(--primary-gold);
+  color: var(--color-gold);
   margin-bottom: 1.5rem;
 }
 
 .missionInner p {
   font-size: 1.1rem;
   line-height: 1.8;
-  color: var(--text-muted);
+  color: var(--text-secondary);
 }
 
 /* About Story */
@@ -75,124 +75,161 @@
   max-width: var(--container-max);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  gap: 4rem;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 3rem;
   align-items: center;
+}
+
+.aboutImageCol {
+  position: relative;
+  max-width: 450px;
+  margin-left: auto;
 }
 
 .imagePlaceholder {
   width: 100%;
-  aspect-ratio: 3/4;
-  background: radial-gradient(circle at center, rgba(255, 186, 95, 0.1) 0%, rgba(10, 11, 28, 0.8) 100%);
-  border: 1px solid rgba(255, 206, 115, 0.3);
+  height: 500px;
   border-radius: var(--radius-lg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 30px rgba(255, 206, 115, 0.1);
   position: relative;
   overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 206, 115, 0.1);
 }
 
-.imagePlaceholder::after {
-  content: '';
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  right: 10px;
-  bottom: 10px;
-  border: 1px solid rgba(255, 206, 115, 0.2);
-  border-radius: var(--radius-md);
+.portraitImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.manuscriptBox {
+  position: relative;
+  background: linear-gradient(135deg, #FDFBF7 0%, #F4EFE6 100%);
+  border: 4px double rgba(226, 160, 63, 0.5);
+  border-radius: 4px;
+  padding: 3rem 4rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08), inset 0 0 40px rgba(226, 160, 63, 0.05);
+  margin-left: -3rem; /* Overlap the image slightly */
+  z-index: 2;
 }
 
 .aboutContent h2 {
-  font-size: 2.5rem;
-  margin-bottom: 1.5rem;
+  font-size: 2.8rem;
+  color: #4A3B2C; /* Dark ink color */
+  margin-bottom: 1rem;
+  line-height: 1.15;
 }
 
 .aboutContent h2 em {
-  color: var(--primary-gold);
+  color: var(--color-gold);
   font-style: normal;
 }
 
 .aboutContent p {
   font-size: 1.05rem;
-  line-height: 1.8;
-  color: var(--text-muted);
+  color: #5C4D3C; /* Slightly lighter ink color */
+  line-height: 1.7;
   margin-bottom: 1.5rem;
 }
 
-/* Timeline */
+/* Horizontal Timeline */
 .timeline {
   padding: var(--section-padding);
-  background: var(--primary-dark);
+  background: var(--bg-primary);
+}
+
+.timelineMarquee {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 2rem 0 4rem;
+}
+
+.timelineMarquee::before {
+  content: '';
+  position: absolute;
+  top: 4.5rem; /* Center with the nodes */
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(to right, transparent, rgba(226, 160, 63, 0.5), transparent);
 }
 
 .timelineTrack {
-  max-width: 700px;
-  margin: 0 auto;
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+  gap: 3rem;
+  padding: 0 1.5rem;
+}
+
+.timelineTrack:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.timelineStepHorizontal {
+  flex: 0 0 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   position: relative;
-  padding-left: 40px;
+  text-align: center;
+  scroll-snap-align: center;
 }
 
-.timelineTrack::before {
-  content: '';
-  position: absolute;
-  left: 15px;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: rgba(255, 206, 115, 0.2);
-}
-
-.timelineItem {
-  position: relative;
-  padding-bottom: 3rem;
-}
-
-.timelineYear {
-  position: absolute;
-  left: -33px;
-  top: -5px;
-  width: 48px;
-  height: 48px;
+.timelineNodeHorizontal {
+  width: 50px;
+  height: 50px;
+  background: var(--bg-surface);
+  border: 2px solid var(--color-gold);
   border-radius: 50%;
-  background: var(--bg-darker);
-  border: 2px solid var(--primary-gold);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 15px rgba(255, 206, 115, 0.2);
-}
-
-.timelineYear span {
-  font-size: 0.9rem;
-  color: var(--primary-gold);
+  color: var(--color-gold);
+  font-family: var(--font-serif-main);
   font-weight: 600;
-}
-
-.timelineContent h3 {
-  font-size: 1.3rem;
-  color: var(--text-light);
-  margin-bottom: 0.5rem;
-  padding-left: 2rem;
-}
-
-.timelineContent p {
   font-size: 1rem;
-  color: var(--text-muted);
-  line-height: 1.6;
-  padding-left: 2rem;
+  box-shadow: 0 0 15px rgba(226, 160, 63, 0.2);
+  margin-bottom: 2rem;
+  z-index: 2;
+  position: relative;
 }
 
-/* Certifications */
+.timelineContentHorizontal {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(226, 160, 63, 0.15);
+  padding: 1.5rem;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
+  width: 100%;
+}
+
+.timelineContentHorizontal h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.timelineContentHorizontal p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Certifications - Wax Seals */
 .certs {
   padding: var(--section-padding);
   background: var(--section-gradient);
 }
 
 .certs h2 em {
-  color: var(--primary-gold);
+  color: var(--color-gold);
   font-style: normal;
 }
 
@@ -205,33 +242,54 @@
 }
 
 .certCard {
-  background: var(--bg-glass);
-  border: 1px solid var(--bg-glass-border);
-  border-radius: var(--radius-md);
-  padding: 2rem 1.5rem;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(250, 245, 235, 0.8));
+  border: 2px solid rgba(226, 160, 63, 0.4);
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05), inset 0 0 20px rgba(226, 160, 63, 0.05);
+  padding: 2.5rem 1.5rem;
   text-align: center;
   transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.certCard::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  right: 6px;
+  bottom: 6px;
+  border: 1px solid rgba(226, 160, 63, 0.2);
+  border-radius: 4px;
 }
 
 .certCard:hover {
-  border-color: rgba(255, 186, 95, 0.3);
-  transform: translateY(-3px);
+  transform: translateY(-4px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1), inset 0 0 25px rgba(226, 160, 63, 0.1);
 }
 
 .certIcon {
-  font-size: 2.5rem;
-  display: block;
-  margin-bottom: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #8C2A2A; /* Wax seal red */
+  background: rgba(140, 42, 42, 0.1);
+  padding: 1rem;
+  border-radius: 50%;
+  margin-bottom: 1.5rem;
 }
 
 .certCard h3 {
-  font-size: 1.05rem;
-  margin-bottom: 0.35rem;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #4A3B2C;
+  font-weight: 600;
 }
 
 .certCard p {
-  font-size: 0.8rem;
-  color: var(--text-muted);
+  font-size: 0.9rem;
+  color: #5C4D3C;
 }
 
 @media (max-width: 1024px) {

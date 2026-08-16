@@ -88,14 +88,14 @@ export default function UserDashboardOverview() {
 
       <div className={styles.statsGrid}>
         <div className={styles.statCard}>
-          <div className={styles.statIcon}><FileText size={32} color="var(--primary-gold)" /></div>
+          <div className={styles.statIcon}><FileText size={32} color="var(--color-gold)" /></div>
           <div>
             <p className={`${styles.statLabel} font-sans`}>Total Orders</p>
             <h3 className={`${styles.statValue} font-serif`}>{recentOrders.length}</h3>
           </div>
         </div>
         <div className={styles.statCard}>
-          <div className={styles.statIcon}><Sparkles size={32} color="var(--primary-gold)" /></div>
+          <div className={styles.statIcon}><Sparkles size={32} color="var(--color-gold)" /></div>
           <div>
             <p className={`${styles.statLabel} font-sans`}>Active Services</p>
             <h3 className={`${styles.statValue} font-serif`}>{recentOrders.filter(o => o.status !== 'Completed' && o.status !== 'Delivered').length}</h3>
@@ -137,10 +137,10 @@ export default function UserDashboardOverview() {
           </div>
         ) : (
           <div className={styles.emptyState}>
-            <AlertCircle size={48} color="var(--text-muted)" style={{ margin: '0 auto 1rem' }} />
+            <AlertCircle size={48} color="var(--text-secondary)" style={{ margin: '0 auto 1rem' }} />
             <p className="font-sans">You don&apos;t have any orders or consultations yet.</p>
             <Link href="/services/kundali">
-               <button style={{ marginTop: '1rem', padding: '0.5rem 1rem', background: 'var(--primary-gold)', color: '#000', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>Explore Services</button>
+               <button style={{ marginTop: '1rem', padding: '0.5rem 1rem', background: 'var(--color-gold)', color: '#000', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>Explore Services</button>
             </Link>
           </div>
         )}

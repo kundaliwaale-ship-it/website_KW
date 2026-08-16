@@ -21,6 +21,7 @@ CREATE TABLE kundali_orders (
   status TEXT DEFAULT 'Pending Payment',
   
   -- Required Fields from Form
+  full_name TEXT NOT NULL,
   dob DATE NOT NULL,
   tob TIME NOT NULL,
   pob TEXT NOT NULL,

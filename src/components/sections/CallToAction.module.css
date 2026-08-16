@@ -29,13 +29,13 @@
 }
 
 .inner h2 em {
-  color: var(--primary-gold);
+  color: var(--color-gold);
   font-style: normal;
 }
 
 .inner p {
   font-size: 1.1rem;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   margin-bottom: 2rem;
   line-height: 1.6;
 }

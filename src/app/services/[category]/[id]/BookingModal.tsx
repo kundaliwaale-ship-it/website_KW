@@ -63,6 +63,9 @@ export default function BookingModal({ isOpen, onClose, category, tier, price, s
         body: JSON.stringify({
           amount: price,
           receipt: `rcpt_${Math.floor(Math.random() * 10000)}`,
+          category,
+          tier,
+          formData,
         }),
       });
 
@@ -86,9 +89,28 @@ export default function BookingModal({ isOpen, onClose, category, tier, price, s
         name: 'Kundaliwaale',
         description: serviceName,
         order_id: order.id,
-        handler: function (response: any) {
-          // Here you would verify the signature in a real app via another API call
-          setStep(3); // Success Step
+        handler: async function (response: any) {
+          try {
+            const verifyRes = await fetch('/api/payment/verify', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                razorpay_order_id: response.razorpay_order_id,
+                razorpay_payment_id: response.razorpay_payment_id,
+                razorpay_signature: response.razorpay_signature,
+                category,
+                dbOrderId: order.dbOrderId
+              })
+            });
+            const verifyData = await verifyRes.json();
+            if (verifyData.success) {
+              setStep(3); // Success Step
+            } else {
+              alert('Payment verification failed: ' + verifyData.error);
+            }
+          } catch (err) {
+            alert('Payment verification error.');
+          }
         },
         prefill: {
           name: formData.name || '',

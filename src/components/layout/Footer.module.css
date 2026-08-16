@@ -1,5 +1,5 @@
 .footer {
-  background: var(--primary-deep);
+  background: var(--bg-primary-alt);
   border-top: 1px solid var(--border-subtle);
   padding: 4rem 5% 0;
 }
@@ -14,7 +14,7 @@
 
 .brand p {
   margin-top: 1rem;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   font-size: 0.95rem;
   line-height: 1.6;
   max-width: 320px;
@@ -24,7 +24,7 @@
 .columnTitle {
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--text-light);
+  color: var(--text-primary);
   margin-bottom: 1.5rem;
 }
 
@@ -36,14 +36,14 @@
 
 .columnLink {
   display: block;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   font-size: 0.9rem;
   padding: 0.3rem 0;
   transition: color var(--transition-fast), padding-left var(--transition-fast);
 }
 
 .columnLink:hover {
-  color: var(--primary-gold);
+  color: var(--color-gold);
   padding-left: 4px;
 }
 
@@ -52,7 +52,7 @@
   align-items: flex-start;
   gap: 0.75rem;
   margin-bottom: 1rem;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   font-size: 0.9rem;
   line-height: 1.5;
 }
@@ -76,7 +76,7 @@
 }
 
 .copyright {
-  color: var(--text-muted);
+  color: var(--text-secondary);
   font-size: 0.8rem;
 }
 
@@ -91,13 +91,13 @@
 }
 
 .legalLinks a {
-  color: var(--text-muted);
+  color: var(--text-secondary);
   font-size: 0.8rem;
   transition: color var(--transition-fast);
 }
 
 .legalLinks a:hover {
-  color: var(--primary-gold);
+  color: var(--color-gold);
 }
 
 .socialLink {
@@ -109,15 +109,15 @@
   justify-content: center;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--border-subtle);
-  color: var(--text-muted);
+  color: var(--text-secondary);
   font-size: 1rem;
   transition: all var(--transition-fast);
 }
 
 .socialLink:hover {
-  background: var(--primary-gold);
-  color: var(--primary-dark);
-  border-color: var(--primary-gold);
+  background: var(--color-gold);
+  color: var(--bg-primary);
+  border-color: var(--color-gold);
   transform: translateY(-2px);
 }
 

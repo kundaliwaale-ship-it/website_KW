@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import type { Metadata } from 'next';
 import styles from './about.module.css';
 
@@ -41,7 +42,7 @@ export default function AboutPage() {
       {/* Mission */}
       <section className={styles.mission}>
         <div className={styles.missionInner}>
-          <div className={styles.missionIcon}><Sparkles size={40} color="var(--primary-gold)" /></div>
+          <div className={styles.missionIcon}><Sparkles size={40} color="var(--color-gold)" /></div>
           <h2 className="font-serif">Our Mission</h2>
           <p className="font-sans">
             To make authentic Vedic astrology accessible to everyone. We believe that the ancient
@@ -55,51 +56,59 @@ export default function AboutPage() {
       {/* About the Kundaliwaale */}
       <section className={styles.about}>
         <div className={styles.aboutInner}>
-          <div className={styles.aboutImage}>
-            <div className={styles.imagePlaceholder}><User size={64} color="var(--primary-gold)" /></div>
+          <div className={styles.aboutImageCol}>
+            <div className={styles.imagePlaceholder}>
+              <img 
+                src="/images/acharya_portrait.png" 
+                alt="Acharya Ji" 
+                className={styles.portraitImg}
+              />
+            </div>
           </div>
-          <div className={styles.aboutContent}>
-            <h2 className="font-serif">The Kundaliwaale&apos;s <em>Story</em></h2>
-            <p className="font-sans">
-              Born into a family of Vedic scholars in Varanasi, Kundaliwaale was introduced
-              to Jyotish Shastra at the age of 12. Under the guidance of his grandfather, a
-              respected Pandit, he studied the ancient texts — Brihat Parashara Hora Shastra,
-              Jataka Parijata, and Phaladeepika — mastering the art of reading planetary
-              positions and their influence on human life.
-            </p>
-            <p className="font-sans">
-              After completing his formal education in Jyotish Acharya from Banaras Hindu
-              University, he dedicated his life to helping individuals navigate life&apos;s
-              challenges through the lens of Vedic astrology. What began as a small practice
-              in Varanasi has grown into a trusted platform serving over 10 lakh clients
-              across 15 countries.
-            </p>
-            <p className="font-sans">
-              His unique approach combines deep scriptural knowledge with a practical,
-              compassionate understanding of modern-day challenges — making astrology
-              not just predictive, but genuinely actionable.
-            </p>
+          <div className={styles.manuscriptBox}>
+            <div className={styles.aboutContent}>
+              <h2 className="font-serif">The Kundaliwaale&apos;s <em>Story</em></h2>
+              <p className="font-sans">
+                Born into a family of Vedic scholars in Varanasi, Kundaliwaale was introduced
+                to Jyotish Shastra at the age of 12. Under the guidance of his grandfather, a
+                respected Pandit, he studied the ancient texts — Brihat Parashara Hora Shastra,
+                Jataka Parijata, and Phaladeepika — mastering the art of reading planetary
+                positions and their influence on human life.
+              </p>
+              <p className="font-sans">
+                After completing his formal education in Jyotish Acharya from Banaras Hindu
+                University, he dedicated his life to helping individuals navigate life&apos;s
+                challenges through the lens of Vedic astrology. What began as a small practice
+                in Varanasi has grown into a trusted platform serving over 10 lakh clients
+                across 15 countries.
+              </p>
+              <p className="font-sans">
+                His unique approach combines deep scriptural knowledge with a practical,
+                compassionate understanding of modern-day challenges — making astrology
+                not just predictive, but genuinely actionable.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Timeline */}
       <section className={styles.timeline}>
-        <h2 className="font-serif" style={{ textAlign: 'center', fontSize: '2.5rem', marginBottom: '3rem', color: 'var(--text-light)' }}>
-          Our <em style={{ color: 'var(--primary-gold)', fontStyle: 'normal' }}>Journey</em>
+        <h2 className="font-serif" style={{ textAlign: 'center', fontSize: '2.5rem', marginBottom: '3rem', color: 'var(--text-primary)' }}>
+          Our <em style={{ color: 'var(--color-gold)', fontStyle: 'normal' }}>Journey</em>
         </h2>
-        <div className={styles.timelineTrack}>
-          {milestones.map((m, i) => (
-            <div key={i} className={styles.timelineItem}>
-              <div className={styles.timelineYear}>
-                <span className="font-sans">{m.year}</span>
+        <div className={styles.timelineMarquee}>
+          <div className={styles.timelineTrack}>
+            {[...milestones, ...milestones].map((m, i) => (
+              <div key={i} className={styles.timelineStepHorizontal}>
+                <div className={styles.timelineNodeHorizontal}>{m.year}</div>
+                <div className={styles.timelineContentHorizontal}>
+                  <h3 className="font-serif">{m.title}</h3>
+                  <p className="font-sans">{m.description}</p>
+                </div>
               </div>
-              <div className={styles.timelineContent}>
-                <h3 className="font-serif">{m.title}</h3>
-                <p className="font-sans">{m.description}</p>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 

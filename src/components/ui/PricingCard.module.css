@@ -3,7 +3,7 @@
 }
 
 .popular {
-  border-color: var(--primary-gold) !important;
+  border-color: var(--color-gold) !important;
 }
 
 .popularBadge {
@@ -11,7 +11,7 @@
   top: 0;
   right: 2rem;
   background: var(--button-gradient);
-  color: var(--text-dark);
+  color: var(--text-inverse);
   font-size: 0.7rem;
   font-weight: 700;
   padding: 0.35rem 0.85rem;
@@ -23,12 +23,12 @@
 .cardName {
   font-size: 1.35rem;
   margin-bottom: 0.5rem;
-  color: var(--text-light);
+  color: var(--text-primary);
 }
 
 .cardDesc {
   font-size: 0.9rem;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   line-height: 1.5;
   margin-bottom: 1.5rem;
 }
@@ -43,12 +43,12 @@
 .price {
   font-size: 2.5rem;
   font-weight: 700;
-  color: var(--primary-gold);
+  color: var(--color-gold);
 }
 
 .originalPrice {
   font-size: 1.1rem;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   text-decoration: line-through;
 }
 
@@ -62,7 +62,7 @@
   gap: 0.6rem;
   padding: 0.4rem 0;
   font-size: 0.9rem;
-  color: var(--text-muted);
+  color: var(--text-secondary);
 }
 
 .featureCheck {

@@ -49,7 +49,7 @@ export default function BookingForm({ category, tier, price }: { category: strin
 
   const handleRazorpayPayment = async (orderData: any) => {
     // 1. Create order on server
-    const res = await fetch('/api/razorpay/create-order', {
+    const res = await fetch('/api/payment/create-order', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ amount: actualPrice, category, tier, orderData })
@@ -69,7 +69,7 @@ export default function BookingForm({ category, tier, price }: { category: strin
       handler: async function (response: any) {
         // 3. Verify Payment
         try {
-          const verifyRes = await fetch('/api/razorpay/verify-payment', {
+          const verifyRes = await fetch('/api/payment/verify-payment', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -97,7 +97,7 @@ export default function BookingForm({ category, tier, price }: { category: strin
         contact: formData.mobile1,
       },
       theme: {
-        color: "#c29b57" // var(--primary-gold)
+        color: "#c29b57" // var(--color-gold)
       }
     };
 
@@ -269,7 +269,7 @@ const inputStyle = {
   background: 'rgba(0,0,0,0.2)',
   border: '1px solid var(--border-gold)',
   borderRadius: 'var(--radius-sm)',
-  color: 'var(--text-light)',
+  color: 'var(--text-primary)',
   fontFamily: 'inherit'
 };
-const labelStyle = { display: 'block', marginBottom: '0.5rem', color: 'var(--text-light)' };
+const labelStyle = { display: 'block', marginBottom: '0.5rem', color: 'var(--text-primary)' };

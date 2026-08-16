@@ -1,17 +1,17 @@
 .page { padding-top: 80px; }
 
 .hero {
-  padding: 5rem 5%;
+  padding: 3rem 5% 1rem;
   background: var(--hero-gradient);
   text-align: center;
 }
 
 .hero h1 { font-size: 3rem; margin-bottom: 1rem; }
-.hero h1 em { color: var(--primary-gold); font-style: normal; }
-.hero p { color: var(--text-muted); font-size: 1.1rem; max-width: 550px; margin: 0 auto; }
+.hero h1 em { color: var(--color-gold); font-style: normal; }
+.hero p { color: var(--text-secondary); font-size: 1.1rem; max-width: 550px; margin: 0 auto; }
 
 .content {
-  padding: var(--section-padding);
+  padding: 2rem 5% 6rem;
   background: var(--section-gradient);
 }
 
@@ -26,7 +26,7 @@
 
 .categoryTitle {
   font-size: 1.5rem;
-  color: var(--primary-gold);
+  color: var(--color-gold);
   margin-bottom: 1rem;
   padding-bottom: 0.75rem;
   border-bottom: 2px solid rgba(255, 186, 95, 0.15);

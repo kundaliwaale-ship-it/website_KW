@@ -1,139 +1,87 @@
-'use client';
+'use client'
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import styles from './login.module.css';
-import Button from '@/components/ui/Button';
-import { createClient } from '@/utils/supabase/client';
+import React, { useState } from 'react'
+import { login, signup } from '@/actions/auth'
+import styles from './login.module.css'
+import Button from '@/components/ui/Button'
 
 export default function LoginPage() {
-  const router = useRouter();
-  const supabase = createClient();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [isLogin, setIsLogin] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+  const [loading, setLoading] = useState(false)
 
-  const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
-    setError(null);
-
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setLoading(true)
+    setError(null)
+    
+    const formData = new FormData(e.currentTarget)
+    
     try {
-      const { error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
-
-      if (error) {
-        throw error;
+      const result = isLogin ? await login(formData) : await signup(formData)
+      if (result?.error) {
+        setError(result.error)
       }
-
-      router.push('/dashboard');
-      router.refresh();
     } catch (err: any) {
-      setError(err.message || 'Failed to sign in');
+      setError(err.message || 'An unexpected error occurred.')
     } finally {
-      setIsLoading(false);
+      setLoading(false)
     }
-  };
-
-  const handleGoogleLogin = async () => {
-    setIsLoading(true);
-    setError(null);
-    try {
-      const { error } = await supabase.auth.signInWithOAuth({
-        provider: 'google',
-        options: {
-          redirectTo: `${window.location.origin}/auth/callback?next=/dashboard`
-        }
-      });
-      if (error) throw error;
-    } catch (err: any) {
-      setError(err.message || 'Failed to sign in with Google');
-      setIsLoading(false);
-    }
-  };
+  }
 
   return (
     <div className={styles.page}>
-      <div className={styles.authCard}>
-        <h1 className="font-serif">Welcome Back</h1>
-        <p className="font-sans">Log in to view your orders and consultations.</p>
+      <div className={styles.authContainer}>
+        <h1 className="font-serif thread-heading">
+          {isLogin ? (
+            <>Welcome <em>Back</em></>
+          ) : (
+            <>Create <em>Account</em></>
+          )}
+        </h1>
 
-        {error && <div className={styles.errorMessage}>{error}</div>}
+        {error && <div className={styles.error}>{error}</div>}
 
-        <form className={styles.form} onSubmit={handleLogin}>
-          <div className={styles.field}>
-            <label className="font-sans" htmlFor="email">Email</label>
-            <input
-              id="email"
-              type="email"
-              placeholder="Enter your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="font-sans"
-            />
+        <form className={styles.form} onSubmit={handleSubmit}>
+          {!isLogin && (
+            <>
+              <div className={styles.formGroup}>
+                <label className="font-sans">Full Name</label>
+                <input type="text" name="fullName" required placeholder="John Doe" />
+              </div>
+              <div className={styles.formGroup}>
+                <label className="font-sans">Phone Number</label>
+                <input type="tel" name="phone" required placeholder="+91 98765 00000" />
+              </div>
+            </>
+          )}
+
+          <div className={styles.formGroup}>
+            <label className="font-sans">Email Address</label>
+            <input type="email" name="email" required placeholder="john@example.com" />
           </div>
 
-          <div className={styles.field}>
-            <label className="font-sans" htmlFor="password">Password</label>
-            <input
-              id="password"
-              type="password"
-              placeholder="Enter your password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              className="font-sans"
-            />
+          <div className={styles.formGroup}>
+            <label className="font-sans">Password</label>
+            <input type="password" name="password" required placeholder="••••••••" />
           </div>
 
-          <Link href="/login" className={`${styles.forgotPassword} font-sans`}>
-            Forgot Password?
-          </Link>
-
-          <Button variant="primary" type="submit" style={{ width: '100%', marginTop: '0.5rem' }} disabled={isLoading}>
-            {isLoading ? 'Logging in...' : 'Log In'}
+          <Button 
+            variant="primary" 
+            style={{ width: '100%', padding: '1rem', marginTop: '1rem' }}
+            disabled={loading}
+          >
+            {loading ? 'Processing...' : isLogin ? 'SIGN IN' : 'CREATE ACCOUNT'}
           </Button>
         </form>
 
-        <div style={{ display: 'flex', alignItems: 'center', margin: '1.5rem 0' }}>
-          <div style={{ flex: 1, height: '1px', background: 'var(--border-subtle)' }}></div>
-          <span className="font-sans" style={{ padding: '0 1rem', color: 'var(--text-muted)', fontSize: '0.9rem' }}>OR</span>
-          <div style={{ flex: 1, height: '1px', background: 'var(--border-subtle)' }}></div>
-        </div>
-
-        <button 
-          onClick={handleGoogleLogin} 
-          disabled={isLoading}
-          style={{
-            width: '100%',
-            padding: '0.75rem',
-            background: 'var(--bg-panel)',
-            color: 'var(--text-dark)',
-            border: 'none',
-            borderRadius: 'var(--radius-sm)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '0.75rem',
-            cursor: 'pointer',
-            fontWeight: 500,
-            transition: 'background var(--transition-fast)'
-          }}
-        >
-          <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" width="20" height="20" />
-          Continue with Google
-        </button>
-
-        <div className={styles.footer}>
-          <span className="font-sans">Don&apos;t have an account?</span>
-          <Link href="/register" className="font-sans">Sign Up</Link>
+        <div className={styles.toggleText}>
+          {isLogin ? "Don't have an account?" : "Already have an account?"}
+          <button type="button" onClick={() => setIsLogin(!isLogin)}>
+            {isLogin ? 'Sign up' : 'Sign in'}
+          </button>
         </div>
       </div>
     </div>
-  );
+  )
 }

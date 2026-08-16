@@ -10,7 +10,7 @@ export default function Footer() {
         <div className={styles.footerGrid}>
           {/* Brand Column */}
           <div className={styles.brand}>
-            <Link href="/" className="font-serif" style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--text-light)' }}>
+            <Link href="/" className="font-serif" style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--text-primary)' }}>
               Kundaliwaale
             </Link>
             <p className="font-sans">

@@ -6,7 +6,7 @@ export default function FeaturedServices() {
   return (
     <section className={styles.section}>
       <div className={styles.header}>
-        <h2 className="font-serif">
+        <h2 className="font-serif thread-heading">
           Our <em>Featured</em> Services
         </h2>
         <p className="font-sans">

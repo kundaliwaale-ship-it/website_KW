@@ -24,7 +24,7 @@
 }
 
 .trigger:hover {
-  color: var(--primary-gold);
+  color: var(--color-gold);
 }
 
 .icon {
@@ -36,14 +36,14 @@
   justify-content: center;
   border-radius: 50%;
   background: rgba(255, 186, 95, 0.1);
-  color: var(--primary-gold);
+  color: var(--color-gold);
   flex-shrink: 0;
   transition: all var(--transition-fast);
 }
 
 .itemOpen .icon {
-  background: var(--primary-gold);
-  color: var(--primary-dark);
+  background: var(--color-gold);
+  color: var(--bg-primary);
 }
 
 .content {
@@ -56,5 +56,5 @@
   padding: 0 0 1.25rem;
   font-size: 0.95rem;
   line-height: 1.7;
-  color: var(--text-muted);
+  color: var(--text-secondary);
 }

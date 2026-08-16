@@ -1,12 +1,12 @@
 .page {
   min-height: 100vh;
-  background: var(--bg-dark);
+  background: var(--bg-primary);
 }
 
 /* Hero Section */
 .hero {
   padding: 8rem 5% 4rem;
-  background-color: var(--bg-dark);
+  background-color: var(--bg-primary);
   position: relative;
   overflow: hidden;
 }
@@ -28,7 +28,7 @@
   display: inline-block;
   padding: 0.4rem 1.2rem;
   background: rgba(255, 206, 115, 0.15);
-  color: var(--primary-gold);
+  color: var(--color-gold);
   border: 1px solid rgba(255, 206, 115, 0.3);
   border-radius: var(--radius-full);
   font-size: 0.85rem;
@@ -37,9 +37,13 @@
   margin-bottom: 1.5rem;
 }
 
+
+
+
+
 .heroText h1 {
   font-size: 3.5rem;
-  color: var(--text-light);
+  color: var(--text-primary);
   line-height: 1.1;
   margin-bottom: 1.5rem;
 }
@@ -47,7 +51,7 @@
 .heroText p {
   font-size: 1.15rem;
   line-height: 1.7;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   margin-bottom: 2rem;
 }
 
@@ -60,12 +64,12 @@
 
 .price {
   font-size: 3rem;
-  color: var(--primary-gold);
+  color: var(--color-gold);
 }
 
 .originalPrice {
   font-size: 1.5rem;
-  color: var(--text-dark-muted);
+  color: var(--text-inverse-muted);
   text-decoration: line-through;
 }
 
@@ -79,7 +83,7 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   font-size: 0.9rem;
 }
 
@@ -103,7 +107,7 @@
   transform: translate(-50%, -50%);
   width: 120%;
   height: 120%;
-  background: radial-gradient(circle at center, rgba(47, 29, 79, 0.8) 0%, rgba(10, 11, 28, 0) 70%);
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.8) 0%, rgba(250, 250, 252, 0) 70%);
   filter: blur(40px);
   animation: pulse-glow 8s ease-in-out infinite;
   z-index: 1;
@@ -112,29 +116,83 @@
 .floatingCard {
   position: relative;
   z-index: 2;
-  background: rgba(3, 4, 10, 0.6);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 206, 115, 0.3);
-  padding: 2.5rem;
-  border-radius: var(--radius-lg);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-  width: 80%;
-  animation: float 6s ease-in-out infinite;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 206, 115, 0.4);
+  padding: 1.5rem;
+  border-radius: 4px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08), 0 0 40px rgba(226, 160, 63, 0.15);
+  width: 90%;
+  max-width: 450px;
+  transform: perspective(1000px) rotateY(-12deg) rotateX(4deg);
+  transform-style: preserve-3d;
+  animation: cosmicFloat 8s ease-in-out infinite;
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  overflow: hidden;
+}
+
+.floatingCard:hover {
+  transform: perspective(1000px) rotateY(-5deg) rotateX(2deg) scale(1.02);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.12), 0 0 60px rgba(226, 160, 63, 0.3);
+}
+
+@keyframes cosmicFloat {
+  0% { transform: perspective(1000px) rotateY(-12deg) rotateX(4deg) translateY(0px); }
+  50% { transform: perspective(1000px) rotateY(-9deg) rotateX(6deg) translateY(-15px); }
+  100% { transform: perspective(1000px) rotateY(-12deg) rotateX(4deg) translateY(0px); }
+}
+
+.cardInnerBorder {
+  position: relative;
+  z-index: 3;
+  border: 1px solid rgba(226, 160, 63, 0.3);
+  padding: 2.5rem 2rem;
+  border-radius: 2px;
+  height: 100%;
+  background: rgba(253, 252, 251, 0.4);
+}
+
+.cardWatermarkWrapper {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.12;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.cardWatermark {
+  width: 140%;
+  height: 140%;
+  object-fit: contain;
+  animation: spin-slow 120s linear infinite;
 }
 
 .floatingCard h3 {
-  color: var(--text-light);
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+  color: var(--text-primary);
+  font-size: 2.75rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  font-family: var(--font-serif-main);
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
 }
 
 .cardPrice {
-  font-size: 2rem;
-  color: var(--primary-gold);
-  font-family: var(--font-serif-main);
+  font-size: 1.75rem;
+  color: var(--color-gold);
+  font-family: var(--font-body-serif);
   margin-bottom: 1.5rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  font-weight: 600;
+}
+
+.cardDivider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(226, 160, 63, 0.4), transparent);
+  margin-bottom: 2rem;
 }
 
 .cardFeatures {
@@ -146,7 +204,7 @@
 }
 
 .cardFeatures li {
-  color: var(--text-muted);
+  color: var(--text-secondary);
   font-family: var(--font-montserrat);
   font-size: 0.9rem;
   display: flex;
@@ -155,13 +213,13 @@
 }
 
 .cardFeatures li svg {
-  color: var(--primary-gold);
+  color: var(--color-gold);
 }
 
 /* Process Section */
 .processSection {
   padding: 6rem 5%;
-  background: radial-gradient(ellipse at 50% 50%, rgba(47, 29, 79, 0.5) 0%, rgba(10, 11, 28, 1) 70%);
+  background: radial-gradient(ellipse at 50% 50%, rgba(255, 255, 255, 0.5) 0%, rgba(250, 250, 252, 1) 70%);
 }
 
 .sectionHeader {
@@ -171,70 +229,125 @@
 
 .sectionHeader h2 {
   font-size: 2.5rem;
-  color: var(--text-light);
+  color: var(--text-primary);
   margin-bottom: 1rem;
 }
 
 .sectionHeader p {
-  color: var(--text-muted);
+  color: var(--text-secondary);
   font-size: 1.1rem;
 }
 
-.compactProcess {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  max-width: 900px;
+.timelineContainer {
+  position: relative;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 1rem 0;
-}
-
-.compactStep {
+  padding: 2rem 0;
   display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 206, 115, 0.1);
-  padding: 1.5rem;
-  border-radius: var(--radius-md);
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.goldenThread {
+  position: absolute;
+  top: 4.5rem;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background: linear-gradient(to right, transparent, rgba(226, 160, 63, 0.5), transparent);
+}
+
+.timelineStep {
+  position: relative;
   flex: 1;
-  transition: all var(--transition-fast);
-  backdrop-filter: blur(10px);
+  text-align: center;
 }
 
-.compactStep:hover {
-  background: rgba(255, 255, 255, 0.04);
-  border-color: rgba(255, 206, 115, 0.3);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-.stepNumberSmall {
-  width: 36px;
-  height: 36px;
-  background: rgba(255, 206, 115, 0.1);
-  border: 1px solid var(--primary-gold);
+.timelineNode {
+  position: relative;
+  margin: 0 auto 2rem;
+  width: 48px;
+  height: 48px;
+  background: var(--bg-surface);
+  border: 2px solid var(--color-gold);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--primary-gold);
+  color: var(--color-gold);
   font-family: var(--font-serif-main);
-  font-size: 1.2rem;
-  flex-shrink: 0;
-  box-shadow: 0 0 10px rgba(255, 206, 115, 0.15);
+  font-size: 1.5rem;
+  box-shadow: 0 0 20px rgba(226, 160, 63, 0.15);
+  z-index: 2;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.compactStep h3 {
-  color: var(--text-light);
-  font-size: 1.2rem;
-  margin-bottom: 0.25rem;
+.timelineContent {
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(226, 160, 63, 0.15);
+  padding: 2.5rem 2rem;
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  height: calc(100% - 6rem); /* To keep them equal height if flex isn't perfect, but flex stretch works better */
+  display: flex;
+  flex-direction: column;
 }
 
-.compactStep p {
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  line-height: 1.5;
+.timelineStep:hover .timelineContent {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08), 0 0 30px rgba(226, 160, 63, 0.1);
+  border-color: rgba(226, 160, 63, 0.4);
+}
+
+.timelineStep:hover .timelineNode {
+  background: var(--color-gold);
+  color: #fff;
+  box-shadow: 0 0 30px rgba(226, 160, 63, 0.4);
+  transform: scale(1.1);
+}
+
+.timelineContent h3 {
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.timelineContent p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .timelineContainer {
+    flex-direction: column;
+    padding: 2rem 5%;
+  }
+  .goldenThread {
+    top: 2rem;
+    bottom: 2rem;
+    left: 48px;
+    width: 2px;
+    height: auto;
+    background: linear-gradient(to bottom, transparent, rgba(226, 160, 63, 0.5), transparent);
+  }
+  .timelineStep {
+    width: 100%;
+    text-align: left;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+  .timelineNode {
+    margin: 0;
+    flex-shrink: 0;
+  }
+  .timelineContent {
+    height: auto;
+  }
 }
 
 @media (max-width: 768px) {
@@ -244,7 +357,7 @@
 }
 
 .processStep p {
-  color: var(--text-muted);
+  color: var(--text-secondary);
   font-size: 0.95rem;
   line-height: 1.6;
 }
@@ -252,7 +365,7 @@
 /* Features Section */
 .featuresSection {
   padding: 6rem 5%;
-  background: radial-gradient(ellipse at 50% 0%, rgba(47, 29, 79, 0.4) 0%, transparent 60%), var(--bg-dark);
+  background: radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.4) 0%, transparent 60%), var(--bg-primary);
   border-top: 1px solid rgba(255, 206, 115, 0.08);
   border-bottom: 1px solid rgba(255, 206, 115, 0.08);
 }
@@ -267,7 +380,7 @@
   font-size: 0.8rem;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--primary-gold);
+  color: var(--color-gold);
   margin-bottom: 0.75rem;
   opacity: 0.8;
 }
@@ -279,50 +392,52 @@
 
 .featuresHeader h2 {
   font-size: 2.5rem;
-  color: var(--text-light);
+  color: var(--text-primary);
   margin-bottom: 0.75rem;
 }
 
 .featuresHeader h2 em {
-  color: var(--primary-gold);
+  color: var(--color-gold);
   font-style: normal;
 }
 
 .featuresHeader p {
-  color: var(--text-muted);
+  color: var(--text-secondary);
   font-size: 1.05rem;
 }
 
 .featuresGrid {
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 4rem;
+  gap: 1px;
+  background: rgba(226, 160, 63, 0.4);
+  border: 1px solid var(--color-gold);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  border: 1px solid rgba(255, 206, 115, 0.08);
+  margin-bottom: 4rem;
+  box-shadow: 0 10px 30px rgba(226, 160, 63, 0.1);
 }
 
 .featureCard {
-  padding: 1.75rem 2rem;
+  flex: 1 1 300px;
+  padding: 2rem;
   display: flex;
   align-items: center;
-  gap: 1.25rem;
-  background: rgba(10, 11, 28, 0.95);
-  transition: background 0.3s ease;
-  flex: 1 1 280px;
-  border-right: 1px solid rgba(255, 206, 115, 0.08);
-  border-bottom: 1px solid rgba(255, 206, 115, 0.08);
+  gap: 1.5rem;
+  background: rgba(255, 255, 255, 0.85);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
 }
 
 .featureCard:hover {
-  background: rgba(47, 29, 79, 0.3);
+  background: #ffffff;
 }
 
 .featureNumber {
   font-family: var(--font-serif-main);
   font-size: 1.5rem;
-  color: var(--primary-gold);
-  opacity: 0.5;
+  color: var(--color-gold);
+  opacity: 0.7;
   font-weight: 700;
   flex-shrink: 0;
   width: 36px;
@@ -330,9 +445,10 @@
 }
 
 .featureText span {
-  color: var(--text-light);
-  font-size: 1rem;
+  color: var(--text-primary);
+  font-size: 1.05rem;
   line-height: 1.5;
+  font-weight: 500;
 }
 
 .featuresCta {
@@ -345,20 +461,20 @@
   justify-content: space-between;
   gap: 2rem;
   padding: 2.5rem 3rem;
-  background: rgba(255, 206, 115, 0.04);
-  border: 1px solid rgba(255, 206, 115, 0.12);
+  background: linear-gradient(135deg, var(--color-gold) 0%, #D49B3A 100%);
   border-radius: var(--radius-lg);
+  box-shadow: 0 10px 30px rgba(226, 160, 63, 0.2);
 }
 
 .ctaInfo h3 {
-  color: var(--text-light);
-  font-size: 1.5rem;
+  color: #FFFFFF;
+  font-size: 1.8rem;
   margin-bottom: 0.25rem;
 }
 
 .ctaInfo p {
-  color: var(--text-muted);
-  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.05rem;
 }
 
 @media (max-width: 1024px) {

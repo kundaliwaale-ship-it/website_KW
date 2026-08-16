@@ -1,53 +1,63 @@
 .page {
   padding-top: 80px;
-  background: var(--bg-dark);
+  background: var(--bg-primary);
   min-height: 100vh;
 }
 
 .hero {
-  padding: 6rem 5%;
-  background: radial-gradient(ellipse at 50% 50%, rgba(47, 29, 79, 0.8) 0%, rgba(10, 11, 28, 0.95) 100%), url('/images/Astral BG/as 1.jpg') no-repeat center center;
+  padding: 3rem 5% 1rem;
+  background: radial-gradient(ellipse at 50% 50%, rgba(255, 255, 255, 0.8) 0%, rgba(250, 250, 252, 0.95) 100%), url('/images/Astral BG/as 1.jpg') no-repeat center center;
   background-size: cover;
   text-align: center;
   border-bottom: 1px solid rgba(255, 206, 115, 0.1);
 }
 
 .hero h1 {
-  font-size: 3.5rem;
-  margin-bottom: 1rem;
-  color: var(--text-light);
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
 }
 
 .hero h1 em {
-  color: var(--primary-gold);
+  color: var(--color-gold);
   font-style: normal;
 }
 
 .hero p {
-  color: var(--text-muted);
+  color: var(--text-secondary);
   font-size: 1.15rem;
   max-width: 550px;
   margin: 0 auto;
 }
 
 .content {
-  padding: 4rem 5%;
-  background: var(--bg-dark);
+  padding: 2rem 5% 4rem;
+  background: var(--bg-primary);
 }
 
 .contentInner {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  gap: 3.5rem;
 }
 
-/* Form */
-.formCol h2 {
-  font-size: 2.2rem;
-  color: var(--text-light);
-  margin-bottom: 2rem;
+/* Layout columns */
+.formCol, .infoCol {
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(226, 160, 63, 0.2);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: 0 10px 40px rgba(226, 160, 63, 0.08);
+  backdrop-filter: blur(12px);
+}
+
+.formCol h2, .infoCol h2 {
+  font-size: 2rem;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  text-align: center;
 }
 
 .form {
@@ -56,29 +66,37 @@
   gap: 1rem;
 }
 
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
 .formGroup {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 0.35rem;
 }
 
 .formGroup label {
   font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--text-muted);
+  font-weight: 600;
+  color: var(--text-primary);
   letter-spacing: 0.5px;
+  margin-left: 0.2rem;
 }
 
 .formGroup input,
 .formGroup select,
 .formGroup textarea {
-  padding: 0.85rem 1rem;
-  border: 1px solid rgba(255, 206, 115, 0.2);
+  padding: 0.8rem 1rem;
+  border: 1px solid rgba(226, 160, 63, 0.4);
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.03);
-  color: var(--text-light);
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text-primary);
   font-size: 0.95rem;
   transition: all var(--transition-fast);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
 }
 
 .formGroup select {
@@ -90,20 +108,20 @@
 }
 
 .formGroup select option {
-  background: var(--bg-darker);
-  color: var(--text-light);
+  background: var(--bg-primary-alt);
+  color: var(--text-primary);
 }
 
 .formGroup input::placeholder,
 .formGroup textarea::placeholder {
-  color: rgba(255, 255, 255, 0.2);
+  color: rgba(0, 0, 0, 0.3);
 }
 
 .formGroup input:focus,
 .formGroup select:focus,
 .formGroup textarea:focus {
   outline: none;
-  border-color: var(--primary-gold);
+  border-color: var(--color-gold);
   background: rgba(255, 255, 255, 0.05);
   box-shadow: 0 0 0 3px rgba(255, 206, 115, 0.1);
 }
@@ -134,16 +152,11 @@
 }
 
 .successMsg p {
-  color: var(--text-muted);
+  color: var(--text-secondary);
   font-size: 1.05rem;
 }
 
-/* Info */
-.infoCol h2 {
-  font-size: 2.2rem;
-  color: var(--text-light);
-  margin-bottom: 2rem;
-}
+
 
 .infoCards {
   display: flex;
@@ -155,19 +168,20 @@
 .infoCard {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
-  padding: 1rem 1.25rem;
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(10px);
-  border-radius: var(--radius-lg);
+  gap: 1rem;
+  padding: 0.85rem 1rem;
+  background: #ffffff;
+  border-radius: var(--radius-md);
   border: 1px solid rgba(255, 206, 115, 0.15);
-  transition: all var(--transition-fast);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
 }
 
 .infoCard:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 206, 115, 0.4);
-  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(226, 160, 63, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(226, 160, 63, 0.1);
 }
 
 .infoIcon {
@@ -178,20 +192,20 @@
   height: 40px;
   background: rgba(255, 206, 115, 0.1);
   border-radius: 50%;
-  color: var(--primary-gold);
+  color: var(--color-gold);
   flex-shrink: 0;
 }
 
 .infoCard h4 {
   font-size: 1.05rem;
   font-weight: 600;
-  color: var(--text-light);
+  color: var(--text-primary);
   margin-bottom: 0.25rem;
 }
 
 .infoCard p {
   font-size: 0.95rem;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   line-height: 1.5;
 }
 

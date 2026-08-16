@@ -1,5 +1,5 @@
 .pageTitle { font-size: 2rem; margin-bottom: 0.25rem; }
-.pageSubtitle { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 2rem; }
+.pageSubtitle { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 2rem; }
 
 .statsGrid {
   display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin-bottom: 2.5rem;
@@ -13,8 +13,8 @@
 }
 .statCard:hover { border-color: rgba(255,186,95,0.2); transform: translateY(-2px); }
 .statIcon { font-size: 2rem; }
-.statLabel { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.15rem; }
-.statValue { font-size: 1.5rem; color: var(--text-light); }
+.statLabel { font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.15rem; }
+.statValue { font-size: 1.5rem; color: var(--text-primary); }
 .statTrend {
   position: absolute; top: 1rem; right: 1rem; font-size: 0.75rem;
   color: var(--accent-green); font-weight: 600;
@@ -33,14 +33,14 @@
 }
 .table th {
   text-align: left; padding: 0.75rem 1rem; font-size: 0.8rem;
-  text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: 1px; color: var(--text-secondary);
   border-bottom: 1px solid var(--border-subtle);
 }
 .table td {
-  padding: 0.85rem 1rem; font-size: 0.9rem; color: var(--text-muted);
+  padding: 0.85rem 1rem; font-size: 0.9rem; color: var(--text-secondary);
   border-bottom: 1px solid var(--border-subtle);
 }
-.table tr:hover td { color: var(--text-light); }
+.table tr:hover td { color: var(--text-primary); }
 .table tr:last-child td { border-bottom: none; }
 
 .badge {

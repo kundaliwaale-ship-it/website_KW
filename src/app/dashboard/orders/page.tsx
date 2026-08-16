@@ -14,7 +14,7 @@ export default function UserOrdersPage() {
       case 'Delivered': return { bg: 'rgba(34, 197, 94, 0.1)', text: '#22c55e' };
       case 'In Progress': return { bg: 'rgba(59, 130, 246, 0.1)', text: '#3b82f6' };
       case 'Pending': return { bg: 'rgba(245, 158, 11, 0.1)', text: '#f59e0b' };
-      default: return { bg: 'rgba(255, 255, 255, 0.1)', text: 'var(--text-light)' };
+      default: return { bg: 'rgba(255, 255, 255, 0.1)', text: 'var(--text-primary)' };
     }
   };
 

@@ -16,7 +16,7 @@
 
 .btnPrimary {
   background: var(--button-gradient);
-  color: var(--primary-dark);
+  color: var(--bg-primary);
   box-shadow: 0 4px 15px rgba(255, 186, 95, 0.2);
 }
 
@@ -28,13 +28,13 @@
 
 .btnOutline {
   background: transparent;
-  color: var(--primary-gold);
+  color: var(--color-gold);
   border: 1px solid rgba(255, 206, 115, 0.5);
   box-shadow: 0 4px 15px rgba(255, 206, 115, 0.05);
 }
 
 .btnOutline:hover {
   background: rgba(255, 206, 115, 0.08);
-  border-color: var(--primary-gold);
+  border-color: var(--color-gold);
   transform: translateY(-2px);
 }

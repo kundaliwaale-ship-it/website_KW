@@ -1,46 +1,93 @@
-import { NextResponse } from 'next/server';
-import Razorpay from 'razorpay';
+import { NextResponse } from 'next/server'
+import Razorpay from 'razorpay'
+import { createClient } from '@/utils/supabase/server'
 
-export async function POST(req: Request) {
+export async function POST(request: Request) {
   try {
-    const { amount, currency = 'INR', receipt } = await req.json();
-
-    if (!amount) {
-      return NextResponse.json(
-        { error: 'Amount is required' },
-        { status: 400 }
-      );
-    }
-
-    const keyId = process.env.RAZORPAY_KEY_ID;
-    const keySecret = process.env.RAZORPAY_KEY_SECRET;
-
-    if (!keyId || !keySecret) {
-      return NextResponse.json(
-        { error: 'Razorpay keys are not configured in the environment variables.' },
-        { status: 500 }
-      );
-    }
-
     const razorpay = new Razorpay({
-      key_id: keyId,
-      key_secret: keySecret,
-    });
+      key_id: process.env.RAZORPAY_KEY_ID || 'dummy_id',
+      key_secret: process.env.RAZORPAY_KEY_SECRET || 'dummy_secret',
+    })
 
-    const options = {
-      amount: Math.round(amount * 100), // Amount in paise
-      currency,
-      receipt: receipt || `rcpt_${Date.now()}`,
-    };
-
-    const order = await razorpay.orders.create(options);
+    const supabase = await createClient()
     
-    return NextResponse.json(order, { status: 200 });
+    // Ensure user is logged in
+    const { data: { user } } = await supabase.auth.getUser()
+    if (!user) {
+      return NextResponse.json({ error: 'Unauthorized. Please login first.' }, { status: 401 })
+    }
+
+    const body = await request.json()
+    const { amount, receipt, category, tier, formData } = body
+
+    // 1. Create Razorpay Order
+    const options = {
+      amount: amount * 100, // amount in smallest currency unit (paise)
+      currency: 'INR',
+      receipt,
+    }
+    const rzpOrder = await razorpay.orders.create(options)
+
+    // 2. Save order in Supabase
+    let dbError = null
+    let dbOrderId = null
+
+    if (category === 'kundali') {
+      const { data, error } = await supabase.from('kundali_orders').insert([{
+        user_id: user.id,
+        kundali_type: tier,
+        amount,
+        full_name: formData.name,
+        dob: formData.dob,
+        tob: formData.tob,
+        pob: formData.pob,
+        fathers_name: 'N/A', // Assuming these are optional or added later if not in form
+        mothers_name: 'N/A',
+        grandfathers_name: 'N/A',
+        grandmothers_name: 'N/A',
+        mobile_number_1: formData.phone || 'N/A',
+        delivery_address: 'N/A',
+        razorpay_order_id: rzpOrder.id
+      }]).select()
+      dbError = error
+      dbOrderId = data?.[0]?.id
+    } else if (category === 'consultation') {
+      const { data, error } = await supabase.from('consultation_orders').insert([{
+        user_id: user.id,
+        name: formData.name,
+        mobile_number: formData.phone,
+        selected_time: formData.date ? new Date(formData.date).toISOString() : new Date().toISOString(),
+        amount,
+        razorpay_order_id: rzpOrder.id
+      }]).select()
+      dbError = error
+      dbOrderId = data?.[0]?.id
+    } else if (category === 'vastu') {
+      const { data, error } = await supabase.from('vastu_orders').insert([{
+        user_id: user.id,
+        vastu_type: tier,
+        amount,
+        complete_address: formData.address,
+        mobile_number: formData.phone,
+        razorpay_order_id: rzpOrder.id
+      }]).select()
+      dbError = error
+      dbOrderId = data?.[0]?.id
+    }
+
+    if (dbError) {
+      console.error('DB Insert Error:', dbError)
+      return NextResponse.json({ error: 'Failed to save order details.' }, { status: 500 })
+    }
+
+    return NextResponse.json({
+      id: rzpOrder.id,
+      amount: rzpOrder.amount,
+      currency: rzpOrder.currency,
+      dbOrderId,
+    })
   } catch (error: any) {
-    console.error('Razorpay API Error:', error);
-    return NextResponse.json(
-      { error: error.message || 'Failed to create Razorpay order' },
-      { status: 500 }
-    );
+    console.error('Razorpay Error:', error)
+    return NextResponse.json({ error: error.message }, { status: 500 })
   }
 }

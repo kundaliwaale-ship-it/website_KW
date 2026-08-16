@@ -8,7 +8,7 @@ export default function TestimonialsPreview() {
   return (
     <section className={`${styles.section} ambient-glow-wrapper`}>
       <div className={`${styles.header} relative-z`}>
-        <h2 className="font-serif">
+        <h2 className="font-serif thread-heading">
           What Our <em>Customers</em> Say
         </h2>
         <p className="font-sans">

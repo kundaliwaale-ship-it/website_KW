@@ -6,7 +6,7 @@
 
 .sidebar {
   width: 260px;
-  background: var(--primary-deep);
+  background: var(--bg-primary-alt);
   border-right: 1px solid var(--border-subtle);
   padding: 2rem 0;
   position: fixed;
@@ -23,12 +23,12 @@
 
 .sidebarHeader h2 {
   font-size: 1.15rem;
-  color: var(--primary-gold);
+  color: var(--color-gold);
 }
 
 .sidebarHeader p {
   font-size: 0.75rem;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   margin-top: 0.25rem;
 }
 
@@ -37,7 +37,7 @@
   align-items: center;
   gap: 0.75rem;
   padding: 0.75rem 1.5rem;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   font-size: 0.9rem;
   font-weight: 500;
   transition: all var(--transition-fast);
@@ -45,14 +45,14 @@
 }
 
 .navLink:hover {
-  color: var(--text-light);
+  color: var(--text-primary);
   background: rgba(255, 255, 255, 0.03);
 }
 
 .navLinkActive {
-  color: var(--primary-gold);
+  color: var(--color-gold);
   background: rgba(255, 186, 95, 0.05);
-  border-left-color: var(--primary-gold);
+  border-left-color: var(--color-gold);
 }
 
 .navIcon {
@@ -65,7 +65,7 @@
   flex: 1;
   margin-left: 260px;
   padding: 2rem 2.5rem;
-  background: var(--bg-dark);
+  background: var(--bg-primary);
   min-height: calc(100vh - 70px);
 }
 

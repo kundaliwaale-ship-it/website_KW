@@ -4,23 +4,40 @@ import { CheckCircle, Phone, MessageCircle, Mail, MapPin } from 'lucide-react';
 import React, { useState } from 'react';
 import styles from './contact.module.css';
 import Button from '@/components/ui/Button';
+import { submitContactInquiry } from '@/actions/contact';
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    setError(null);
+
+    const formData = new FormData(e.currentTarget);
+    
+    try {
+      const result = await submitContactInquiry(formData);
+      if (result.error) {
+        setError(result.error);
+      } else {
+        setSubmitted(true);
+      }
+    } catch (err: any) {
+      setError(err.message || 'An unexpected error occurred.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className={styles.page}>
       <section className={styles.hero}>
         <div className={styles.heroInner}>
-          <h1 className="font-serif">Get in <em>Touch</em></h1>
-          <p className="font-sans">
-            We&apos;re here to help you on your cosmic journey. Reach out with any questions.
-          </p>
+          <h1 className="font-serif thread-heading">Get in <em>Touch</em></h1>
         </div>
       </section>
 
@@ -36,21 +53,23 @@ export default function ContactPage() {
               </div>
             ) : (
               <form className={styles.form} onSubmit={handleSubmit}>
-                <div className={styles.formGroup}>
-                  <label className="font-sans">Full Name</label>
-                  <input type="text" required placeholder="John Doe" className="font-sans" />
-                </div>
-                <div className={styles.formGroup}>
-                  <label className="font-sans">Email Address</label>
-                  <input type="email" required placeholder="john@example.com" className="font-sans" />
+                <div className={styles.formRow}>
+                  <div className={styles.formGroup}>
+                    <label className="font-sans">Full Name</label>
+                    <input type="text" name="fullName" required placeholder="John Doe" className="font-sans" />
+                  </div>
+                  <div className={styles.formGroup}>
+                    <label className="font-sans">Email Address</label>
+                    <input type="email" name="email" required placeholder="john@example.com" className="font-sans" />
+                  </div>
                 </div>
                 <div className={styles.formGroup}>
                   <label className="font-sans">Phone Number (Optional)</label>
-                  <input type="tel" placeholder="+91 98765 00000" className="font-sans" />
+                  <input type="tel" name="phone" placeholder="+91 98765 00000" className="font-sans" />
                 </div>
                 <div className={styles.formGroup}>
                   <label className="font-sans">Subject</label>
-                  <select className="font-sans">
+                  <select name="subject" className="font-sans">
                     <option>General Inquiry</option>
                     <option>Kundli Report Issue</option>
                     <option>Consultation Reschedule</option>
@@ -59,9 +78,16 @@ export default function ContactPage() {
                 </div>
                 <div className={styles.formGroup}>
                   <label className="font-sans">Message</label>
-                  <textarea required rows={5} placeholder="How can we help you?" className="font-sans"></textarea>
+                  <textarea name="message" required rows={4} placeholder="How can we help you?" className="font-sans"></textarea>
                 </div>
-                <Button variant="primary" style={{ width: '100%', padding: '1rem', marginTop: '1rem' }}>SEND MESSAGE</Button>
+                {error && <div style={{ color: 'red', marginTop: '0.5rem' }}>{error}</div>}
+                <Button 
+                  variant="primary" 
+                  style={{ width: '100%', padding: '1rem', marginTop: '1rem' }}
+                  disabled={loading}
+                >
+                  {loading ? 'SENDING...' : 'SEND MESSAGE'}
+                </Button>
               </form>
             )}
           </div>

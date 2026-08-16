@@ -7,23 +7,25 @@
   max-width: var(--container-max);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 4rem;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 3rem;
   align-items: center;
 }
 
 .imageCol {
   position: relative;
+  max-width: 450px;
+  margin-left: auto;
 }
 
 .imagePlaceholder {
   width: 100%;
-  aspect-ratio: 4/5;
+  height: 500px;
   border-radius: var(--radius-lg);
-  background: url('/images/acharya_portrait.png') center/cover;
+  box-shadow: var(--shadow-lg);
   position: relative;
   overflow: hidden;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
   border: 1px solid rgba(255, 206, 115, 0.1);
 }
 
@@ -31,7 +33,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(10, 11, 28, 0.9), transparent 50%);
+  background: linear-gradient(to top, rgba(15, 10, 5, 0.95), transparent 50%);
 }
 
 .experienceBadge {
@@ -39,10 +41,10 @@
   bottom: -20px;
   right: -20px;
   background: var(--button-gradient);
-  color: var(--text-dark);
+  color: var(--text-inverse);
   padding: 1.25rem 1.5rem;
   border-radius: var(--radius-md);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
   text-align: center;
   z-index: 10;
 }
@@ -59,63 +61,74 @@
   letter-spacing: 1px;
 }
 
+.manuscriptBox {
+  position: relative;
+  background: linear-gradient(135deg, #FDFBF7 0%, #F4EFE6 100%);
+  border: 4px double rgba(226, 160, 63, 0.5);
+  border-radius: 4px;
+  padding: 3rem 4rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08), inset 0 0 40px rgba(226, 160, 63, 0.05);
+  margin-left: -3rem; /* Overlap the image slightly */
+  z-index: 2;
+}
+
 .content h2 {
-  font-size: 2.5rem;
-  color: var(--text-light);
+  font-size: 2.8rem;
+  color: #4A3B2C; /* Dark ink color */
   margin-bottom: 1rem;
   line-height: 1.15;
 }
 
 .content h2 em {
-  color: var(--primary-gold);
+  color: var(--color-gold);
   font-style: normal;
 }
 
 .content > p {
   font-size: 1.05rem;
-  color: var(--text-muted);
+  color: #5C4D3C; /* Slightly lighter ink color for body */
   line-height: 1.7;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 .credentials {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 .credential {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.75rem;
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: var(--radius-md);
-  border: 1px solid rgba(255, 206, 115, 0.2);
+  padding: 0.5rem 1rem 0.5rem 0.5rem;
+  background: transparent;
+  border: 1px dashed rgba(74, 59, 44, 0.4);
+  border-radius: 4px;
+  position: relative;
 }
 
 .credential svg {
-  color: var(--primary-gold);
+  color: #8C2A2A; /* Wax seal red/burgundy */
+  background: rgba(140, 42, 42, 0.1);
+  padding: 4px;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
 }
 
-.credential span:first-child {
-  font-size: 1.3rem;
-}
-
-.credential span:last-child {
+.credential span {
   font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--text-light);
+  font-weight: 600;
+  color: #4A3B2C; /* Ink color */
 }
 
 .readMore {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  color: var(--primary-gold);
+  color: var(--color-gold);
   font-weight: 600;
   font-size: 0.95rem;
   transition: gap var(--transition-fast);

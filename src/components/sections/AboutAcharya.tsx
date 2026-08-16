@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import styles from './AboutAcharya.module.css';
 import { GraduationCap, Book, Globe, Star, User } from 'lucide-react';
 
@@ -8,14 +9,21 @@ export default function AboutAcharya() {
     <section className={styles.section}>
       <div className={styles.inner}>
         <div className={styles.imageCol}>
-          <div className={styles.imagePlaceholder}></div>
+          <div className={styles.imagePlaceholder}>
+            <img 
+              src="/images/acharya_portrait.png" 
+              alt="Acharya Ji" 
+              className={styles.portraitImg}
+            />
+          </div>
           <div className={styles.experienceBadge}>
             <h4 className="font-body">15+</h4>
             <p className="font-sans">Years Experience</p>
           </div>
         </div>
 
-        <div className={styles.content}>
+        <div className={styles.manuscriptBox}>
+          <div className={styles.content}>
           <h2 className="font-serif">
             Meet <em>Kundaliwaale</em>
           </h2>
@@ -46,6 +54,7 @@ export default function AboutAcharya() {
           <Link href="/about" className={`${styles.readMore} font-sans`}>
             Read Full Bio <span>→</span>
           </Link>
+          </div>
         </div>
       </div>
     </section>

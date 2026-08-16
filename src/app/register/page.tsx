@@ -160,7 +160,7 @@ export default function RegisterPage() {
 
         <div style={{ display: 'flex', alignItems: 'center', margin: '1.5rem 0' }}>
           <div style={{ flex: 1, height: '1px', background: 'var(--border-subtle)' }}></div>
-          <span className="font-sans" style={{ padding: '0 1rem', color: 'var(--text-muted)', fontSize: '0.9rem' }}>OR</span>
+          <span className="font-sans" style={{ padding: '0 1rem', color: 'var(--text-secondary)', fontSize: '0.9rem' }}>OR</span>
           <div style={{ flex: 1, height: '1px', background: 'var(--border-subtle)' }}></div>
         </div>
 
@@ -170,8 +170,8 @@ export default function RegisterPage() {
           style={{
             width: '100%',
             padding: '0.75rem',
-            background: 'var(--bg-panel)',
-            color: 'var(--text-dark)',
+            background: 'var(--bg-surface)',
+            color: 'var(--text-inverse)',
             border: 'none',
             borderRadius: 'var(--radius-sm)',
             display: 'flex',

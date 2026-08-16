@@ -15,7 +15,7 @@ export default function UserConsultationsPage() {
       case 'Upcoming': return { bg: 'rgba(59, 130, 246, 0.1)', text: '#3b82f6' };
       case 'Completed': return { bg: 'rgba(34, 197, 94, 0.1)', text: '#22c55e' };
       case 'Cancelled': return { bg: 'rgba(239, 68, 68, 0.1)', text: '#ef4444' };
-      default: return { bg: 'rgba(255, 255, 255, 0.1)', text: 'var(--text-light)' };
+      default: return { bg: 'rgba(255, 255, 255, 0.1)', text: 'var(--text-primary)' };
     }
   };
 
@@ -55,7 +55,7 @@ export default function UserConsultationsPage() {
                           <Button variant="outline" style={{ padding: '0.4rem 0.75rem', fontSize: '0.8rem' }}>Join Meeting</Button>
                         </a>
                       ) : (
-                        <span className="font-sans" style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>N/A</span>
+                        <span className="font-sans" style={{ color: 'var(--text-secondary)', fontSize: '0.85rem' }}>N/A</span>
                       )}
                     </td>
                   </tr>

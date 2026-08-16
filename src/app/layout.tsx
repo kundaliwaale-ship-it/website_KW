@@ -1,23 +1,23 @@
 import type { Metadata } from "next";
-import { Italianno, Cormorant_Garamond, Montserrat } from "next/font/google";
+import { Tangerine, Lora, Outfit } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { AuthProvider } from "@/components/auth/AuthProvider";
 
-const montserrat = Montserrat({
-  variable: "--font-montserrat",
+const outfit = Outfit({
+  variable: "--font-montserrat", /* Keeping the variable name the same so CSS doesn't break */
   subsets: ["latin"],
 });
 
-const italianno = Italianno({
-  weight: "400",
+const tangerine = Tangerine({
+  weight: ["400", "700"],
   variable: "--font-serif-main",
   subsets: ["latin"],
 });
 
-const cormorant = Cormorant_Garamond({
-  weight: ["300", "400", "500", "600"],
+const lora = Lora({
+  weight: ["400", "500", "600"],
   variable: "--font-body-serif",
   subsets: ["latin"],
 });
@@ -55,7 +55,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${montserrat.variable} ${italianno.variable} ${cormorant.variable} font-sans`}>
+      <body className={`${outfit.variable} ${tangerine.variable} ${lora.variable} font-sans`}>
         <AuthProvider>
           <Navbar />
           <main>{children}</main>

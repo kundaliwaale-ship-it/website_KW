@@ -17,7 +17,7 @@ export default function HeroSection() {
               Your Trusted Cosmic Guide
             </div>
             <h1 className="font-serif">
-              Authentic Guidance for <em>Vastu, Consultations</em> & Handwritten Kundli
+              Authentic Guidance for <br /> <em>Vastu, Consultations</em> & Handwritten Kundli
             </h1>
             <p className="font-sans">
               Experience genuine Vedic wisdom without the false promises. We specialize in handwritten Kundli making, expert Vastu analysis, and personalized astrology consultations to bring real, practical clarity to your life.
@@ -37,7 +37,7 @@ export default function HeroSection() {
           </div>
 
           <div className={`${styles.heroVisual} slide-in-right`}>
-            <div className={styles.aiImageWrapper}>
+            <div className={styles.chakraWrapper}>
               <img 
                 src="/images/vedic_chakra.png" 
                 alt="Vedic Astrology Chakra" 
