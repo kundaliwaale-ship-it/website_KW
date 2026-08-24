@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { AuthProvider } from "@/components/auth/AuthProvider";
+import LayoutShell from "@/components/layout/LayoutShell";
 
 const outfit = Outfit({
   variable: "--font-montserrat", /* Keeping the variable name the same so CSS doesn't break */
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
     template: "%s | Kundaliwaale",
   },
   description:
-    "Get premium personalized Kundli reports, expert Vastu consultations, and 1-on-1 astrology guidance from Kundaliwaale. 10 lakh+ reports delivered. 4.9/5 rating.",
+    "Now you can have the best possible authentic Handwritten Kundlis delivered directly to your home. Personalized Vedic astrology, expert Vastu consultations, and honest guidance from Kundaliwaale.",
   keywords: [
     "astrology",
     "kundli",
@@ -57,9 +58,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${outfit.variable} ${tangerine.variable} ${lora.variable} font-sans`}>
         <AuthProvider>
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
+          <LayoutShell>{children}</LayoutShell>
         </AuthProvider>
       </body>
     </html>

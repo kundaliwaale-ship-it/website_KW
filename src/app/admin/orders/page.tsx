@@ -1,18 +1,38 @@
 import React from 'react';
 import styles from '../dashboard.module.css';
+import { createClient } from '@/utils/supabase/server';
 
-const orders = [
-  { id: 'ORD-001', customer: 'Priya Sharma', type: 'Premium Handwritten', status: 'In Progress', date: '01 Aug 2026', amount: '₹2,999', phone: '+91 98765 00001' },
-  { id: 'ORD-002', customer: 'Vikram Singh', type: 'Premium Handwritten', status: 'Pending', date: '31 Jul 2026', amount: '₹2,999', phone: '+91 98765 00002' },
-  { id: 'ORD-003', customer: 'Kavita Joshi', type: 'Digital Report', status: 'Delivered', date: '30 Jul 2026', amount: '₹299', phone: '+91 98765 00003' },
-  { id: 'ORD-004', customer: 'Suresh Nair', type: 'Premium Handwritten', status: 'Shipped', date: '29 Jul 2026', amount: '₹2,999', phone: '+91 98765 00004' },
-  { id: 'ORD-005', customer: 'Meera Patel', type: 'Digital Report', status: 'Delivered', date: '28 Jul 2026', amount: '₹299', phone: '+91 98765 00005' },
-  { id: 'ORD-006', customer: 'Arjun Reddy', type: 'Premium Handwritten', status: 'Delivered', date: '27 Jul 2026', amount: '₹2,999', phone: '+91 98765 00006' },
-];
+const statusColors: Record<string, string> = { 
+  'Pending Payment': '#f59e0b', 
+  'Pending': '#f59e0b', 
+  'In Progress': '#3b82f6', 
+  'Shipped': '#a855f7', 
+  'Delivered': '#22c55e' 
+};
 
-const statusColors: Record<string, string> = { 'Pending': '#f59e0b', 'In Progress': '#3b82f6', 'Shipped': '#a855f7', 'Delivered': '#22c55e' };
+export default async function AdminOrders() {
+  const supabase = await createClient();
+  const { data: dbOrders } = await supabase
+    .from('kundali_orders')
+    .select('*')
+    .order('created_at', { ascending: false });
 
-export default function AdminOrders() {
+  const formatter = new Intl.NumberFormat('en-IN', {
+    style: 'currency',
+    currency: 'INR',
+    maximumFractionDigits: 0,
+  });
+
+  const orders = (dbOrders || []).map(o => ({
+    id: o.id.slice(0, 8).toUpperCase(),
+    customer: o.full_name || 'Unknown',
+    type: o.kundali_type,
+    status: o.status || 'Pending Payment',
+    date: new Date(o.created_at).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }),
+    amount: formatter.format(o.amount),
+    phone: o.mobile_number_1 || 'N/A'
+  }));
+
   return (
     <div>
       <h1 className={`${styles.pageTitle} font-serif`}>Kundli Orders</h1>
@@ -33,14 +53,14 @@ export default function AdminOrders() {
               </tr>
             </thead>
             <tbody>
-              {orders.map((o) => (
-                <tr key={o.id}>
+              {orders.map((o, i) => (
+                <tr key={i}>
                   <td className="font-sans" style={{ fontWeight: 600 }}>{o.id}</td>
                   <td className="font-sans">{o.customer}</td>
                   <td className="font-sans">{o.phone}</td>
                   <td className="font-sans">{o.type}</td>
                   <td>
-                    <span className={`${styles.badge} font-sans`} style={{ background: `${statusColors[o.status]}20`, color: statusColors[o.status] }}>
+                    <span className={`${styles.badge} font-sans`} style={{ background: `${statusColors[o.status] || '#ccc'}20`, color: statusColors[o.status] || '#666' }}>
                       {o.status}
                     </span>
                   </td>

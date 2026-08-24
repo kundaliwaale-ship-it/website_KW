@@ -1,24 +1,10 @@
 import React from 'react';
 import styles from './dashboard.module.css';
-
 import { FileText, IndianRupee, Sparkles, Users } from 'lucide-react';
-
-const stats = [
-  { icon: <FileText size={32} />, label: 'Total Orders', value: '1,247', trend: '+12%' },
-  { icon: <IndianRupee size={32} />, label: 'Revenue', value: '₹18.5L', trend: '+8%' },
-  { icon: <Sparkles size={32} />, label: 'Pending Consultations', value: '23', trend: '' },
-  { icon: <Users size={32} />, label: 'New Customers', value: '156', trend: '+5%' },
-];
-
-const recentOrders = [
-  { id: 'ORD-001', customer: 'Priya Sharma', type: 'Premium Kundli', status: 'In Progress', date: '01 Aug 2026', amount: '₹2,999' },
-  { id: 'ORD-002', customer: 'Rajesh Kumar', type: 'Digital Kundli', status: 'Delivered', date: '31 Jul 2026', amount: '₹299' },
-  { id: 'ORD-003', customer: 'Anita Desai', type: 'Vastu Online', status: 'Pending', date: '31 Jul 2026', amount: '₹1,499' },
-  { id: 'ORD-004', customer: 'Vikram Singh', type: 'Premium Kundli', status: 'Shipped', date: '30 Jul 2026', amount: '₹2,999' },
-  { id: 'ORD-005', customer: 'Meera Patel', type: 'Consultation', status: 'Completed', date: '30 Jul 2026', amount: '₹999' },
-];
+import { createClient } from '@/utils/supabase/server';
 
 const statusColors: Record<string, string> = {
+  'Pending Payment': '#f59e0b',
   'Pending': '#f59e0b',
   'In Progress': '#3b82f6',
   'Shipped': '#a855f7',
@@ -26,7 +12,52 @@ const statusColors: Record<string, string> = {
   'Completed': '#22c55e',
 };
 
-export default function AdminDashboard() {
+export default async function AdminDashboard() {
+  const supabase = await createClient();
+
+  // Fetch counts and revenue
+  const { data: kundaliOrders } = await supabase.from('kundali_orders').select('*');
+  const { data: vastuOrders } = await supabase.from('vastu_orders').select('*');
+  const { data: consultationOrders } = await supabase.from('consultation_orders').select('*');
+  const { count: userCount } = await supabase.from('profiles').select('*', { count: 'exact', head: true });
+
+  const allOrders = [
+    ...(kundaliOrders || []).map(o => ({ ...o, service_type: o.kundali_type, table: 'kundali' })),
+    ...(vastuOrders || []).map(o => ({ ...o, service_type: o.vastu_type, table: 'vastu' })),
+    ...(consultationOrders || []).map(o => ({ ...o, service_type: 'Consultation', table: 'consultation' })),
+  ];
+
+  const totalOrdersCount = allOrders.length;
+  const totalRevenue = allOrders.reduce((sum, order) => sum + Number(order.amount || 0), 0);
+  const pendingConsultations = (consultationOrders || []).filter(o => o.status === 'Pending').length;
+
+  // Format currency
+  const formatter = new Intl.NumberFormat('en-IN', {
+    style: 'currency',
+    currency: 'INR',
+    maximumFractionDigits: 0,
+  });
+
+  const stats = [
+    { icon: <FileText size={32} />, label: 'Total Orders', value: totalOrdersCount.toString(), trend: '' },
+    { icon: <IndianRupee size={32} />, label: 'Revenue', value: formatter.format(totalRevenue), trend: '' },
+    { icon: <Sparkles size={32} />, label: 'Pending Consultations', value: pendingConsultations.toString(), trend: '' },
+    { icon: <Users size={32} />, label: 'New Customers', value: userCount?.toString() || '0', trend: '' },
+  ];
+
+  // Sort all orders by date descending and take top 5
+  const recentOrders = allOrders
+    .sort((a, b) => new Date(b.created_at || 0).getTime() - new Date(a.created_at || 0).getTime())
+    .slice(0, 5)
+    .map(o => ({
+      id: o.id.slice(0, 8).toUpperCase(),
+      customer: o.full_name || o.name || 'Unknown',
+      type: o.service_type,
+      status: o.status || 'Pending Payment',
+      date: new Date(o.created_at).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }),
+      amount: formatter.format(o.amount)
+    }));
+
   return (
     <div>
       <h1 className={`${styles.pageTitle} font-serif`}>Dashboard</h1>
@@ -62,15 +93,15 @@ export default function AdminDashboard() {
               </tr>
             </thead>
             <tbody>
-              {recentOrders.map((order) => (
-                <tr key={order.id}>
+              {recentOrders.map((order, i) => (
+                <tr key={i}>
                   <td className="font-sans" style={{ fontWeight: 600 }}>{order.id}</td>
                   <td className="font-sans">{order.customer}</td>
                   <td className="font-sans">{order.type}</td>
                   <td>
                     <span
                       className={`${styles.badge} font-sans`}
-                      style={{ background: `${statusColors[order.status]}20`, color: statusColors[order.status] }}
+                      style={{ background: `${statusColors[order.status] || '#ccc'}20`, color: statusColors[order.status] || '#666' }}
                     >
                       {order.status}
                     </span>

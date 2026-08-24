@@ -114,10 +114,41 @@
   .gridContainer {
     grid-template-columns: 1fr;
     padding: 1rem;
-    max-width: 450px;
+    max-width: 500px;
   }
   
   .cardWrapper {
-    height: 340px;
+    height: 320px;
+  }
+}
+
+@media (max-width: 640px) {
+  .gridContainer {
+    padding: 0.5rem 1rem;
+    max-width: 400px;
+    gap: 1.25rem;
+  }
+  
+  .cardWrapper {
+    height: 220px;
+  }
+
+  .cardTextSection {
+    padding: 3rem 1.25rem 1rem;
+  }
+
+  .cardTextSection h3 {
+    font-size: 1.25rem;
+  }
+
+  .cardTextSection p {
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+
+  .arrowIcon {
+    width: 32px;
+    height: 32px;
+    font-size: 1.2rem;
   }
 }

@@ -10,15 +10,17 @@ export const metadata: Metadata = {
 
 export default function TestimonialsPage() {
   return (
-    <div className={styles.page}>
-      <section className={styles.hero}>
+    <div className={`${styles.page} ambient-glow-wrapper`}>
+      <div className="orb-primary"></div>
+      <div className="orb-secondary"></div>
+      <section className={`${styles.hero} relative-z`}>
         <h1 className="font-serif">Customer <em>Reviews</em></h1>
         <p className="font-sans">
           Real stories from real people whose lives were transformed through Vedic astrology.
         </p>
       </section>
 
-      <section className={styles.content}>
+      <section className={`${styles.content} relative-z`}>
         <div className={styles.marqueeContainer}>
           <div className={styles.marqueeTrack}>
             <div className={styles.marqueeGroup}>

@@ -41,12 +41,13 @@ export async function POST(request: Request) {
         dob: formData.dob,
         tob: formData.tob,
         pob: formData.pob,
-        fathers_name: 'N/A', // Assuming these are optional or added later if not in form
-        mothers_name: 'N/A',
-        grandfathers_name: 'N/A',
-        grandmothers_name: 'N/A',
-        mobile_number_1: formData.phone || 'N/A',
-        delivery_address: 'N/A',
+        fathers_name: formData.fathers_name || 'N/A',
+        mothers_name: formData.mothers_name || 'N/A',
+        grandfathers_name: formData.grandfathers_name || 'N/A',
+        grandmothers_name: formData.grandmothers_name || 'N/A',
+        mobile_number_1: formData.mobile_number_1 || formData.phone || 'N/A',
+        mobile_number_2: formData.mobile_number_2 || null,
+        delivery_address: formData.delivery_address || 'N/A',
         razorpay_order_id: rzpOrder.id
       }]).select()
       dbError = error
@@ -69,6 +70,12 @@ export async function POST(request: Request) {
         amount,
         complete_address: formData.address,
         mobile_number: formData.phone,
+        state: formData.state,
+        district: formData.district,
+        town: formData.town,
+        distance_calculated: formData.distance ? parseFloat(formData.distance) : null,
+        blueprint_pdf: formData.blueprint_pdf_url || null,
+        house_images: formData.house_images_urls || null,
         razorpay_order_id: rzpOrder.id
       }]).select()
       dbError = error

@@ -4,24 +4,24 @@ import styles from './WhyChooseUs.module.css';
 
 const reasons = [
   {
-    icon: <Target size={32} color="var(--color-gold)" />,
-    title: '15+ Years Experience',
-    description: 'Over a decade of dedicated practice in Vedic astrology and Vastu Shastra.',
+    icon: <PenTool size={32} color="var(--color-gold)" />,
+    title: 'Delivered to Your Home',
+    description: 'Now you can receive authentic, personally handwritten Janam Kundlis safely packaged and delivered to your doorstep.',
   },
   {
     icon: <FileText size={32} color="var(--color-gold)" />,
-    title: 'Certified Expert',
-    description: 'Recognized certifications from prestigious Jyotish institutions across India.',
+    title: '100% Handwritten Quality',
+    description: 'Every Kundli is meticulously written by hand using traditional calculations — never automated generic PDFs.',
   },
   {
-    icon: <PenTool size={32} color="var(--color-gold)" />,
-    title: 'Handwritten Reports',
-    description: 'Every premium Kundli is personally handwritten by Kundaliwaale — not computer-generated.',
+    icon: <Target size={32} color="var(--color-gold)" />,
+    title: 'Certified Jyotish Acharyas',
+    description: 'Prepared with deep scriptural authority and exact mathematical precision by recognized Jyotish scholars.',
   },
   {
     icon: <ShieldCheck size={32} color="var(--color-gold)" />,
     title: 'Honest & Transparent',
-    description: 'We do not believe in fake predictions. Expect only genuine, practical, and trustworthy guidance tailored to you.',
+    description: 'We believe in genuine Vedic wisdom, not fear-mongering or fake predictions. Pure clarity tailored to you.',
   },
 ];
 
@@ -31,7 +31,7 @@ export default function WhyChooseUs() {
       <div className={styles.inner}>
         <div className={styles.header}>
           <h2 className="font-serif thread-heading">
-            Why <em>Choose Us</em>
+            <span>Why <em>Choose Us</em></span>
           </h2>
           <p className="font-sans">
             What sets Kundaliwaale apart from other astrology services.

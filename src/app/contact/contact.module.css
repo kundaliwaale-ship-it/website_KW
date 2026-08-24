@@ -45,12 +45,7 @@
 
 /* Layout columns */
 .formCol, .infoCol {
-  background: rgba(255, 255, 255, 0.65);
-  border: 1px solid rgba(226, 160, 63, 0.2);
-  border-radius: var(--radius-lg);
   padding: 2rem;
-  box-shadow: 0 10px 40px rgba(226, 160, 63, 0.08);
-  backdrop-filter: blur(12px);
 }
 
 .formCol h2, .infoCol h2 {
@@ -231,4 +226,7 @@
 @media (max-width: 640px) {
   .hero h1 { font-size: 2.5rem; }
   .formCol h2, .infoCol h2 { font-size: 1.8rem; }
+  .formCol, .infoCol { padding: 1.5rem 1.25rem; }
+  .formRow { grid-template-columns: 1fr; }
+  .content { padding: 2rem 1rem 4rem; }
 }

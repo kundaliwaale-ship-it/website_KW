@@ -20,15 +20,17 @@ const categories = [
 
 export default function FaqPage() {
   return (
-    <div className={styles.page}>
-      <section className={styles.hero}>
+    <div className={`${styles.page} ambient-glow-wrapper`}>
+      <div className="orb-primary"></div>
+      <div className="orb-secondary"></div>
+      <section className={`${styles.hero} relative-z`}>
         <h1 className="font-serif">Frequently Asked <em>Questions</em></h1>
         <p className="font-sans">
           Find answers to common questions about our services, payments, and delivery.
         </p>
       </section>
 
-      <section className={styles.content}>
+      <section className={`${styles.content} relative-z`}>
         <div className={styles.contentInner}>
           {categories.map((cat) => {
             const items = faqData.filter((f) => f.category === cat.key);

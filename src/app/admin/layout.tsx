@@ -2,9 +2,10 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import styles from './admin.module.css';
-import { LayoutDashboard, FileText, Sparkles, CreditCard, Users } from 'lucide-react';
+import { LayoutDashboard, FileText, Sparkles, CreditCard, Users, LogOut } from 'lucide-react';
+import { createClient } from '@/utils/supabase/client';
 
 const navItems = [
   { icon: <LayoutDashboard size={20} />, label: 'Dashboard', href: '/admin' },
@@ -16,6 +17,14 @@ const navItems = [
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  const router = useRouter();
+  const supabase = createClient();
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    router.push('/login');
+    router.refresh();
+  };
 
   return (
     <div className={styles.adminLayout}>
@@ -35,6 +44,10 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               {item.label}
             </Link>
           ))}
+          <button className={`${styles.navLink} ${styles.logoutBtn} font-sans`} onClick={handleLogout}>
+            <span className={styles.navIcon}><LogOut size={20} /></span>
+            Log Out
+          </button>
         </nav>
       </aside>
       <div className={styles.content}>

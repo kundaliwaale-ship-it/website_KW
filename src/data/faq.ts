@@ -9,7 +9,7 @@ export const faqData: FAQItem[] = [
   {
     id: 1,
     question: 'Who is Kundaliwaale?',
-    answer: 'Kundaliwaale is a renowned Vedic astrologer with over 15 years of experience. He has personally delivered over 10 lakh Kundli reports and helped millions of people find clarity and direction in life through Vedic astrology and Vastu Shastra.',
+    answer: 'Kundaliwaale is dedicated to bringing authentic, handwritten Janam Kundlis and genuine Vedic astrology directly to your home. Our certified Jyotish Acharyas prepare every chart with traditional calculations and personal attention, ensuring you receive honest, actionable guidance without automated shortcuts.',
     category: 'general',
   },
   {

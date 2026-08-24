@@ -5,8 +5,8 @@ export const testimonials = [
     avatar: 'https://randomuser.me/api/portraits/women/44.jpg',
     location: 'Delhi',
     rating: 5,
-    service: 'Premium Kundli',
-    text: 'The handwritten Kundli I received was incredibly detailed. Kundaliwaale predicted my career change perfectly — it happened exactly when he said it would. Truly life-changing!',
+    service: 'Handwritten Kundli',
+    text: 'Receiving the handwritten Kundli delivered to my home was a special experience. The calligraphy, detailed planetary charts, and clear guidance gave me immense peace of mind.',
     date: '2026-06-15',
   },
   {
@@ -16,7 +16,7 @@ export const testimonials = [
     location: 'Mumbai',
     rating: 5,
     service: 'Vastu Consultation',
-    text: 'After implementing the Vastu corrections suggested during the home visit, our business revenue increased by 40%. The energy of the entire space shifted. Highly recommended!',
+    text: 'After implementing the practical Vastu corrections suggested during our consultation, our home atmosphere became noticeably calmer and more harmonious. Highly recommended!',
     date: '2026-05-22',
   },
   {
@@ -26,7 +26,7 @@ export const testimonials = [
     location: 'Bangalore',
     rating: 5,
     service: 'Astrology Consultation',
-    text: 'I was going through a very difficult phase in my marriage. Kundaliwaale\'s guidance and remedies brought peace back into our relationship. Forever grateful.',
+    text: 'I was looking for genuine astrological advice without fear-mongering. The consultation was honest, deeply insightful, and practical.',
     date: '2026-07-01',
   },
   {
@@ -34,9 +34,9 @@ export const testimonials = [
     name: 'Vikram Singh',
     avatar: 'https://randomuser.me/api/portraits/men/45.jpg',
     location: 'Jaipur',
-    rating: 4,
-    service: 'Digital Kundli',
-    text: 'The digital Kundli report was quick and surprisingly accurate. Great value for ₹299. I later upgraded to the premium handwritten version too!',
+    rating: 5,
+    service: 'Handwritten Kundli',
+    text: 'The physical handwritten Kundli arrived safely in beautiful sacred packaging. It feels like an authentic family keepsake. Very happy with the quality.',
     date: '2026-04-10',
   },
   {
@@ -45,8 +45,8 @@ export const testimonials = [
     avatar: 'https://randomuser.me/api/portraits/women/33.jpg',
     location: 'Ahmedabad',
     rating: 5,
-    service: 'Premium Kundli',
-    text: 'My daughter\'s marriage was delayed for years. Kundaliwaale identified the exact problem in her Kundli and suggested simple remedies. She got married within 6 months!',
+    service: 'Handwritten Kundli',
+    text: 'Ordered handwritten Kundlis for our family. The attention to detail and traditional Vedic calculations are completely unmatched by computer printouts.',
     date: '2026-03-28',
   },
   {
@@ -56,7 +56,7 @@ export const testimonials = [
     location: 'Kerala',
     rating: 5,
     service: '₹51 Consultation',
-    text: 'Started with the ₹51 consultation just to test. The Purohit called back within hours and gave such accurate insights that I immediately booked a full consultation.',
+    text: 'Tried the quick consultation first. The Purohit was courteous, knowledgeable, and provided prompt clarity on my question.',
     date: '2026-06-30',
   },
   {
@@ -66,7 +66,7 @@ export const testimonials = [
     location: 'Pune',
     rating: 5,
     service: 'Vastu Consultation',
-    text: 'The online Vastu analysis was thorough and professional. I uploaded my flat blueprint and got a detailed room-by-room report within 3 days. Excellent service!',
+    text: 'The online Vastu analysis was thorough and clear. I shared my floor plan and received a practical room-by-room assessment.',
     date: '2026-05-05',
   },
   {
@@ -76,22 +76,22 @@ export const testimonials = [
     location: 'Hyderabad',
     rating: 5,
     service: 'Astrology Consultation',
-    text: 'Kundaliwaale told me about an upcoming business opportunity in July 2026 during our consultation in March. It happened exactly as predicted. Incredible accuracy!',
+    text: 'Clear, grounded guidance with zero superstition. Kundaliwaale provided actionable direction that gave me real clarity for my career.',
     date: '2026-07-15',
   },
 ];
 
 export const successStories = [
   {
-    title: 'Career Transformation',
-    description: 'Helped 500+ professionals find the right career path through detailed Kundli analysis.',
+    title: 'Authentic Handcrafted Kundlis',
+    description: 'Detailed Vedic birth charts personally penned and safely delivered to your doorstep.',
   },
   {
-    title: 'Marriage Solutions',
-    description: 'Resolved marriage delays and compatibility issues for 1000+ families.',
+    title: 'Practical Vedic Remedies',
+    description: 'Clear, effective lifestyle and spiritual guidance tailored to your birth chart.',
   },
   {
-    title: 'Business Growth',
-    description: 'Vastu corrections that led to measurable business growth for 300+ entrepreneurs.',
+    title: 'Harmonious Living with Vastu',
+    description: 'Directional corrections and energy balancing for homes and workspaces.',
   },
 ];

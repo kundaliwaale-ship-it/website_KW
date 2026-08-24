@@ -161,6 +161,7 @@
   
   .card {
     padding: 1.25rem;
+    min-height: auto;
   }
 
   .cardTop {
@@ -168,12 +169,12 @@
   }
 
   .cardName h4 {
-    font-size: 1.35rem;
+    font-size: 1.15rem;
   }
   
   .cardText {
-    font-size: 0.85rem;
-    line-height: 1.5;
+    font-size: 0.95rem;
+    line-height: 1.6;
     margin-bottom: 1rem;
   }
 }

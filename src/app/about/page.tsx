@@ -5,16 +5,16 @@ import styles from './about.module.css';
 
 export const metadata: Metadata = {
   title: 'About Us',
-  description: 'Learn about Kundaliwaale — a renowned Vedic astrologer with 15+ years of experience, guiding millions towards clarity and purpose.',
+  description: 'Discover Kundaliwaale — bringing the finest authentic, handwritten Vedic Kundlis and genuine astrology guidance directly to your doorstep.',
 };
 
 const milestones = [
-  { year: '2010', title: 'Journey Begins', description: 'Started practicing Vedic Jyotish after completing Kundaliwaale certification from Banaras Hindu University.' },
-  { year: '2013', title: 'First 10,000 Kundlis', description: 'Crossed the milestone of delivering 10,000 handwritten Kundli reports.' },
-  { year: '2016', title: 'Vastu Expertise', description: 'Earned certification in Vastu Shastra and began offering home & office consultations.' },
-  { year: '2019', title: 'Digital Expansion', description: 'Launched the online platform, making services accessible to clients across India and abroad.' },
-  { year: '2022', title: '5 Lakh Reports', description: 'Delivered over 5 lakh personalized reports with a 4.9/5 customer satisfaction rating.' },
-  { year: '2026', title: '10 Lakh+ & Growing', description: 'Crossed 10 lakh reports delivered. Serving clients in 15+ countries worldwide.' },
+  { year: '01', title: 'Birth Chart Computation', description: 'Accurate mathematical calculation of Lagna, planetary degrees, and houses using authentic Ephemeris tables.' },
+  { year: '02', title: 'Handwritten Inscription', description: 'Every chart and planetary position is personally penned with sacred care into a traditional manuscript format.' },
+  { year: '03', title: 'Dasha & Dosha Analysis', description: 'Detailed evaluation of Vimshottari Dasha cycles, planetary combinations, strengths, and practical remedies.' },
+  { year: '04', title: 'Vastu & Guidance Synthesis', description: 'Holistic synthesis connecting planetary influences with your home energy and life path.' },
+  { year: '05', title: 'Sacred Packaging', description: 'Carefully consecrated and safely packed in premium archival materials to preserve your chart for decades.' },
+  { year: '06', title: 'Doorstep Delivery', description: 'Dispatched directly to your address across India with real-time courier tracking updates.' },
 ];
 
 import { GraduationCap, FileText, Medal, Star, User, Sparkles } from 'lucide-react';
@@ -22,33 +22,32 @@ import { GraduationCap, FileText, Medal, Star, User, Sparkles } from 'lucide-rea
 const certifications = [
   { icon: <GraduationCap size={24} />, title: 'Jyotish Acharya', institution: 'Banaras Hindu University' },
   { icon: <FileText size={24} />, title: 'Vastu Shastra Expert', institution: 'Indian Council of Astrological Sciences' },
-  { icon: <Medal size={24} />, title: 'Jyotish Ratna Award', institution: 'All India Federation of Astrologers' },
-  { icon: <Star size={24} />, title: 'International Recognition', institution: 'World Astrology Council' },
+  { icon: <Medal size={24} />, title: 'Classical Jyotish Authority', institution: 'All India Federation of Astrologers' },
+  { icon: <Star size={24} />, title: '100% Handcrafted Assurance', institution: 'Authentic Vedic Manuscript Standards' },
 ];
 
 export default function AboutPage() {
   return (
-    <div className={styles.page}>
+    <div className={`${styles.page} ambient-glow-wrapper`}>
+      <div className="orb-primary"></div>
+      <div className="orb-secondary"></div>
       {/* Hero */}
       <section className={styles.hero}>
         <div className={styles.heroInner}>
           <h1 className="font-serif">About <em>Kundaliwaale</em></h1>
           <p className="font-sans">
-            Dedicated to illuminating lives through the ancient wisdom of Vedic astrology.
+            Now you can have the best possible Handwritten Kundlis crafted with Vedic precision and delivered directly to your home.
           </p>
         </div>
       </section>
 
       {/* Mission */}
-      <section className={styles.mission}>
-        <div className={styles.missionInner}>
+      <section className={`${styles.mission} relative-z`}>
+        <div className={`${styles.missionInner} glass-card`}>
           <div className={styles.missionIcon}><Sparkles size={40} color="var(--color-gold)" /></div>
           <h2 className="font-serif">Our Mission</h2>
           <p className="font-sans">
-            To make authentic Vedic astrology accessible to everyone. We believe that the ancient
-            science of Jyotish holds the power to transform lives — bringing clarity to confusion,
-            hope to despair, and direction to the lost. Every report we craft, every consultation we
-            offer, is guided by this mission.
+            To revive the sacred tradition of handwritten Janam Kundlis and deliver authentic Vedic wisdom directly to your home. We believe everyone deserves genuine, personally calculated astrological insights rather than automated, computer-generated PDFs. Every chart we pen and every consultation we offer is guided by this commitment to authenticity and clarity.
           </p>
         </div>
       </section>
@@ -65,37 +64,27 @@ export default function AboutPage() {
               />
             </div>
           </div>
-          <div className={styles.manuscriptBox}>
+          <div className={`${styles.manuscriptBox} glass-card`}>
             <div className={styles.aboutContent}>
-              <h2 className="font-serif">The Kundaliwaale&apos;s <em>Story</em></h2>
+              <h2 className="font-serif">The Kundaliwaale <em>Vision</em></h2>
               <p className="font-sans">
-                Born into a family of Vedic scholars in Varanasi, Kundaliwaale was introduced
-                to Jyotish Shastra at the age of 12. Under the guidance of his grandfather, a
-                respected Pandit, he studied the ancient texts — Brihat Parashara Hora Shastra,
-                Jataka Parijata, and Phaladeepika — mastering the art of reading planetary
-                positions and their influence on human life.
+                In an era dominated by instant algorithmic generators and generic printouts, the sacred depth of Vedic Jyotish was losing its human touch. Kundaliwaale was started to bring back what truly matters: authentic, personalized, handwritten Kundlis crafted with devotion and mathematical precision.
               </p>
               <p className="font-sans">
-                After completing his formal education in Jyotish Acharya from Banaras Hindu
-                University, he dedicated his life to helping individuals navigate life&apos;s
-                challenges through the lens of Vedic astrology. What began as a small practice
-                in Varanasi has grown into a trusted platform serving over 10 lakh clients
-                across 15 countries.
+                Rooted in classical texts including Brihat Parashara Hora Shastra, Jataka Parijata, and Phaladeepika, our certified Jyotish Acharyas compute every planetary position, house cusp, and Dasha period by hand. Each chart is a unique spiritual manuscript prepared exclusively for you.
               </p>
               <p className="font-sans">
-                His unique approach combines deep scriptural knowledge with a practical,
-                compassionate understanding of modern-day challenges — making astrology
-                not just predictive, but genuinely actionable.
+                We believe in genuine clarity over fear, and craftsmanship over shortcuts. When your Kundli arrives at your doorstep, you hold a sacred guide created to illuminate your life&apos;s journey.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Timeline */}
+      {/* Timeline / Process */}
       <section className={styles.timeline}>
         <h2 className="font-serif" style={{ textAlign: 'center', fontSize: '2.5rem', marginBottom: '3rem', color: 'var(--text-primary)' }}>
-          Our <em style={{ color: 'var(--color-gold)', fontStyle: 'normal' }}>Journey</em>
+          The <em style={{ color: 'var(--color-gold)', fontStyle: 'normal' }}>Crafting & Delivery Process</em>
         </h2>
         <div className={styles.timelineMarquee}>
           <div className={styles.timelineTrack}>
@@ -119,7 +108,7 @@ export default function AboutPage() {
         </h2>
         <div className={styles.certsGrid}>
           {certifications.map((c, i) => (
-            <div key={i} className={styles.certCard}>
+            <div key={i} className={`${styles.certCard} glass-card`}>
               <span className={styles.certIcon}>{c.icon}</span>
               <h3 className="font-serif">{c.title}</h3>
               <p className="font-sans">{c.institution}</p>

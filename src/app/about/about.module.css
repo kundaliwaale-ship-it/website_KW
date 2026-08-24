@@ -41,12 +41,7 @@
   max-width: 600px;
   margin: 0 auto;
   text-align: center;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 206, 115, 0.15);
   padding: 3rem 2rem;
-  border-radius: var(--radius-lg);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
 .missionIcon {
@@ -104,11 +99,7 @@
 
 .manuscriptBox {
   position: relative;
-  background: linear-gradient(135deg, #FDFBF7 0%, #F4EFE6 100%);
-  border: 4px double rgba(226, 160, 63, 0.5);
-  border-radius: 4px;
   padding: 3rem 4rem;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08), inset 0 0 40px rgba(226, 160, 63, 0.05);
   margin-left: -3rem; /* Overlap the image slightly */
   z-index: 2;
 }
@@ -242,13 +233,8 @@
 }
 
 .certCard {
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(250, 245, 235, 0.8));
-  border: 2px solid rgba(226, 160, 63, 0.4);
-  border-radius: 8px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05), inset 0 0 20px rgba(226, 160, 63, 0.05);
   padding: 2.5rem 1.5rem;
   text-align: center;
-  transition: all var(--transition-normal);
   position: relative;
   overflow: hidden;
 }
@@ -310,5 +296,25 @@
   .certsGrid { grid-template-columns: 1fr; max-width: 350px; gap: 1rem; }
   .certCard { padding: 1.25rem 1rem; }
   .timelineItem { padding-left: 2rem; margin-bottom: 2rem; }
-  .aboutSection, .timeline, .certs { padding: 2.5rem 5%; }
+  .aboutSection, .timeline, .certs, .mission, .about { padding: 2.5rem 1rem; }
+  
+  .missionInner {
+    padding: 1.5rem;
+  }
+  .manuscriptBox {
+    margin-left: 0;
+    padding: 1.5rem 1.25rem;
+  }
+  .aboutContent h2 {
+    font-size: 2rem;
+  }
+  .aboutContent p {
+    font-size: 0.95rem;
+  }
+  .hero p {
+    font-size: 0.95rem;
+  }
+  .imagePlaceholder {
+    height: 350px;
+  }
 }

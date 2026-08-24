@@ -14,7 +14,7 @@ export default function Footer() {
               Kundaliwaale
             </Link>
             <p className="font-sans">
-              Your trusted cosmic guide for Vedic astrology and Vastu. Finding clarity since 2010.
+              Your trusted cosmic guide. Handcrafted authentic Vedic Kundlis delivered directly to your doorstep.
             </p>
             <div className={styles.socialLinks}>
               <a href="#" className={styles.socialLink} aria-label="Facebook">Fb</a>

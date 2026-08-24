@@ -46,7 +46,10 @@ export default function UserDashboardLayout({ children }: { children: React.Reac
   }
 
   return (
-    <div className={styles.dashboardLayout}>
+    <div className={`ambient-glow-wrapper ${styles.dashboardLayout}`}>
+      <div className="orb-primary" style={{ top: '-10%', left: '-10%' }}></div>
+      <div className="orb-secondary" style={{ bottom: '-10%', right: '-10%' }}></div>
+      
       <aside className={styles.sidebar}>
         <div className={styles.sidebarHeader}>
           <h2 className="font-serif">My Account</h2>
@@ -69,7 +72,7 @@ export default function UserDashboardLayout({ children }: { children: React.Reac
           </button>
         </nav>
       </aside>
-      <div className={styles.content}>
+      <div className={`${styles.content} relative-z`}>
         {children}
       </div>
     </div>

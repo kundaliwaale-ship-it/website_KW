@@ -40,7 +40,11 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [user, setUser] = useState<User | null>(null);
+  const [userRole, setUserRole] = useState<string>('user');
   const supabase = createClient();
+
+  const dashboardHref = userRole === 'admin' ? '/admin' : '/dashboard';
+  const dashboardLabel = userRole === 'admin' ? 'ADMIN' : 'DASHBOARD';
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -50,6 +54,10 @@ export default function Navbar() {
     const getUser = async () => {
       const { data } = await supabase.auth.getUser();
       setUser(data.user);
+      if (data.user) {
+        const { data: profile } = await supabase.from('profiles').select('role').eq('id', data.user.id).single();
+        if (profile?.role) setUserRole(profile.role);
+      }
     };
     getUser();
 
@@ -111,8 +119,8 @@ export default function Navbar() {
           ))}
           <div className={styles.loginBtn}>
             {user ? (
-              <Link href="/dashboard">
-                <Button variant="primary">DASHBOARD</Button>
+              <Link href={dashboardHref}>
+                <Button variant="primary">{dashboardLabel}</Button>
               </Link>
             ) : (
               <Link href="/login">
@@ -171,8 +179,8 @@ export default function Navbar() {
         ))}
         <div className={styles.mobileLoginBtn}>
           {user ? (
-            <Link href="/dashboard">
-              <Button variant="primary" style={{ width: '100%' }}>DASHBOARD</Button>
+            <Link href={dashboardHref}>
+              <Button variant="primary" style={{ width: '100%' }}>{dashboardLabel}</Button>
             </Link>
           ) : (
             <Link href="/login">

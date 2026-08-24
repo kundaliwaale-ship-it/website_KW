@@ -31,21 +31,36 @@ export async function proxy(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  // Protect /dashboard and its sub-routes
-  if (request.nextUrl.pathname.startsWith('/dashboard')) {
+  // Protect /dashboard and /admin routes
+  const isDashboard = request.nextUrl.pathname.startsWith('/dashboard')
+  const isAdmin = request.nextUrl.pathname.startsWith('/admin')
+
+  if (isDashboard || isAdmin) {
     if (!user) {
       return NextResponse.redirect(new URL('/login', request.url));
     }
+
+    if (isAdmin) {
+      const { data: profile } = await supabase.from('profiles').select('role').eq('id', user.id).single()
+      if (profile?.role !== 'admin') {
+        return NextResponse.redirect(new URL('/', request.url));
+      }
+    }
   }
 
-  // Redirect authenticated users away from auth pages
+  // Redirect authenticated users away from auth pages based on their role
   if (user && (request.nextUrl.pathname === '/login' || request.nextUrl.pathname === '/register')) {
-    return NextResponse.redirect(new URL('/dashboard', request.url));
+    const { data: profile } = await supabase.from('profiles').select('role').eq('id', user.id).single()
+    if (profile?.role === 'admin') {
+      return NextResponse.redirect(new URL('/admin', request.url));
+    } else {
+      return NextResponse.redirect(new URL('/dashboard', request.url));
+    }
   }
 
   return response;
 }
 
 export const config = {
-  matcher: ['/dashboard/:path*', '/login', '/register'],
+  matcher: ['/dashboard/:path*', '/admin/:path*', '/login', '/register'],
 };

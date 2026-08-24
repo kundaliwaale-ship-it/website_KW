@@ -5,6 +5,7 @@ import Button from '@/components/ui/Button';
 import { X, ArrowRight, ArrowLeft, CheckCircle } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import styles from './modal.module.css';
+import { createClient } from '@/utils/supabase/client';
 
 interface BookingModalProps {
   isOpen: boolean;
@@ -55,6 +56,43 @@ export default function BookingModal({ isOpen, onClose, category, tier, price, s
     setLoading(true);
     
     try {
+      let finalFormData = { ...formData };
+      
+      if (category === 'vastu') {
+        const supabase = createClient();
+        
+        if (formData.blueprint_pdf) {
+          const file = formData.blueprint_pdf;
+          const fileExt = file.name.split('.').pop();
+          const fileName = `${Math.random()}.${fileExt}`;
+          const { error: uploadError, data } = await supabase.storage.from('vastu-blueprints').upload(fileName, file);
+          
+          if (!uploadError && data) {
+            const { data: { publicUrl } } = supabase.storage.from('vastu-blueprints').getPublicUrl(fileName);
+            finalFormData.blueprint_pdf_url = publicUrl;
+          }
+        }
+        
+        if (formData.house_images && formData.house_images.length > 0) {
+          const imageUrls = [];
+          for (let i = 0; i < formData.house_images.length; i++) {
+            const file = formData.house_images[i];
+            const fileExt = file.name.split('.').pop();
+            const fileName = `${Math.random()}.${fileExt}`;
+            const { error: uploadError, data } = await supabase.storage.from('vastu-blueprints').upload(fileName, file);
+            
+            if (!uploadError && data) {
+              const { data: { publicUrl } } = supabase.storage.from('vastu-blueprints').getPublicUrl(fileName);
+              imageUrls.push(publicUrl);
+            }
+          }
+          finalFormData.house_images_urls = imageUrls;
+        }
+      }
+
+      delete finalFormData.blueprint_pdf;
+      delete finalFormData.house_images;
+
       const res = await fetch('/api/payment/create-order', {
         method: 'POST',
         headers: {
@@ -65,7 +103,7 @@ export default function BookingModal({ isOpen, onClose, category, tier, price, s
           receipt: `rcpt_${Math.floor(Math.random() * 10000)}`,
           category,
           tier,
-          formData,
+          formData: finalFormData,
         }),
       });
 
@@ -141,7 +179,7 @@ export default function BookingModal({ isOpen, onClose, category, tier, price, s
     router.push('/dashboard');
   };
 
-  const updateField = (field: string, value: string) => {
+  const updateField = (field: string, value: any) => {
     setFormData((prev: any) => ({ ...prev, [field]: value }));
   };
 
@@ -166,6 +204,40 @@ export default function BookingModal({ isOpen, onClose, category, tier, price, s
           <div className={styles.formGroup}>
             <label>Place of Birth</label>
             <input type="text" required placeholder="City, State, Country" onChange={(e) => updateField('pob', e.target.value)} />
+          </div>
+          <div className={styles.row}>
+            <div className={styles.formGroup}>
+              <label>Father's Name</label>
+              <input type="text" required placeholder="Father's Full Name" onChange={(e) => updateField('fathers_name', e.target.value)} />
+            </div>
+            <div className={styles.formGroup}>
+              <label>Mother's Name</label>
+              <input type="text" required placeholder="Mother's Full Name" onChange={(e) => updateField('mothers_name', e.target.value)} />
+            </div>
+          </div>
+          <div className={styles.row}>
+            <div className={styles.formGroup}>
+              <label>Grandfather's Name</label>
+              <input type="text" required placeholder="Grandfather's Full Name" onChange={(e) => updateField('grandfathers_name', e.target.value)} />
+            </div>
+            <div className={styles.formGroup}>
+              <label>Grandmother's Name</label>
+              <input type="text" required placeholder="Grandmother's Full Name" onChange={(e) => updateField('grandmothers_name', e.target.value)} />
+            </div>
+          </div>
+          <div className={styles.row}>
+            <div className={styles.formGroup}>
+              <label>Primary Phone</label>
+              <input type="tel" required placeholder="+91 98765 00000" onChange={(e) => updateField('mobile_number_1', e.target.value)} />
+            </div>
+            <div className={styles.formGroup}>
+              <label>Alternate Phone (Optional)</label>
+              <input type="tel" placeholder="+91 98765 00000" onChange={(e) => updateField('mobile_number_2', e.target.value)} />
+            </div>
+          </div>
+          <div className={styles.formGroup}>
+            <label>Delivery Address</label>
+            <textarea required rows={3} placeholder="Full Delivery Address" onChange={(e) => updateField('delivery_address', e.target.value)}></textarea>
           </div>
         </>
       );
@@ -218,10 +290,48 @@ export default function BookingModal({ isOpen, onClose, category, tier, price, s
               <option value="factory">Factory / Industrial</option>
             </select>
           </div>
+          <div className={styles.row}>
+            <div className={styles.formGroup}>
+              <label>State</label>
+              <input type="text" required placeholder="E.g., Maharashtra" onChange={(e) => updateField('state', e.target.value)} />
+            </div>
+            <div className={styles.formGroup}>
+              <label>District</label>
+              <input type="text" required placeholder="E.g., Mumbai" onChange={(e) => updateField('district', e.target.value)} />
+            </div>
+          </div>
+          <div className={styles.row}>
+            <div className={styles.formGroup}>
+              <label>Town/City</label>
+              <input type="text" required placeholder="E.g., Andheri" onChange={(e) => updateField('town', e.target.value)} />
+            </div>
+            <div className={styles.formGroup}>
+              <label>Phone Number</label>
+              <input type="tel" required placeholder="+91 98765 00000" onChange={(e) => updateField('phone', e.target.value)} />
+            </div>
+          </div>
           <div className={styles.formGroup}>
-            <label>Property Address</label>
+            <label>Complete Property Address</label>
             <textarea required rows={3} placeholder="Enter full address..." onChange={(e) => updateField('address', e.target.value)}></textarea>
           </div>
+          {tier === 'online' && (
+            <>
+              <div className={styles.formGroup}>
+                <label>Upload Blueprint (PDF)</label>
+                <input type="file" accept=".pdf" onChange={(e) => updateField('blueprint_pdf', e.target.files?.[0])} />
+              </div>
+              <div className={styles.formGroup}>
+                <label>Upload House Images (JPG/PNG)</label>
+                <input type="file" accept="image/*" multiple onChange={(e) => updateField('house_images', e.target.files)} />
+              </div>
+            </>
+          )}
+          {tier === 'home-visit' && (
+            <div className={styles.formGroup}>
+              <label>Approx. Distance from Varanasi (km) - Optional</label>
+              <input type="number" placeholder="E.g., 250" onChange={(e) => updateField('distance', e.target.value)} />
+            </div>
+          )}
         </>
       );
     }

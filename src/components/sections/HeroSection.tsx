@@ -8,19 +8,21 @@ const zodiacSigns = ['♈', '♉', '♊', '♋', '♌', '♍', '♎', '♏', '�
 
 export default function HeroSection() {
   return (
-    <>
-      <section className={styles.hero}>
+    <div className="ambient-glow-wrapper">
+      <div className="orb-primary" style={{ top: '10%', left: '-5%' }}></div>
+      <div className="orb-secondary" style={{ bottom: '10%', right: '-5%' }}></div>
+      <section className={`${styles.hero} relative-z`}>
         <div className={styles.heroInner}>
           <div className={`${styles.heroContent} slide-in-left`}>
             <div className={`${styles.heroLabel} font-sans`}>
               <span></span>
-              Your Trusted Cosmic Guide
+              Sacred Vedic Tradition, Delivered
             </div>
             <h1 className="font-serif">
-              Authentic Guidance for <br /> <em>Vastu, Consultations</em> & Handwritten Kundli
+              The Best <em>Handwritten Kundlis</em> Delivered to Your Home
             </h1>
             <p className="font-sans">
-              Experience genuine Vedic wisdom without the false promises. We specialize in handwritten Kundli making, expert Vastu analysis, and personalized astrology consultations to bring real, practical clarity to your life.
+              Now you can have the finest authentic, handwritten Janam Kundlis crafted with precise Vedic calculations and delivered directly to your doorstep. Genuine guidance, clear remedies, and no computer-generated shortcuts.
             </p>
             <div className={styles.heroCtas}>
               <Link href="/services/kundali">
@@ -47,8 +49,6 @@ export default function HeroSection() {
           </div>
         </div>
       </section>
-
-
-    </>
+    </div>
   );
 }

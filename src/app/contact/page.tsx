@@ -34,16 +34,18 @@ export default function ContactPage() {
   };
 
   return (
-    <div className={styles.page}>
-      <section className={styles.hero}>
+    <div className={`${styles.page} ambient-glow-wrapper`}>
+      <div className="orb-primary"></div>
+      <div className="orb-secondary"></div>
+      <section className={`${styles.hero} relative-z`}>
         <div className={styles.heroInner}>
           <h1 className="font-serif thread-heading">Get in <em>Touch</em></h1>
         </div>
       </section>
 
-      <section className={styles.content}>
+      <section className={`${styles.content} relative-z`}>
         <div className={styles.contentInner}>
-          <div className={styles.formCol}>
+          <div className={`${styles.formCol} glass-card`}>
             <h2 className="font-serif">Send us a Message</h2>
             {submitted ? (
               <div className={styles.successMsg}>
@@ -92,7 +94,7 @@ export default function ContactPage() {
             )}
           </div>
 
-          <div className={styles.infoCol}>
+          <div className={`${styles.infoCol} glass-card`}>
             <h2 className="font-serif">Contact Information</h2>
             <div className={styles.infoCards}>
               
