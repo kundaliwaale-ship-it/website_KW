@@ -17,7 +17,7 @@ export default function TestimonialsPreview() {
       </div>
 
       <div className={`${styles.grid} relative-z`}>
-        {testimonials.slice(0, 4).map((t) => (
+        {testimonials.map((t) => (
           <div key={t.id} className={`${styles.card} glass-card`}>
             <div className={styles.cardTop}>
               <div className={styles.cardTopLeft}>

@@ -229,7 +229,8 @@
   .hero {
     align-items: flex-start;
     padding-top: 140px;
-    min-height: 100vh;
+    padding-bottom: 6rem;
+    min-height: auto;
   }
 
   .heroInner {
@@ -282,7 +283,7 @@
   .chakraImage {
     mix-blend-mode: normal;
     filter: none;
-    opacity: 0.25;
+    opacity: 1;
   }
 
   .statsBanner {

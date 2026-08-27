@@ -7,6 +7,7 @@ import Button from '../ui/Button';
 import { ChevronDown } from 'lucide-react';
 import { createClient } from '@/utils/supabase/client';
 import { User } from '@supabase/supabase-js';
+import { usePathname } from 'next/navigation';
 
 const navItems = [
   {
@@ -42,9 +43,14 @@ export default function Navbar() {
   const [user, setUser] = useState<User | null>(null);
   const [userRole, setUserRole] = useState<string>('user');
   const supabase = createClient();
+  const pathname = usePathname();
 
   const dashboardHref = userRole === 'admin' ? '/admin' : '/dashboard';
   const dashboardLabel = userRole === 'admin' ? 'ADMIN' : 'DASHBOARD';
+
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [pathname]);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
