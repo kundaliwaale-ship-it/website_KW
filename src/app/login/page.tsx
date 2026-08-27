@@ -28,7 +28,7 @@ export default function LoginPage() {
         router.push(result.redirectTo)
       }
     } catch (err: unknown) {
-      setError(err.message || 'An unexpected error occurred.')
+      setError((err as Error).message || 'An unexpected error occurred.')
     } finally {
       setLoading(false)
     }
