@@ -21,7 +21,7 @@ export default function BookingModal({ isOpen, onClose, category, tier, price, s
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
 
-  // Form State
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [formData, setFormData] = useState<any>({});
 
   useEffect(() => {
@@ -127,7 +127,7 @@ export default function BookingModal({ isOpen, onClose, category, tier, price, s
         name: 'Kundaliwaale',
         description: serviceName,
         order_id: order.id,
-        handler: async function (response: any) {
+        handler: async function (response: { razorpay_order_id: string; razorpay_payment_id: string; razorpay_signature: string }) {
           try {
             const verifyRes = await fetch('/api/payment/verify', {
               method: 'POST',
@@ -160,15 +160,17 @@ export default function BookingModal({ isOpen, onClose, category, tier, price, s
         },
       };
 
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const paymentObject = new (window as any).Razorpay(options);
       paymentObject.open();
 
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       paymentObject.on('payment.failed', function (response: any) {
         alert('Payment failed! ' + response.error.description);
       });
 
-    } catch (err: any) {
-      alert(err.message || 'Payment initiation failed');
+    } catch (err: unknown) {
+      alert((err as Error).message || 'Payment initiation failed');
     } finally {
       setLoading(false);
     }
@@ -179,7 +181,9 @@ export default function BookingModal({ isOpen, onClose, category, tier, price, s
     router.push('/dashboard');
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const updateField = (field: string, value: any) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     setFormData((prev: any) => ({ ...prev, [field]: value }));
   };
 
@@ -207,21 +211,21 @@ export default function BookingModal({ isOpen, onClose, category, tier, price, s
           </div>
           <div className={styles.row}>
             <div className={styles.formGroup}>
-              <label>Father's Name</label>
+              <label>Father&apos;s Name</label>
               <input type="text" required placeholder="Father's Full Name" onChange={(e) => updateField('fathers_name', e.target.value)} />
             </div>
             <div className={styles.formGroup}>
-              <label>Mother's Name</label>
+              <label>Mother&apos;s Name</label>
               <input type="text" required placeholder="Mother's Full Name" onChange={(e) => updateField('mothers_name', e.target.value)} />
             </div>
           </div>
           <div className={styles.row}>
             <div className={styles.formGroup}>
-              <label>Grandfather's Name</label>
+              <label>Grandfather&apos;s Name</label>
               <input type="text" required placeholder="Grandfather's Full Name" onChange={(e) => updateField('grandfathers_name', e.target.value)} />
             </div>
             <div className={styles.formGroup}>
-              <label>Grandmother's Name</label>
+              <label>Grandmother&apos;s Name</label>
               <input type="text" required placeholder="Grandmother's Full Name" onChange={(e) => updateField('grandmothers_name', e.target.value)} />
             </div>
           </div>

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Button from '@/components/ui/Button';
-import { ArrowRight, CheckCircle2, ShieldCheck, Sparkles, Clock, Target, Gift, ScrollText, Check } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Sparkles, Target, Gift, ScrollText } from 'lucide-react';
 import BookingModal from './BookingModal';
 import styles from './service.module.css';
 
@@ -11,7 +11,7 @@ export default function ServicePageClient({
   tier,
 }: {
   category: string;
-  tier: any;
+  tier: { id: string; name: string; price: number; originalPrice?: number; description: string; popular?: boolean; features: string[] };
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -66,7 +66,7 @@ export default function ServicePageClient({
       <section className={`${styles.bentoSection} relative-z`}>
         <div className={styles.sectionHeader}>
           <span className={`${styles.sectionLabel} font-sans`}>Everything You Get</span>
-          <h2 className="font-serif">What's <em>Included</em></h2>
+          <h2 className="font-serif">What&apos;s <em>Included</em></h2>
         </div>
 
         <div className={styles.bentoGrid}>

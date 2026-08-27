@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Script from 'next/script';
 import Button from '@/components/ui/Button';
 import { useRouter } from 'next/navigation';
 
@@ -13,7 +14,7 @@ export default function BookingForm({ category, tier, price }: { category: strin
   const actualPrice = category === 'consultation' ? 51 : price;
 
   // Form States
-  const [formData, setFormData] = useState<any>({
+  const [formData, setFormData] = useState<Record<string, string>>({
     // Shared
     fullName: '',
     mobile1: '',
@@ -43,11 +44,11 @@ export default function BookingForm({ category, tier, price }: { category: strin
   const [blueprintPdf, setBlueprintPdf] = useState<File | null>(null);
   const [houseImages, setHouseImages] = useState<FileList | null>(null);
 
-  const updateField = (field: string, value: any) => {
-    setFormData((prev: any) => ({ ...prev, [field]: value }));
+  const updateField = (field: string, value: string) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
-  const handleRazorpayPayment = async (orderData: any) => {
+  const handleRazorpayPayment = async (orderData: Record<string, unknown>) => {
     // 1. Create order on server
     const res = await fetch('/api/payment/create-order', {
       method: 'POST',
@@ -66,7 +67,7 @@ export default function BookingForm({ category, tier, price }: { category: strin
       name: "Kundaliwaale",
       description: `${category} - ${tier}`,
       order_id: orderDetails.id,
-      handler: async function (response: any) {
+      handler: async function (response: { razorpay_order_id: string; razorpay_payment_id: string; razorpay_signature: string }) {
         // 3. Verify Payment
         try {
           const verifyRes = await fetch('/api/payment/verify-payment', {
@@ -101,7 +102,9 @@ export default function BookingForm({ category, tier, price }: { category: strin
       }
     };
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const rzp = new (window as any).Razorpay(options);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     rzp.on('payment.failed', function (response: any){
         setError(`Payment Failed: ${response.error.description}`);
         setLoading(false);
@@ -126,8 +129,8 @@ export default function BookingForm({ category, tier, price }: { category: strin
 
       await handleRazorpayPayment({ ...formData, pdfUrl, imageUrls });
 
-    } catch (err: any) {
-       setError(err.message || 'Something went wrong');
+    } catch (err: unknown) {
+       setError((err as Error).message || 'Something went wrong');
        setLoading(false);
     }
   };
@@ -154,12 +157,12 @@ export default function BookingForm({ category, tier, price }: { category: strin
       </div>
       
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
-        <div><label className="font-sans" style={labelStyle}>Father's Name</label><input type="text" required style={inputStyle} value={formData.fathersName} onChange={e => updateField('fathersName', e.target.value)} /></div>
-        <div><label className="font-sans" style={labelStyle}>Mother's Name</label><input type="text" required style={inputStyle} value={formData.mothersName} onChange={e => updateField('mothersName', e.target.value)} /></div>
+        <div><label className="font-sans" style={labelStyle}>Father&apos;s Name</label><input type="text" required style={inputStyle} value={formData.fathersName} onChange={e => updateField('fathersName', e.target.value)} /></div>
+        <div><label className="font-sans" style={labelStyle}>Mother&apos;s Name</label><input type="text" required style={inputStyle} value={formData.mothersName} onChange={e => updateField('mothersName', e.target.value)} /></div>
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
-        <div><label className="font-sans" style={labelStyle}>Grandfather's Name</label><input type="text" required style={inputStyle} value={formData.grandfathersName} onChange={e => updateField('grandfathersName', e.target.value)} /></div>
-        <div><label className="font-sans" style={labelStyle}>Grandmother's Name</label><input type="text" required style={inputStyle} value={formData.grandmothersName} onChange={e => updateField('grandmothersName', e.target.value)} /></div>
+        <div><label className="font-sans" style={labelStyle}>Grandfather&apos;s Name</label><input type="text" required style={inputStyle} value={formData.grandfathersName} onChange={e => updateField('grandfathersName', e.target.value)} /></div>
+        <div><label className="font-sans" style={labelStyle}>Grandmother&apos;s Name</label><input type="text" required style={inputStyle} value={formData.grandmothersName} onChange={e => updateField('grandmothersName', e.target.value)} /></div>
       </div>
       
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
@@ -245,7 +248,7 @@ export default function BookingForm({ category, tier, price }: { category: strin
 
   return (
     <>
-      <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+      <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="beforeInteractive" />
       <form onSubmit={handleSubmit}>
         {error && <div style={{ color: '#ef4444', marginBottom: '1rem', background: 'rgba(239, 68, 68, 0.1)', padding: '1rem', borderRadius: '4px' }}>{error}</div>}
         

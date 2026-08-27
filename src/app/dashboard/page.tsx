@@ -39,7 +39,7 @@ export default function UserDashboardOverview() {
       const allOrders: Order[] = [];
 
       if (kundaliRes.data) {
-        allOrders.push(...kundaliRes.data.map((o: any) => ({
+        allOrders.push(...kundaliRes.data.map((o: { id: string; kundali_type: string; status: string; created_at: string }) => ({
           id: o.id.split('-')[0], // shorten uuid for display
           service: `Kundali (${o.kundali_type})`,
           date: new Date(o.created_at).toLocaleDateString(),
@@ -48,7 +48,7 @@ export default function UserDashboardOverview() {
       }
 
       if (consultRes.data) {
-        allOrders.push(...consultRes.data.map((o: any) => ({
+        allOrders.push(...consultRes.data.map((o: { id: string; selected_time: string; status: string; created_at: string }) => ({
           id: o.id.split('-')[0],
           service: `Consultation`,
           date: new Date(o.created_at).toLocaleDateString(),
@@ -57,7 +57,7 @@ export default function UserDashboardOverview() {
       }
 
       if (vastuRes.data) {
-        allOrders.push(...vastuRes.data.map((o: any) => ({
+        allOrders.push(...vastuRes.data.map((o: { id: string; vastu_type: string; status: string; created_at: string }) => ({
           id: o.id.split('-')[0],
           service: `Vastu (${o.vastu_type})`,
           date: new Date(o.created_at).toLocaleDateString(),
