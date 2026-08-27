@@ -26,7 +26,7 @@ export default function ContactPage() {
       } else {
         setSubmitted(true);
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
       setError(err.message || 'An unexpected error occurred.');
     } finally {
       setLoading(false);

@@ -149,32 +149,57 @@
 }
 
 @media (max-width: 640px) {
+  .header {
+    margin-bottom: 1.5rem;
+  }
+  .header h2 {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+  }
+  .header p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
   .grid {
     grid-template-columns: 1fr;
-    gap: 1rem;
-    padding: 0 1rem 1rem;
+    gap: 0.75rem;
+    padding: 0 0.5rem 1rem;
   }
-  
-  .header h2 {
-    font-size: 2rem;
-  }
-  
   .card {
-    padding: 1.25rem;
+    padding: 1rem 1rem;
     min-height: auto;
   }
-
+  .card::before {
+    font-size: 3.5rem;
+    top: 0.25rem;
+    right: 1rem;
+  }
   .cardTop {
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
   }
-
+  .avatar {
+    width: 38px;
+    height: 38px;
+  }
+  .cardTopLeft {
+    gap: 0.75rem;
+  }
   .cardName h4 {
-    font-size: 1.15rem;
-  }
-  
-  .cardText {
     font-size: 0.95rem;
-    line-height: 1.6;
-    margin-bottom: 1rem;
+  }
+  .cardName span {
+    font-size: 0.7rem;
+  }
+  .stars svg {
+    width: 14px;
+    height: 14px;
+  }
+  .cardText {
+    font-size: 0.8rem;
+    line-height: 1.55;
+    margin-bottom: 0.75rem;
+  }
+  .serviceBadge {
+    font-size: 0.65rem;
   }
 }

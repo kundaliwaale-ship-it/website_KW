@@ -93,7 +93,7 @@ export async function POST(request: Request) {
       currency: rzpOrder.currency,
       dbOrderId,
     })
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Razorpay Error:', error)
     return NextResponse.json({ error: error.message }, { status: 500 })
   }

@@ -116,8 +116,8 @@ export default function BookingForm({ category, tier, price }: { category: strin
 
     try {
       // If Vastu Blueprint, upload files to Supabase Storage first
-      let pdfUrl = '';
-      let imageUrls: string[] = [];
+      const pdfUrl = '';
+      const imageUrls: string[] = [];
       
       if (category === 'vastu' && formData.vastuType === 'blueprint_analysis') {
          // TODO: Upload files via supabase-js before payment, get URLs

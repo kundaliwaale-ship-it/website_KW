@@ -17,25 +17,12 @@ export default function Footer() {
               Your trusted cosmic guide. Handcrafted authentic Vedic Kundlis delivered directly to your doorstep.
             </p>
             <div className={styles.socialLinks}>
-              <a href="#" className={styles.socialLink} aria-label="Facebook">Fb</a>
-              <a href="#" className={styles.socialLink} aria-label="Instagram">Ig</a>
-              <a href="#" className={styles.socialLink} aria-label="YouTube">Yt</a>
-              <a href="#" className={styles.socialLink} aria-label="Twitter">𝕏</a>
-            </div>
-          </div>
-
-          {/* Combined Links */}
-          <div>
-            <h4 className={`${styles.columnTitle} font-sans`}>Explore</h4>
-            <div className={styles.linksGrid}>
-              <Link href="/" className={`${styles.columnLink} font-sans`}>Home</Link>
-              <Link href="/services/kundali/detailed" className={`${styles.columnLink} font-sans`}>Kundli Reports</Link>
-              <Link href="/about" className={`${styles.columnLink} font-sans`}>About Us</Link>
-              <Link href="/services/vastu/online" className={`${styles.columnLink} font-sans`}>Vastu</Link>
-              <Link href="/testimonials" className={`${styles.columnLink} font-sans`}>Testimonials</Link>
-              <Link href="/services/consultation/standard" className={`${styles.columnLink} font-sans`}>Consultation</Link>
-              <Link href="/faq" className={`${styles.columnLink} font-sans`}>FAQ</Link>
-              <Link href="/contact" className={`${styles.columnLink} font-sans`}>Contact</Link>
+              <a href="#" className={styles.socialLink} aria-label="Facebook">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              </a>
+              <a href="#" className={styles.socialLink} aria-label="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16.11 7.992h.01"/><path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z"/></svg>
+              </a>
             </div>
           </div>
 
@@ -44,15 +31,15 @@ export default function Footer() {
             <h4 className={`${styles.columnTitle} font-sans`}>Contact Us</h4>
             <div className={styles.contactItem}>
               <span className={styles.contactIcon}><Phone size={18} /></span>
-              <span className="font-sans">+91 98765 43210</span>
+              <span className="font-sans">+91 620 381 9040</span>
             </div>
             <div className={styles.contactItem}>
               <span className={styles.contactIcon}><Mail size={18} /></span>
-              <span className="font-sans">info@kundaliwaale.com</span>
+              <span className="font-sans">contact@kundaliwaale.com</span>
             </div>
             <div className={styles.contactItem}>
               <span className={styles.contactIcon}><MapPin size={18} /></span>
-              <span className="font-sans">123 Astro Tower, Connaught Place, ND</span>
+              <span className="font-sans">Ranchi, Jharkhand, India</span>
             </div>
           </div>
         </div>
@@ -71,7 +58,7 @@ export default function Footer() {
 
       {/* WhatsApp Floating CTA */}
       <a
-        href="https://wa.me/919876543210"
+        href="https://wa.me/916203819040"
         target="_blank"
         rel="noopener noreferrer"
         className={styles.whatsappFloat}

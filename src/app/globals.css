@@ -552,4 +552,10 @@ p {
     width: 250px;
     height: 250px;
   }
+
+  /* Global section heading sizing for mobile */
+  section h2 {
+    font-size: 1.75rem !important;
+    margin-bottom: 0.5rem;
+  }
 }

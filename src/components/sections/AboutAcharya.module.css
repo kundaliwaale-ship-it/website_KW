@@ -184,31 +184,33 @@
 
   .manuscriptBox {
     margin-left: 0;
-    padding: 1.5rem 1.25rem;
+    padding: 1.25rem 1rem;
     border-width: 2px;
   }
 
   .content > p {
-    font-size: 0.95rem;
-    margin-bottom: 2rem;
+    font-size: 0.85rem;
+    margin-bottom: 1.25rem;
+    line-height: 1.6;
   }
 
   .credentials {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
   }
 
   .credential {
     width: 100%;
-    padding: 0.5rem;
+    padding: 0.4rem 0.5rem;
   }
 
   .credential span {
-    font-size: 0.85rem;
+    font-size: 0.75rem;
   }
 
   .content h2 {
-    font-size: 2rem;
+    font-size: 1.75rem;
+    margin-bottom: 0.75rem;
   }
 }

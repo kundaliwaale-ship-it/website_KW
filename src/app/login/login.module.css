@@ -373,16 +373,47 @@
 
 @media (max-width: 640px) {
   .page {
-    padding: 100px 1rem 2rem;
+    padding: 90px 0.75rem 1.5rem;
   }
 
   .authContainer {
-    padding: 2rem 1.5rem;
-    border-radius: 20px;
+    padding: 1.75rem 1.25rem;
+    border-radius: 18px;
   }
 
   .authContainer h1 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .subtitle {
+    font-size: 0.8rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .formGroup label {
+    font-size: 0.7rem;
+  }
+
+  .formGroup input,
+  .formGroup select {
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .form {
+    gap: 1rem;
+  }
+
+  .submitBtn {
+    padding: 0.85rem;
+    font-size: 0.8rem;
+  }
+
+  .toggleText {
+    font-size: 0.8rem;
+    margin-top: 1.25rem;
+    padding-top: 1rem;
   }
 
   .formRow {

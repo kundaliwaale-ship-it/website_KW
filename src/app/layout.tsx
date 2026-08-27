@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
-import { Tangerine, Lora, Outfit } from "next/font/google";
+import { Cormorant_Garamond, Lora, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { AuthProvider } from "@/components/auth/AuthProvider";
 import LayoutShell from "@/components/layout/LayoutShell";
 
-const outfit = Outfit({
+const jakarta = Plus_Jakarta_Sans({
   variable: "--font-montserrat", /* Keeping the variable name the same so CSS doesn't break */
   subsets: ["latin"],
 });
 
-const tangerine = Tangerine({
-  weight: ["400", "700"],
+const cormorant = Cormorant_Garamond({
+  weight: ["300", "400", "500", "600", "700"],
   variable: "--font-serif-main",
   subsets: ["latin"],
 });
@@ -56,7 +56,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${outfit.variable} ${tangerine.variable} ${lora.variable} font-sans`}>
+      <body className={`${jakarta.variable} ${cormorant.variable} ${lora.variable} font-body`}>
         <AuthProvider>
           <LayoutShell>{children}</LayoutShell>
         </AuthProvider>

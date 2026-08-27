@@ -27,7 +27,7 @@ export default function LoginPage() {
       } else if (result?.redirectTo) {
         router.push(result.redirectTo)
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
       setError(err.message || 'An unexpected error occurred.')
     } finally {
       setLoading(false)

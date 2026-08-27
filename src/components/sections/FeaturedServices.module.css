@@ -109,6 +109,16 @@
 }
 
 @media (max-width: 640px) {
+  .header {
+    margin-bottom: 2rem;
+  }
+  .header h2 {
+    font-size: 1.75rem;
+  }
+  .header p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
   .card {
     padding: 1.5rem;
   }

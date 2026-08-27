@@ -56,7 +56,7 @@ export default function BookingModal({ isOpen, onClose, category, tier, price, s
     setLoading(true);
     
     try {
-      let finalFormData = { ...formData };
+      const finalFormData = { ...formData };
       
       if (category === 'vastu') {
         const supabase = createClient();
