@@ -9,12 +9,13 @@ const AUTH_ROUTES = ['/login', '/register'];
 export default function LayoutShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const isAuthPage = AUTH_ROUTES.includes(pathname);
+  const isDashboard = pathname.startsWith('/dashboard');
 
   return (
     <>
       {!isAuthPage && <Navbar />}
       <main>{children}</main>
-      {!isAuthPage && <Footer />}
+      {!isAuthPage && !isDashboard && <Footer />}
     </>
   );
 }

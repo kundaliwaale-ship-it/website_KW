@@ -8,10 +8,10 @@ import { createClient } from '@/utils/supabase/client';
 import { LayoutDashboard, FileText, Sparkles, User, LogOut } from 'lucide-react';
 
 const navItems = [
-  { icon: <LayoutDashboard size={20} />, label: 'Overview', href: '/dashboard' },
-  { icon: <FileText size={20} />, label: 'My Orders', href: '/dashboard/orders' },
-  { icon: <Sparkles size={20} />, label: 'Consultations', href: '/dashboard/consultations' },
-  { icon: <User size={20} />, label: 'Profile Settings', href: '/dashboard/profile' },
+  { icon: <LayoutDashboard size={18} />, label: 'Overview', href: '/dashboard' },
+  { icon: <FileText size={18} />, label: 'My Orders', href: '/dashboard/orders' },
+  { icon: <Sparkles size={18} />, label: 'Consultations', href: '/dashboard/consultations' },
+  { icon: <User size={18} />, label: 'Profile', href: '/dashboard/profile' },
 ];
 
 export default function UserDashboardLayout({ children }: { children: React.ReactNode }) {
@@ -50,6 +50,27 @@ export default function UserDashboardLayout({ children }: { children: React.Reac
       <div className="orb-primary" style={{ top: '-10%', left: '-10%' }}></div>
       <div className="orb-secondary" style={{ bottom: '-10%', right: '-10%' }}></div>
       
+      {/* Mobile Horizontal Pill Nav */}
+      <div className={styles.mobileNavWrapper}>
+        <nav className={styles.mobileNav}>
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={`${styles.mobileNavLink} ${pathname === item.href ? styles.mobileNavLinkActive : ''} font-sans`}
+            >
+              {item.icon}
+              {item.label}
+            </Link>
+          ))}
+          <button className={`${styles.mobileNavLink} font-sans`} onClick={handleLogout} style={{ color: '#ef4444' }}>
+            <LogOut size={18} />
+            Log Out
+          </button>
+        </nav>
+      </div>
+
+      {/* Desktop Sidebar */}
       <aside className={styles.sidebar}>
         <div className={styles.sidebarHeader}>
           <h2 className="font-serif">My Account</h2>
@@ -72,6 +93,7 @@ export default function UserDashboardLayout({ children }: { children: React.Reac
           </button>
         </nav>
       </aside>
+
       <div className={`${styles.content} relative-z`}>
         {children}
       </div>

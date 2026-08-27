@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import styles from './dashboard.module.css';
-import { FileText, Sparkles, AlertCircle } from 'lucide-react';
+import { FileText, Sparkles, Compass } from 'lucide-react';
 import Link from 'next/link';
 import { createClient } from '@/utils/supabase/client';
 import { User } from '@supabase/supabase-js';
@@ -79,6 +79,8 @@ export default function UserDashboardOverview() {
      return <div className={styles.loadingState}>Loading dashboard data...</div>;
   }
 
+  const activeServicesCount = recentOrders.filter(o => o.status !== 'Completed' && o.status !== 'Delivered').length;
+
   return (
     <div>
       <h1 className={`${styles.pageTitle} font-serif`}>Welcome back!</h1>
@@ -86,19 +88,27 @@ export default function UserDashboardOverview() {
         You are securely logged in as <strong>{user?.email}</strong>. Here is a summary of your recent activity and orders.
       </p>
 
-      <div className={styles.statsGrid}>
-        <div className={styles.statCard}>
-          <div className={styles.statIcon}><FileText size={32} color="var(--color-gold)" /></div>
+      {/* Unified At-a-Glance Stats */}
+      <div className={styles.statsContainer}>
+        <div className={styles.statBlock}>
+          <div className={styles.statIconWrapper}>
+            <FileText size={28} />
+          </div>
           <div>
-            <p className={`${styles.statLabel} font-sans`}>Total Orders</p>
-            <h3 className={`${styles.statValue} font-serif`}>{recentOrders.length}</h3>
+            <div className={`${styles.statLabel} font-sans`}>Total Orders</div>
+            <div className={`${styles.statValue} font-serif`}>{recentOrders.length}</div>
           </div>
         </div>
-        <div className={styles.statCard}>
-          <div className={styles.statIcon}><Sparkles size={32} color="var(--color-gold)" /></div>
+        
+        <div className={styles.statDivider}></div>
+        
+        <div className={styles.statBlock}>
+          <div className={styles.statIconWrapper}>
+            <Sparkles size={28} />
+          </div>
           <div>
-            <p className={`${styles.statLabel} font-sans`}>Active Services</p>
-            <h3 className={`${styles.statValue} font-serif`}>{recentOrders.filter(o => o.status !== 'Completed' && o.status !== 'Delivered').length}</h3>
+            <div className={`${styles.statLabel} font-sans`}>Active Services</div>
+            <div className={`${styles.statValue} font-serif`}>{activeServicesCount}</div>
           </div>
         </div>
       </div>
@@ -126,7 +136,7 @@ export default function UserDashboardOverview() {
                     <td className="font-sans">{order.service}</td>
                     <td className="font-sans">{order.date}</td>
                     <td>
-                      <span className={`${styles.badge} font-sans`} style={{ background: 'rgba(59, 130, 246, 0.1)', color: '#3b82f6' }}>
+                      <span className={`${styles.badge} font-sans`} style={{ background: 'rgba(226, 160, 63, 0.1)', color: 'var(--color-gold)' }}>
                         {order.status}
                       </span>
                     </td>
@@ -137,10 +147,17 @@ export default function UserDashboardOverview() {
           </div>
         ) : (
           <div className={styles.emptyState}>
-            <AlertCircle size={48} color="var(--text-secondary)" style={{ margin: '0 auto 1rem' }} />
-            <p className="font-sans">You don&apos;t have any orders or consultations yet.</p>
+            <div className={styles.emptyStateIcon}>
+              <Compass size={40} />
+            </div>
+            <h3 className="font-serif" style={{ fontSize: '1.5rem', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>No Cosmic Journey Yet</h3>
+            <p className="font-sans">
+              You haven&apos;t placed any orders or consultations yet. Your journey to clarity awaits.
+            </p>
             <Link href="/services/kundali">
-               <button style={{ marginTop: '1rem', padding: '0.5rem 1rem', background: 'var(--color-gold)', color: '#000', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>Explore Services</button>
+               <button style={{ padding: '0.8rem 1.5rem', background: 'var(--button-gradient)', color: '#fff', border: 'none', borderRadius: '8px', cursor: 'pointer', fontWeight: 600, fontSize: '1rem', transition: 'all 0.3s ease', boxShadow: '0 4px 15px rgba(226, 160, 63, 0.2)' }}>
+                 Explore Services
+               </button>
             </Link>
           </div>
         )}

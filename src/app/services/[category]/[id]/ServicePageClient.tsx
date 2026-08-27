@@ -72,9 +72,8 @@ export default function ServicePageClient({
         <div className={styles.bentoGrid}>
           {tier.features.map((feature: string, i: number) => {
             // Make the first item span wider
-            const isWide = i === 0 || i === 3; 
             return (
-              <div key={i} className={`${styles.bentoCard} glass-card ${isWide ? styles.bentoWide : ''}`}>
+              <div key={i} className={styles.bentoCard}>
                 <div className={styles.bentoIcon}>
                   {i % 3 === 0 ? <ScrollText size={24} /> : i % 3 === 1 ? <Target size={24} /> : <Gift size={24} />}
                 </div>
@@ -99,7 +98,7 @@ export default function ServicePageClient({
           
           <div className={styles.timelineItem}>
             <div className={styles.timelineDot}>1</div>
-            <div className={`${styles.timelineContent} glass-card`}>
+            <div className={styles.timelineContent}>
               <h3 className="font-serif">Provide Details</h3>
               <p className="font-sans">
                 {category === 'kundali' && "Share your exact Birth Date, Time, and Location for precise calculation."}
@@ -111,7 +110,7 @@ export default function ServicePageClient({
 
           <div className={styles.timelineItem}>
             <div className={styles.timelineDot}>2</div>
-            <div className={`${styles.timelineContent} glass-card`}>
+            <div className={styles.timelineContent}>
               <h3 className="font-serif">Expert Analysis</h3>
               <p className="font-sans">
                 Acharya Ji personally analyzes your data using authentic Vedic principles, hand-calculating every major aspect.
@@ -121,7 +120,7 @@ export default function ServicePageClient({
 
           <div className={styles.timelineItem}>
             <div className={styles.timelineDot}>3</div>
-            <div className={`${styles.timelineContent} glass-card`}>
+            <div className={styles.timelineContent}>
               <h3 className="font-serif">Receive Guidance</h3>
               <p className="font-sans">
                 Access your handwritten report or join your 1-on-1 session to walk through precise, actionable remedies.
@@ -132,7 +131,7 @@ export default function ServicePageClient({
       </section>
 
       {/* Sticky Booking Bar */}
-      <div className={`${styles.stickyBar} ${isScrolled ? styles.stickyVisible : ''} glass-card`}>
+      <div className={`${styles.stickyBar} ${isScrolled ? styles.stickyVisible : ''}`}>
         <div className={styles.stickyInner}>
           <div className={styles.stickyInfo}>
             <h4 className="font-serif">{tier.name}</h4>

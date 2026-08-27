@@ -1,9 +1,14 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import styles from './Footer.module.css';
 import { Phone, MessageCircle, Mail, MapPin } from 'lucide-react';
 
 export default function Footer() {
+  const pathname = usePathname();
+  const isHomepage = pathname === '/';
   return (
     <>
       <footer className={styles.footer}>
@@ -56,16 +61,18 @@ export default function Footer() {
         </div>
       </footer>
 
-      {/* WhatsApp Floating CTA */}
-      <a
-        href="https://wa.me/916203819040"
-        target="_blank"
-        rel="noopener noreferrer"
-        className={styles.whatsappFloat}
-        aria-label="Chat on WhatsApp"
-      >
-        <MessageCircle size={28} />
-      </a>
+      {/* WhatsApp Floating CTA - Only on Homepage */}
+      {isHomepage && (
+        <a
+          href="https://wa.me/916203819040"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.whatsappFloat}
+          aria-label="Chat on WhatsApp"
+        >
+          <MessageCircle size={28} />
+        </a>
+      )}
     </>
   );
 }
