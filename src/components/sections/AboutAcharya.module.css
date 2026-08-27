@@ -8,7 +8,7 @@
   margin: 0 auto;
   display: grid;
   grid-template-columns: 0.8fr 1.2fr;
-  gap: 3rem;
+  gap: 4rem;
   align-items: center;
 }
 
@@ -20,20 +20,19 @@
 
 .imagePlaceholder {
   width: 100%;
-  height: 500px;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
+  height: 550px;
+  border-radius: 24px;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-  border: 1px solid rgba(255, 206, 115, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(226, 160, 63, 0.15);
 }
 
 .imagePlaceholder::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(15, 10, 5, 0.95), transparent 50%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent 40%);
 }
 
 .portraitImg {
@@ -47,42 +46,50 @@
   position: absolute;
   bottom: -20px;
   right: -20px;
-  background: var(--button-gradient);
-  color: var(--text-inverse);
-  padding: 1.25rem 1.5rem;
-  border-radius: var(--radius-md);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: var(--color-gold);
+  padding: 1.25rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(226, 160, 63, 0.3);
   text-align: center;
   z-index: 10;
 }
 
 .experienceBadge h4 {
-  font-size: 1.75rem;
+  font-size: 2rem;
   line-height: 1;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
 }
 
 .experienceBadge p {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
+  color: var(--text-secondary);
 }
 
 .manuscriptBox {
   position: relative;
-  background: linear-gradient(135deg, #FDFBF7 0%, #F4EFE6 100%);
-  border: 4px double rgba(226, 160, 63, 0.5);
-  border-radius: 4px;
-  padding: 3rem 4rem;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08), inset 0 0 40px rgba(226, 160, 63, 0.05);
-  margin-left: -3rem; /* Overlap the image slightly */
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(226, 160, 63, 0.2);
+  border-radius: 24px;
+  padding: 4rem 4rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+  margin-left: -4rem;
   z-index: 2;
 }
 
 .content h2 {
-  font-size: 2.8rem;
-  color: #4A3B2C; /* Dark ink color */
-  margin-bottom: 1rem;
+  font-size: 3rem;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
   line-height: 1.15;
 }
 
@@ -92,43 +99,52 @@
 }
 
 .content > p {
-  font-size: 1.05rem;
-  color: #5C4D3C; /* Slightly lighter ink color for body */
+  font-size: 1.1rem;
+  color: var(--text-secondary);
   line-height: 1.7;
-  margin-bottom: 2.5rem;
+  margin-bottom: 3rem;
 }
 
 .credentials {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-bottom: 3rem;
 }
 
 .credential {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.5rem 1rem 0.5rem 0.5rem;
-  background: transparent;
-  border: 1px dashed rgba(74, 59, 44, 0.4);
-  border-radius: 4px;
-  position: relative;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(226, 160, 63, 0.15);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.credential:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(226, 160, 63, 0.4);
+  box-shadow: 0 4px 15px rgba(226, 160, 63, 0.08);
 }
 
 .credential svg {
-  color: #8C2A2A; /* Wax seal red/burgundy */
-  background: rgba(140, 42, 42, 0.1);
-  padding: 4px;
+  color: var(--color-gold);
+  background: rgba(226, 160, 63, 0.1);
+  padding: 6px;
   border-radius: 50%;
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
 }
 
 .credential span {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 600;
-  color: #4A3B2C; /* Ink color */
+  color: var(--text-primary);
+  line-height: 1.3;
 }
 
 .readMore {
@@ -137,7 +153,9 @@
   gap: 0.5rem;
   color: var(--color-gold);
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   transition: gap var(--transition-fast);
 }
 
@@ -145,72 +163,84 @@
   gap: 0.75rem;
 }
 
+/* Responsive */
 @media (max-width: 1024px) {
   .inner {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 3rem;
   }
 
   .imageCol {
-    max-width: 400px;
+    max-width: 500px;
     margin: 0 auto;
+  }
+  
+  .manuscriptBox {
+    margin-left: 0;
   }
 }
 
 @media (max-width: 640px) {
+  .inner {
+    gap: 1.5rem;
+  }
+  
   .imageCol {
     width: 100%;
-    max-width: 280px;
-    margin: 0 auto 2rem;
+    max-width: 300px;
+    margin: 0 auto;
   }
 
   .imagePlaceholder {
-    height: 350px;
+    height: 400px;
   }
 
   .experienceBadge {
-    padding: 0.8rem 1rem;
+    padding: 1rem 1.25rem;
     bottom: -15px;
     right: -10px;
+    border-radius: 12px;
   }
   
   .experienceBadge h4 {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
   }
   
   .experienceBadge p {
-    font-size: 0.65rem;
+    font-size: 0.7rem;
   }
 
   .manuscriptBox {
-    margin-left: 0;
-    padding: 1.25rem 1rem;
-    border-width: 2px;
-  }
-
-  .content > p {
-    font-size: 0.85rem;
-    margin-bottom: 1.25rem;
-    line-height: 1.6;
-  }
-
-  .credentials {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.5rem;
-  }
-
-  .credential {
-    width: 100%;
-    padding: 0.4rem 0.5rem;
-  }
-
-  .credential span {
-    font-size: 0.75rem;
+    padding: 2rem 1.5rem;
+    border-radius: 16px;
   }
 
   .content h2 {
     font-size: 1.75rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .content > p {
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  .credentials {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .credential {
+    padding: 0.85rem 1rem;
+  }
+
+  .credential span {
+    font-size: 0.85rem;
+  }
+  
+  .readMore {
+    font-size: 0.85rem;
   }
 }
