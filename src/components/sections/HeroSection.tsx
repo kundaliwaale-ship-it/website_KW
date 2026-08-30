@@ -1,12 +1,17 @@
+'use client';
+
 import React from 'react';
 import styles from './HeroSection.module.css';
 import Button from '@/components/ui/Button';
 import Link from 'next/link';
 import { Sun, Star } from 'lucide-react';
+import { useLanguage } from '@/i18n/LanguageContext';
 
 const zodiacSigns = ['♈', '♉', '♊', '♋', '♌', '♍', '♎', '♏', '♐', '♑', '♒', '♓'];
 
 export default function HeroSection() {
+  const { dict } = useLanguage();
+
   return (
     <div className="ambient-glow-wrapper">
       <div className="orb-primary" style={{ top: '10%', left: '-5%' }}></div>
@@ -16,23 +21,23 @@ export default function HeroSection() {
           <div className={`${styles.heroContent} slide-in-left`}>
             <div className={`${styles.heroLabel} font-sans`}>
               <span></span>
-              Sacred Vedic Tradition, Delivered
+              {dict.home.hero_badge}
             </div>
             <h1 className="font-serif">
-              The Best <em>Handwritten Kundlis</em> Delivered to Your Home
+              {dict.home.hero_title_1} <em>{dict.home.hero_title_em}</em> {dict.home.hero_title_2}
             </h1>
             <p className="font-sans">
-              Now you can have the finest authentic, handwritten Janam Kundlis crafted with precise Vedic calculations and delivered directly to your doorstep. Genuine guidance, clear remedies, and no computer-generated shortcuts.
+              {dict.home.hero_subtitle}
             </p>
             <div className={styles.heroCtas}>
               <Link href="/services/kundali">
                 <Button variant="primary">
-                  Get Your Handwritten Kundli →
+                  {dict.home.cta_primary}
                 </Button>
               </Link>
               <Link href="/services/consultation">
                 <Button variant="outline">
-                  Book Consultation
+                  {dict.home.cta_secondary}
                 </Button>
               </Link>
             </div>

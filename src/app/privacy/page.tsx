@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import styles from './legal.module.css'
+import styles from '../terms/legal.module.css'
 
 export default function PrivacyPage() {
   return (

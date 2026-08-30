@@ -5,10 +5,12 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import styles from './Footer.module.css';
 import { Phone, MessageCircle, Mail, MapPin } from 'lucide-react';
+import { useLanguage } from '@/i18n/LanguageContext';
 
 export default function Footer() {
   const pathname = usePathname();
   const isHomepage = pathname === '/';
+  const { dict } = useLanguage();
   return (
     <>
       <footer className={styles.footer}>
@@ -19,7 +21,7 @@ export default function Footer() {
               Kundaliwaale
             </Link>
             <p className="font-sans">
-              Your trusted cosmic guide. Handcrafted authentic Vedic Kundlis delivered directly to your doorstep.
+              {dict.footer.brand_desc}
             </p>
             <div className={styles.socialLinks}>
               <a href="#" className={styles.socialLink} aria-label="Facebook">
@@ -33,7 +35,7 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h4 className={`${styles.columnTitle} font-sans`}>Contact Us</h4>
+            <h4 className={`${styles.columnTitle} font-sans`}>{dict.footer.contact_us}</h4>
             <div className={styles.contactItem}>
               <span className={styles.contactIcon}><Phone size={18} /></span>
               <span className="font-sans">+91 620 381 9040</span>
@@ -52,12 +54,12 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className={styles.bottomBar}>
           <p className={`${styles.copyright} font-sans`}>
-            © {new Date().getFullYear()} Kundaliwaale. All rights reserved.
+            © {new Date().getFullYear()} Kundaliwaale. {dict.footer.rights}
           </p>
           <div className={styles.legalLinks}>
-            <Link href="/privacy" className="font-sans">Privacy Policy</Link>
-            <Link href="/terms" className="font-sans">Terms of Service</Link>
-            <Link href="/refund" className="font-sans">Refund Policy</Link>
+            <Link href="/privacy" className="font-sans">{dict.footer.privacy}</Link>
+            <Link href="/terms" className="font-sans">{dict.footer.terms}</Link>
+            <Link href="/refund" className="font-sans">{dict.footer.refund}</Link>
           </div>
         </div>
       </footer>

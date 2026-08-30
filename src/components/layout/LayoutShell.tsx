@@ -3,6 +3,7 @@
 import { usePathname } from 'next/navigation';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import { LanguageProvider } from '@/i18n/LanguageContext';
 
 const AUTH_ROUTES = ['/login', '/register'];
 
@@ -12,10 +13,10 @@ export default function LayoutShell({ children }: { children: React.ReactNode })
   const isDashboard = pathname.startsWith('/dashboard');
 
   return (
-    <>
+    <LanguageProvider>
       {!isAuthPage && <Navbar />}
       <main>{children}</main>
       {!isAuthPage && !isDashboard && <Footer />}
-    </>
+    </LanguageProvider>
   );
 }

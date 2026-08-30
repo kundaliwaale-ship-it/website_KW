@@ -8,6 +8,7 @@ import { ChevronDown } from 'lucide-react';
 import { createClient } from '@/utils/supabase/client';
 import { User } from '@supabase/supabase-js';
 import { usePathname } from 'next/navigation';
+import { useLanguage } from '@/i18n/LanguageContext';
 
 const navItems = [
   {
@@ -43,6 +44,7 @@ export default function Navbar() {
   const [user, setUser] = useState<User | null>(null);
   const supabase = createClient();
   const pathname = usePathname();
+  const { locale, setLocale, dict } = useLanguage();
 
   const dashboardHref = '/dashboard';
   const dashboardLabel = 'DASHBOARD';
@@ -121,14 +123,21 @@ export default function Navbar() {
               )}
             </div>
           ))}
-          <div className={styles.loginBtn}>
+          <div className={styles.loginBtn} style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            <button 
+               onClick={() => setLocale(locale === 'en' ? 'hi' : 'en')}
+               className="font-sans"
+               style={{ background: 'none', border: '1px solid var(--color-gold)', color: 'var(--color-gold)', padding: '0.25rem 0.5rem', borderRadius: '4px', cursor: 'pointer', fontSize: '0.85rem' }}
+            >
+              {locale === 'en' ? 'हिन्दी' : 'EN'}
+            </button>
             {user ? (
               <Link href={dashboardHref}>
-                <Button variant="primary">{dashboardLabel}</Button>
+                <Button variant="primary">{dict.nav.dashboard}</Button>
               </Link>
             ) : (
               <Link href="/login">
-                <Button variant="primary">LOGIN</Button>
+                <Button variant="primary">{dict.nav.login}</Button>
               </Link>
             )}
           </div>
@@ -181,14 +190,21 @@ export default function Navbar() {
             )}
           </div>
         ))}
-        <div className={styles.mobileLoginBtn}>
+        <div className={styles.mobileLoginBtn} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          <button 
+             onClick={() => setLocale(locale === 'en' ? 'hi' : 'en')}
+             className="font-sans"
+             style={{ background: 'none', border: '1px solid var(--color-gold)', color: 'var(--color-gold)', padding: '0.5rem', borderRadius: '4px', cursor: 'pointer', fontSize: '0.9rem', width: '100%' }}
+          >
+            {locale === 'en' ? 'Switch to हिन्दी' : 'Switch to English'}
+          </button>
           {user ? (
             <Link href={dashboardHref}>
-              <Button variant="primary" style={{ width: '100%' }}>{dashboardLabel}</Button>
+              <Button variant="primary" style={{ width: '100%' }}>{dict.nav.dashboard}</Button>
             </Link>
           ) : (
             <Link href="/login">
-              <Button variant="primary" style={{ width: '100%' }}>LOGIN</Button>
+              <Button variant="primary" style={{ width: '100%' }}>{dict.nav.login}</Button>
             </Link>
           )}
         </div>

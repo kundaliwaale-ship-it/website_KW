@@ -1,0 +1,26 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "dashboard": "Dashboard",
+    "login": "Login / Sign Up",
+    "logout": "Logout"
+  },
+  "footer": {
+    "brand_desc": "Your trusted cosmic guide. Handcrafted authentic Vedic Kundlis delivered directly to your doorstep.",
+    "contact_us": "Contact Us",
+    "rights": "All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "refund": "Refund Policy"
+  },
+  "home": {
+    "hero_badge": "Sacred Vedic Tradition, Delivered",
+    "hero_title_1": "The Best",
+    "hero_title_em": "Handwritten Kundlis",
+    "hero_title_2": "Delivered to Your Home",
+    "hero_subtitle": "Now you can have the finest authentic, handwritten Janam Kundlis crafted with precise Vedic calculations and delivered directly to your doorstep. Genuine guidance, clear remedies, and no computer-generated shortcuts.",
+    "cta_primary": "Get Your Handwritten Kundli →",
+    "cta_secondary": "Book Consultation"
+  }
+}
