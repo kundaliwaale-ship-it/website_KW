@@ -1,18 +1,23 @@
+'use client';
+
 import React from 'react';
+import { useLanguage } from '@/i18n/LanguageContext';
 import Link from 'next/link';
 import styles from './TestimonialsPreview.module.css';
 import Button from '@/components/ui/Button';
 import { testimonials } from '@/data/testimonials';
 
 export default function TestimonialsPreview() {
+  const { dict } = useLanguage();
+
   return (
     <section className={`${styles.section} ambient-glow-wrapper`}>
       <div className={`${styles.header} relative-z`}>
         <h2 className="font-serif thread-heading">
-          <span>What Our <em>Customers</em> Say</span>
+          <span>{dict.testimonials_preview.title_1} <em>{dict.testimonials_preview.title_em}</em> {dict.testimonials_preview.title_2}</span>
         </h2>
         <p className="font-sans">
-          Real stories from real people whose lives were transformed through our guidance.
+          {dict.testimonials_preview.subtitle}
         </p>
       </div>
 
@@ -43,7 +48,7 @@ export default function TestimonialsPreview() {
 
       <div className={styles.viewAll}>
         <Link href="/testimonials">
-          <Button variant="outline">View All Reviews →</Button>
+          <Button variant="outline">{dict.testimonials_preview.view_all}</Button>
         </Link>
       </div>
     </section>

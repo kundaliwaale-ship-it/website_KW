@@ -5,6 +5,7 @@ import Button from '@/components/ui/Button';
 import { ArrowRight, ShieldCheck, Sparkles, Target, Gift, ScrollText } from 'lucide-react';
 import BookingModal from './BookingModal';
 import styles from './service.module.css';
+import { useLanguage } from '@/i18n/LanguageContext';
 
 export default function ServicePageClient({
   category,
@@ -13,8 +14,20 @@ export default function ServicePageClient({
   category: string;
   tier: { id: string; name: string; price: number; originalPrice?: number; description: string; popular?: boolean; features: string[] };
 }) {
+  const { dict } = useLanguage();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+
+  const getTierTranslation = () => {
+    // We can assume category and tier.id are valid keys based on our structure
+    try {
+      // @ts-ignore
+      return dict.services_data[category]?.[tier.id] || tier;
+    } catch {
+      return tier;
+    }
+  };
+  const transTier = getTierTranslation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,10 +53,10 @@ export default function ServicePageClient({
         <div className={`${styles.heroContent} relative-z`}>
           <div className={`${styles.heroGlassPanel} glass-card`}>
             <div className={`${styles.badge} font-sans`}>
-              {tier.popular ? <><Sparkles size={14} /> Most Popular</> : <><Sparkles size={14} /> Premium Service</>}
+              {tier.popular ? <><Sparkles size={14} /> {dict.service_page.most_popular}</> : <><Sparkles size={14} /> {dict.service_page.premium_service}</>}
             </div>
-            <h1 className="font-serif">{tier.name}</h1>
-            <p className="font-sans">{tier.description}</p>
+            <h1 className="font-serif">{transTier.name}</h1>
+            <p className="font-sans">{transTier.description}</p>
             
             <div className={styles.heroCtaArea}>
               <div className={styles.priceContainer}>
@@ -51,12 +64,12 @@ export default function ServicePageClient({
                 {tier.originalPrice && <span className={`${styles.originalPrice} font-sans`}>₹{tier.originalPrice}</span>}
               </div>
               <Button variant="primary" onClick={() => setIsModalOpen(true)} className={styles.heroButton}>
-                Book Now <ArrowRight size={20} />
+                {dict.service_page.book_now} <ArrowRight size={20} />
               </Button>
             </div>
             <div className={styles.heroTrust}>
               <ShieldCheck size={18} className={styles.trustIcon} />
-              <span className="font-sans">100% Satisfaction Guarantee • Authentic Vedic Astrology</span>
+              <span className="font-sans">{dict.service_page.trust}</span>
             </div>
           </div>
         </div>
@@ -65,12 +78,12 @@ export default function ServicePageClient({
       {/* Bento Box Features */}
       <section className={`${styles.bentoSection} relative-z`}>
         <div className={styles.sectionHeader}>
-          <span className={`${styles.sectionLabel} font-sans`}>Everything You Get</span>
-          <h2 className="font-serif">What&apos;s <em>Included</em></h2>
+          <span className={`${styles.sectionLabel} font-sans`}>{dict.service_page.everything}</span>
+          <h2 className="font-serif">{dict.service_page.whats_included_1} <em>{dict.service_page.whats_included_em}</em></h2>
         </div>
 
         <div className={styles.bentoGrid}>
-          {tier.features.map((feature: string, i: number) => {
+          {transTier.features.map((feature: string, i: number) => {
             // Make the first item span wider
             return (
               <div key={i} className={styles.bentoCard}>
@@ -89,8 +102,8 @@ export default function ServicePageClient({
       {/* Glowing Vertical Timeline */}
       <section className={`${styles.processSection} relative-z`}>
         <div className={styles.sectionHeader}>
-          <h2 className="font-serif">Journey to <em>Clarity</em></h2>
-          <p className="font-sans">A simple, profoundly accurate process.</p>
+          <h2 className="font-serif">{dict.service_page.journey_1} <em>{dict.service_page.journey_em}</em></h2>
+          <p className="font-sans">{dict.service_page.journey_desc}</p>
         </div>
 
         <div className={styles.verticalTimeline}>
@@ -99,11 +112,11 @@ export default function ServicePageClient({
           <div className={styles.timelineItem}>
             <div className={styles.timelineDot}>1</div>
             <div className={styles.timelineContent}>
-              <h3 className="font-serif">Provide Details</h3>
+              <h3 className="font-serif">{dict.service_page.timeline.t1_title}</h3>
               <p className="font-sans">
-                {category === 'kundali' && "Share your exact Birth Date, Time, and Location for precise calculation."}
-                {category === 'vastu' && "Upload your floor plan and plot's directional facing."}
-                {category === 'consultation' && "Select a convenient time slot and describe your main life concerns."}
+                {category === 'kundali' && dict.service_page.timeline.t1_kundali}
+                {category === 'vastu' && dict.service_page.timeline.t1_vastu}
+                {category === 'consultation' && dict.service_page.timeline.t1_consultation}
               </p>
             </div>
           </div>
@@ -111,9 +124,9 @@ export default function ServicePageClient({
           <div className={styles.timelineItem}>
             <div className={styles.timelineDot}>2</div>
             <div className={styles.timelineContent}>
-              <h3 className="font-serif">Expert Analysis</h3>
+              <h3 className="font-serif">{dict.service_page.timeline.t2_title}</h3>
               <p className="font-sans">
-                Acharya Ji personally analyzes your data using authentic Vedic principles, hand-calculating every major aspect.
+                {dict.service_page.timeline.t2_desc}
               </p>
             </div>
           </div>
@@ -121,9 +134,9 @@ export default function ServicePageClient({
           <div className={styles.timelineItem}>
             <div className={styles.timelineDot}>3</div>
             <div className={styles.timelineContent}>
-              <h3 className="font-serif">Receive Guidance</h3>
+              <h3 className="font-serif">{dict.service_page.timeline.t3_title}</h3>
               <p className="font-sans">
-                Access your handwritten report or join your 1-on-1 session to walk through precise, actionable remedies.
+                {dict.service_page.timeline.t3_desc}
               </p>
             </div>
           </div>
@@ -134,11 +147,11 @@ export default function ServicePageClient({
       <div className={`${styles.stickyBar} ${isScrolled ? styles.stickyVisible : ''}`}>
         <div className={styles.stickyInner}>
           <div className={styles.stickyInfo}>
-            <h4 className="font-serif">{tier.name}</h4>
+            <h4 className="font-serif">{transTier.name}</h4>
             <span className="font-serif">₹{tier.price}</span>
           </div>
           <Button variant="primary" onClick={() => setIsModalOpen(true)} className={styles.stickyButton}>
-            Book Now
+            {dict.service_page.book_now}
           </Button>
         </div>
       </div>

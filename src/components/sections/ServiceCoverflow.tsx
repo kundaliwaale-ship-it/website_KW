@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import styles from './ServiceCoverflow.module.css';
+import { useLanguage } from '@/i18n/LanguageContext';
 
 interface ServiceItem {
   id: string;
@@ -62,23 +63,41 @@ const items: ServiceItem[] = [
 ];
 
 export default function ServiceCoverflow() {
+  const { dict } = useLanguage();
+
+  const getTranslatedItem = (item: ServiceItem) => {
+    // We map the hardcoded id to the dictionary key
+    const key = item.id as keyof typeof dict.services;
+    const trans = dict.services[key] as { title: string; desc: string };
+    if (!trans) return item;
+    
+    return {
+      ...item,
+      title: trans.title,
+      shortDescription: trans.desc
+    };
+  };
+
   return (
     <div className={styles.listContainer}>
-      {items.map((item) => (
-        <Link key={item.id} href={item.href} className={styles.card}>
-          <div className={styles.headerRow}>
-            <div className={styles.iconWrapper}>
-              {item.icon}
+      {items.map((item) => {
+        const translatedItem = getTranslatedItem(item);
+        return (
+          <Link key={translatedItem.id} href={translatedItem.href} className={styles.card}>
+            <div className={styles.headerRow}>
+              <div className={styles.iconWrapper}>
+                {translatedItem.icon}
+              </div>
+              <h3 className="font-serif">{translatedItem.title}</h3>
             </div>
-            <h3 className="font-serif">{item.title}</h3>
-          </div>
-          <p className="font-sans">{item.shortDescription}</p>
-          <div className={styles.cardFooter}>
-            <span className={styles.exploreText}>Explore Service</span>
-            <span className={styles.arrowIcon}>→</span>
-          </div>
-        </Link>
-      ))}
+            <p className="font-sans">{translatedItem.shortDescription}</p>
+            <div className={styles.cardFooter}>
+              <span className={styles.exploreText}>{dict.services.explore}</span>
+              <span className={styles.arrowIcon}>→</span>
+            </div>
+          </Link>
+        );
+      })}
     </div>
   );
 }

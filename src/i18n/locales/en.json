@@ -4,7 +4,20 @@
     "services": "Services",
     "dashboard": "Dashboard",
     "login": "Login / Sign Up",
-    "logout": "Logout"
+    "logout": "Logout",
+    "reports": "Reports",
+    "reports_premium": "Premium Kundli",
+    "reports_digital": "Digital Kundli",
+    "consultation": "Consultation",
+    "consultation_astrology": "Astrology Consultation",
+    "consultation_quick": "₹51 Quick Consultation",
+    "vastu": "Vastu",
+    "vastu_online": "Online Analysis",
+    "vastu_home": "Home Visit",
+    "about": "About",
+    "testimonials": "Testimonials",
+    "contact": "Contact",
+    "faq": "FAQ"
   },
   "footer": {
     "brand_desc": "Your trusted cosmic guide. Handcrafted authentic Vedic Kundlis delivered directly to your doorstep.",
@@ -22,5 +35,317 @@
     "hero_subtitle": "Now you can have the finest authentic, handwritten Janam Kundlis crafted with precise Vedic calculations and delivered directly to your doorstep. Genuine guidance, clear remedies, and no computer-generated shortcuts.",
     "cta_primary": "Get Your Handwritten Kundli →",
     "cta_secondary": "Book Consultation"
+  },
+  "featured_services": {
+    "title_1": "Our",
+    "title_em": "Featured",
+    "title_2": "Services",
+    "subtitle": "Discover the ancient wisdom of Vedic astrology through our premium, personalized services."
+  },
+  "services": {
+    "explore": "Explore Service",
+    "kundali": {
+      "title": "Handwritten Kundli",
+      "desc": "Our signature offering. A beautifully handcrafted Janam Kundli analysis covering career, love, and life purpose."
+    },
+    "consultation": {
+      "title": "Consultation",
+      "desc": "Direct 1-on-1 guidance from expert astrologers for your most pressing questions and cosmic clarity."
+    },
+    "vastu": {
+      "title": "Vastu Analysis",
+      "desc": "Harmonize your living or workspace to attract prosperity, peace, and positive energetic alignment."
+    }
+  },
+  "why_choose_us": {
+    "label": "Why Us",
+    "title_1": "What Makes Us",
+    "title_em": "Different",
+    "reasons": {
+      "home": {
+        "title": "Delivered to Your Home",
+        "desc": "Authentic, personally handwritten Janam Kundlis safely packaged and delivered directly to your doorstep."
+      },
+      "handwritten": {
+        "title": "100% Handwritten Quality",
+        "desc": "Every Kundli is meticulously written by hand using traditional calculations — never automated generic PDFs."
+      },
+      "certified": {
+        "title": "Certified Jyotish Acharyas",
+        "desc": "Prepared with deep scriptural authority and exact mathematical precision by recognized Jyotish scholars."
+      },
+      "honest": {
+        "title": "Honest & Transparent",
+        "desc": "Genuine Vedic wisdom, not fear-mongering or fake predictions. Pure clarity tailored to you."
+      }
+    }
+  },
+  "about_acharya": {
+    "badge_1": "100%",
+    "badge_2": "Handwritten",
+    "title_1": "About",
+    "title_em": "Kundaliwaale",
+    "desc": "Now, you can have the finest authentic Handwritten Kundlis prepared with sacred Vedic precision and delivered directly to your doorstep. We combine ancient mathematical Jyotish principles with dedicated personal care — delivering pure, unadulterated astrological clarity to your home without computer-generated shortcuts or false promises.",
+    "credentials": {
+      "cert": "Jyotish Acharya Certified",
+      "manuscript": "Sacred Vedic Manuscripts",
+      "delivery": "Pan-India Home Delivery",
+      "personalized": "100% Personalized & Handcrafted"
+    },
+    "read_more": "Read Full Bio"
+  },
+  "testimonials_preview": {
+    "title_1": "What Our",
+    "title_em": "Customers",
+    "title_2": "Say",
+    "subtitle": "Real stories from real people whose lives were transformed through our guidance.",
+    "view_all": "View All Reviews →"
+  },
+  "call_to_action": {
+    "title_1": "Ready to Unlock Your",
+    "title_em": "Destiny?",
+    "subtitle": "Take the first step towards a life of clarity and purpose. Book your consultation or order your handwritten Kundli today.",
+    "cta_primary": "Order Handwritten Kundli →",
+    "cta_secondary": "Book Consultation"
+  },
+  "about_page": {
+    "hero": {
+      "title_1": "About",
+      "title_em": "Kundaliwaale",
+      "desc": "Now you can have the best possible Handwritten Kundlis crafted with Vedic precision and delivered directly to your home."
+    },
+    "mission": {
+      "title": "Our Mission",
+      "desc": "To revive the sacred tradition of handwritten Janam Kundlis and deliver authentic Vedic wisdom directly to your home. We believe everyone deserves genuine, personally calculated astrological insights rather than automated, computer-generated PDFs. Every chart we pen and every consultation we offer is guided by this commitment to authenticity and clarity."
+    },
+    "vision": {
+      "title_1": "The Kundaliwaale",
+      "title_em": "Vision",
+      "p1": "In an era dominated by instant algorithmic generators and generic printouts, the sacred depth of Vedic Jyotish was losing its human touch. Kundaliwaale was started to bring back what truly matters: authentic, personalized, handwritten Kundlis crafted with devotion and mathematical precision.",
+      "p2": "Rooted in classical texts including Brihat Parashara Hora Shastra, Jataka Parijata, and Phaladeepika, our certified Jyotish Acharyas compute every planetary position, house cusp, and Dasha period by hand. Each chart is a unique spiritual manuscript prepared exclusively for you.",
+      "p3": "We believe in genuine clarity over fear, and craftsmanship over shortcuts. When your Kundli arrives at your doorstep, you hold a sacred guide created to illuminate your life's journey."
+    },
+    "process": {
+      "title_1": "The",
+      "title_em": "Crafting & Delivery Process",
+      "steps": {
+        "s1": { "title": "Birth Chart Computation", "desc": "Accurate mathematical calculation of Lagna, planetary degrees, and houses using authentic Ephemeris tables." },
+        "s2": { "title": "Handwritten Inscription", "desc": "Every chart and planetary position is personally penned with sacred care into a traditional manuscript format." },
+        "s3": { "title": "Dasha & Dosha Analysis", "desc": "Detailed evaluation of Vimshottari Dasha cycles, planetary combinations, strengths, and practical remedies." },
+        "s4": { "title": "Vastu & Guidance Synthesis", "desc": "Holistic synthesis connecting planetary influences with your home energy and life path." },
+        "s5": { "title": "Sacred Packaging", "desc": "Carefully consecrated and safely packed in premium archival materials to preserve your chart for decades." },
+        "s6": { "title": "Doorstep Delivery", "desc": "Dispatched directly to your address across India with real-time courier tracking updates." }
+      }
+    },
+    "certs": {
+      "title_em": "Certifications",
+      "title_2": "& Awards",
+      "items": {
+        "c1": { "title": "Jyotish Acharya", "inst": "Banaras Hindu University" },
+        "c2": { "title": "Vastu Shastra Expert", "inst": "Indian Council of Astrological Sciences" },
+        "c3": { "title": "Classical Jyotish Authority", "inst": "All India Federation of Astrologers" },
+        "c4": { "title": "100% Handcrafted Assurance", "inst": "Authentic Vedic Manuscript Standards" }
+      }
+    }
+  },
+  "contact_page": {
+    "hero": {
+      "title_1": "Get in",
+      "title_em": "Touch"
+    },
+    "form": {
+      "title": "Send us a Message",
+      "success_msg": "Thank you!",
+      "success_desc": "Your message has been sent. We'll get back to you within 24 hours.",
+      "name_label": "Full Name",
+      "email_label": "Email Address",
+      "phone_label": "Phone Number (Optional)",
+      "subject_label": "Subject",
+      "subjects": {
+        "gen": "General Inquiry",
+        "issue": "Kundli Report Issue",
+        "reschedule": "Consultation Reschedule",
+        "other": "Other"
+      },
+      "msg_label": "Message",
+      "msg_placeholder": "How can we help you?",
+      "btn_sending": "SENDING...",
+      "btn_send": "SEND MESSAGE"
+    },
+    "info": {
+      "title": "Contact Information",
+      "phone": "Phone",
+      "whatsapp": "WhatsApp",
+      "email": "Email",
+      "address": "Head Office"
+    }
+  },
+  "faq_page": {
+    "hero": {
+      "title_1": "Frequently Asked",
+      "title_em": "Questions",
+      "desc": "Find answers to common questions about our services, payments, and delivery."
+    },
+    "categories": {
+      "general": "General",
+      "kundali": "Kundali",
+      "vastu": "Vastu",
+      "consultation": "Consultation",
+      "payment": "Payments",
+      "delivery": "Delivery"
+    },
+    "items": {
+      "q1": {
+        "q": "Who is Kundaliwaale?",
+        "a": "Kundaliwaale is dedicated to bringing authentic, handwritten Janam Kundlis and genuine Vedic astrology directly to your home. Our certified Jyotish Acharyas prepare every chart with traditional calculations and personal attention, ensuring you receive honest, actionable guidance without automated shortcuts."
+      },
+      "q2": {
+        "q": "What is a Janam Kundli?",
+        "a": "A Janam Kundli (birth chart) is a detailed astrological chart prepared based on the exact date, time, and place of your birth. It maps the positions of planets at the moment of your birth and is used to predict life events, career prospects, relationships, and health."
+      },
+      "q3": {
+        "q": "What is the difference between the Premium and Digital Kundli?",
+        "a": "The Premium Kundli is handwritten by Kundaliwaale personally, includes 20+ years of Dasha analysis, and is delivered physically via courier. The Digital Kundli is a computer-generated report reviewed by our experts, covering 5 years of insights, and delivered instantly as a PDF via email."
+      },
+      "q4": {
+        "q": "How long does it take to receive my Premium Kundli?",
+        "a": "The Premium Handwritten Kundli typically takes 7-10 business days to prepare and 3-5 additional days for delivery. You will receive WhatsApp updates at every stage — from preparation to shipping to delivery."
+      },
+      "q5": {
+        "q": "What information do I need to provide for my Kundli?",
+        "a": "You need to provide your full name, date of birth, exact time of birth, and place of birth. The more accurate your birth time, the more precise your Kundli analysis will be."
+      },
+      "q6": {
+        "q": "How does online Vastu Consultation work?",
+        "a": "For the online consultation, you upload your home or office blueprint/floor plan along with photos. Our Vastu expert analyzes the layout, identifies issues, and provides a detailed report with room-by-room corrections and remedies, delivered via email."
+      },
+      "q7": {
+        "q": "What is the ₹51 Quick Consultation?",
+        "a": "The ₹51 Quick Consultation is an introductory offer where you pay ₹51 and our trained Purohit calls you back within 24 hours for a 15-minute phone consultation. You can ask one focused question and receive basic guidance and a remedy."
+      },
+      "q8": {
+        "q": "What payment methods do you accept?",
+        "a": "We accept all major payment methods through Razorpay including UPI (Google Pay, PhonePe, Paytm), Credit/Debit Cards (Visa, Mastercard, Rupay), Net Banking, and digital wallets."
+      },
+      "q9": {
+        "q": "Can I track my Kundli order?",
+        "a": "Yes! Once your Premium Kundli order is placed, you will receive a unique order ID. You can track the status (Pending → In Progress → Shipped → Delivered) through our website and will also receive updates via WhatsApp and SMS."
+      },
+      "q10": {
+        "q": "Is home visit available in all cities?",
+        "a": "Home visits are available in selected cities. The pricing includes a base consultation fee plus a distance-based travel charge. Enter your address during booking to get an instant quote for your location."
+      },
+      "q11": {
+        "q": "What is the refund policy?",
+        "a": "Digital reports and completed consultations are non-refundable. For Premium Kundli orders, you can cancel before the preparation begins for a full refund. If preparation has started, a 50% refund will be issued."
+      },
+      "q12": {
+        "q": "How do I book a Standard Consultation?",
+        "a": "Visit our Consultation page, select \"Standard Consultation\", choose an available date and time slot from the calendar, fill in your personal details, and complete the payment. You will receive a confirmation via email and WhatsApp."
+      }
+    }
+  },
+  "service_page": {
+    "most_popular": "Most Popular",
+    "premium_service": "Premium Service",
+    "book_now": "Book Now",
+    "trust": "100% Satisfaction Guarantee • Authentic Vedic Astrology",
+    "everything": "Everything You Get",
+    "whats_included_1": "What's",
+    "whats_included_em": "Included",
+    "journey_1": "Journey to",
+    "journey_em": "Clarity",
+    "journey_desc": "A simple, profoundly accurate process.",
+    "timeline": {
+      "t1_title": "Provide Details",
+      "t1_kundali": "Share your exact Birth Date, Time, and Location for precise calculation.",
+      "t1_vastu": "Upload your floor plan and plot's directional facing.",
+      "t1_consultation": "Select a convenient time slot and describe your main life concerns.",
+      "t2_title": "Expert Analysis",
+      "t2_desc": "Acharya Ji personally analyzes your data using authentic Vedic principles, hand-calculating every major aspect.",
+      "t3_title": "Receive Guidance",
+      "t3_desc": "Access your handwritten report or join your 1-on-1 session to walk through precise, actionable remedies."
+    }
+  },
+  "services_data": {
+    "kundali": {
+      "detailed": {
+        "name": "Premium Handwritten Kundli",
+        "description": "A comprehensive, handwritten Janam Kundli prepared by Kundaliwaale, delivered to your doorstep.",
+        "features": [
+          "Handwritten by Kundaliwaale personally",
+          "Complete Janam Kundli analysis",
+          "Dasha analysis for 20+ years",
+          "Career, Love & Health insights",
+          "Remedial measures & gemstone suggestions",
+          "Physical delivery via courier",
+          "Order tracking updates via WhatsApp"
+        ]
+      },
+      "short": {
+        "name": "Digital Kundli Report",
+        "description": "A concise digital Kundli report with key life insights, delivered instantly via email.",
+        "features": [
+          "Computer-generated with expert review",
+          "Key planetary positions & insights",
+          "5-year Dasha overview",
+          "Basic career & relationship guidance",
+          "PDF download + email delivery",
+          "Instant delivery"
+        ]
+      }
+    },
+    "vastu": {
+      "online": {
+        "name": "Online Vastu Analysis",
+        "description": "Upload your home or office blueprint and receive a detailed Vastu analysis report.",
+        "features": [
+          "Upload blueprint & house photos",
+          "Detailed room-by-room analysis",
+          "Directional corrections",
+          "Remedial measures",
+          "Report delivered via email",
+          "One follow-up call included"
+        ]
+      },
+      "home-visit": {
+        "name": "Home Visit Consultation",
+        "description": "Kundaliwaale visits your home/office in person for a thorough on-site Vastu evaluation.",
+        "features": [
+          "In-person visit by Kundaliwaale",
+          "Complete property inspection",
+          "On-site energy assessment",
+          "Detailed written report",
+          "Personalized remedies",
+          "Two follow-up calls included",
+          "Distance-based pricing may apply"
+        ]
+      }
+    },
+    "consultation": {
+      "standard": {
+        "name": "Standard Consultation",
+        "description": "A 45-minute 1-on-1 video or phone consultation with Kundaliwaale.",
+        "features": [
+          "45-minute session",
+          "Video or phone call",
+          "Personalized guidance",
+          "Career, love & health focus",
+          "Remedial suggestions",
+          "Session recording shared"
+        ]
+      },
+      "quick": {
+        "name": "₹51 Quick Consultation",
+        "description": "A quick introductory consultation — our Purohit calls you back within 24 hours.",
+        "features": [
+          "15-minute phone consultation",
+          "Purohit callback within 24hrs",
+          "One focused question",
+          "Basic guidance & remedy",
+          "Upgrade option to full consultation"
+        ]
+      }
+    }
   }
 }

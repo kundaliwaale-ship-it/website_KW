@@ -5,8 +5,10 @@ import React, { useState } from 'react';
 import styles from './contact.module.css';
 import Button from '@/components/ui/Button';
 import { submitContactInquiry } from '@/actions/contact';
+import { useLanguage } from '@/i18n/LanguageContext';
 
 export default function ContactPage() {
+  const { dict } = useLanguage();
   const [submitted, setSubmitted] = useState(false);
 
   const [loading, setLoading] = useState(false);
@@ -39,48 +41,48 @@ export default function ContactPage() {
       <div className="orb-secondary"></div>
       <section className={`${styles.hero} relative-z`}>
         <div className={styles.heroInner}>
-          <h1 className="font-serif thread-heading">Get in <em>Touch</em></h1>
+          <h1 className="font-serif thread-heading">{dict.contact_page.hero.title_1} <em>{dict.contact_page.hero.title_em}</em></h1>
         </div>
       </section>
 
       <section className={`${styles.content} relative-z`}>
         <div className={styles.contentInner}>
           <div className={`${styles.formCol} glass-card`}>
-            <h2 className="font-serif">Send us a Message</h2>
+            <h2 className="font-serif">{dict.contact_page.form.title}</h2>
             {submitted ? (
               <div className={styles.successMsg}>
                 <span><CheckCircle size={48} color="var(--accent-green)" /></span>
-                <h3 className="font-serif">Thank you!</h3>
-                <p className="font-sans">Your message has been sent. We&apos;ll get back to you within 24 hours.</p>
+                <h3 className="font-serif">{dict.contact_page.form.success_msg}</h3>
+                <p className="font-sans">{dict.contact_page.form.success_desc}</p>
               </div>
             ) : (
               <form className={styles.form} onSubmit={handleSubmit}>
                 <div className={styles.formRow}>
                   <div className={styles.formGroup}>
-                    <label className="font-sans">Full Name</label>
+                    <label className="font-sans">{dict.contact_page.form.name_label}</label>
                     <input type="text" name="fullName" required placeholder="John Doe" className="font-sans" />
                   </div>
                   <div className={styles.formGroup}>
-                    <label className="font-sans">Email Address</label>
+                    <label className="font-sans">{dict.contact_page.form.email_label}</label>
                     <input type="email" name="email" required placeholder="john@example.com" className="font-sans" />
                   </div>
                 </div>
                 <div className={styles.formGroup}>
-                  <label className="font-sans">Phone Number (Optional)</label>
+                  <label className="font-sans">{dict.contact_page.form.phone_label}</label>
                   <input type="tel" name="phone" placeholder="+91 98765 00000" className="font-sans" />
                 </div>
                 <div className={styles.formGroup}>
-                  <label className="font-sans">Subject</label>
+                  <label className="font-sans">{dict.contact_page.form.subject_label}</label>
                   <select name="subject" className="font-sans">
-                    <option>General Inquiry</option>
-                    <option>Kundli Report Issue</option>
-                    <option>Consultation Reschedule</option>
-                    <option>Other</option>
+                    <option>{dict.contact_page.form.subjects.gen}</option>
+                    <option>{dict.contact_page.form.subjects.issue}</option>
+                    <option>{dict.contact_page.form.subjects.reschedule}</option>
+                    <option>{dict.contact_page.form.subjects.other}</option>
                   </select>
                 </div>
                 <div className={styles.formGroup}>
-                  <label className="font-sans">Message</label>
-                  <textarea name="message" required rows={4} placeholder="How can we help you?" className="font-sans"></textarea>
+                  <label className="font-sans">{dict.contact_page.form.msg_label}</label>
+                  <textarea name="message" required rows={4} placeholder={dict.contact_page.form.msg_placeholder} className="font-sans"></textarea>
                 </div>
                 {error && <div style={{ color: 'red', marginTop: '0.5rem' }}>{error}</div>}
                 <Button 
@@ -88,20 +90,20 @@ export default function ContactPage() {
                   style={{ width: '100%', padding: '1rem', marginTop: '1rem' }}
                   disabled={loading}
                 >
-                  {loading ? 'SENDING...' : 'SEND MESSAGE'}
+                  {loading ? dict.contact_page.form.btn_sending : dict.contact_page.form.btn_send}
                 </Button>
               </form>
             )}
           </div>
 
           <div className={`${styles.infoCol} glass-card`}>
-            <h2 className="font-serif">Contact Information</h2>
+            <h2 className="font-serif">{dict.contact_page.info.title}</h2>
             <div className={styles.infoCards}>
               
               <div className={styles.infoCard}>
                 <span className={styles.infoIcon}><Phone size={24} /></span>
                 <div>
-                  <h4 className="font-sans">Phone</h4>
+                  <h4 className="font-sans">{dict.contact_page.info.phone}</h4>
                   <p className="font-sans">+91 98765 43210</p>
                 </div>
               </div>
@@ -109,7 +111,7 @@ export default function ContactPage() {
               <div className={styles.infoCard}>
                 <span className={styles.infoIcon}><MessageCircle size={24} /></span>
                 <div>
-                  <h4 className="font-sans">WhatsApp</h4>
+                  <h4 className="font-sans">{dict.contact_page.info.whatsapp}</h4>
                   <p className="font-sans">+91 98765 43210</p>
                 </div>
               </div>
@@ -117,7 +119,7 @@ export default function ContactPage() {
               <div className={styles.infoCard}>
                 <span className={styles.infoIcon}><Mail size={24} /></span>
                 <div>
-                  <h4 className="font-sans">Email</h4>
+                  <h4 className="font-sans">{dict.contact_page.info.email}</h4>
                   <p className="font-sans">info@kundaliwaale.com</p>
                 </div>
               </div>
@@ -125,7 +127,7 @@ export default function ContactPage() {
               <div className={styles.infoCard}>
                 <span className={styles.infoIcon}><MapPin size={24} /></span>
                 <div>
-                  <h4 className="font-sans">Head Office</h4>
+                  <h4 className="font-sans">{dict.contact_page.info.address}</h4>
                   <p className="font-sans">123, Astro Tower, Connaught Place,<br/>New Delhi - 110001, India</p>
                 </div>
               </div>

@@ -1,10 +1,15 @@
+'use client';
+
 import React from 'react';
+import { useLanguage } from '@/i18n/LanguageContext';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './AboutAcharya.module.css';
 import { GraduationCap, Book, Globe, Star, User } from 'lucide-react';
 
 export default function AboutAcharya() {
+  const { dict } = useLanguage();
+
   return (
     <section className={styles.section}>
       <div className={styles.inner}>
@@ -17,41 +22,41 @@ export default function AboutAcharya() {
             />
           </div>
           <div className={styles.experienceBadge}>
-            <h4 className="font-body">100%</h4>
-            <p className="font-sans">Handwritten</p>
+            <h4 className="font-body">{dict.about_acharya.badge_1}</h4>
+            <p className="font-sans">{dict.about_acharya.badge_2}</p>
           </div>
         </div>
 
         <div className={styles.manuscriptBox}>
           <div className={styles.content}>
           <h2 className="font-serif">
-            About <em>Kundaliwaale</em>
+            {dict.about_acharya.title_1} <em>{dict.about_acharya.title_em}</em>
           </h2>
           <p className="font-sans">
-            Now, you can have the finest authentic Handwritten Kundlis prepared with sacred Vedic precision and delivered directly to your doorstep. We combine ancient mathematical Jyotish principles with dedicated personal care — delivering pure, unadulterated astrological clarity to your home without computer-generated shortcuts or false promises.
+            {dict.about_acharya.desc}
           </p>
 
           <div className={styles.credentials}>
             <div className={styles.credential}>
               <GraduationCap size={20} />
-              <span className="font-sans">Jyotish Acharya Certified</span>
+              <span className="font-sans">{dict.about_acharya.credentials.cert}</span>
             </div>
             <div className={styles.credential}>
               <Book size={20} />
-              <span className="font-sans">Sacred Vedic Manuscripts</span>
+              <span className="font-sans">{dict.about_acharya.credentials.manuscript}</span>
             </div>
             <div className={styles.credential}>
               <Globe size={20} />
-              <span className="font-sans">Pan-India Home Delivery</span>
+              <span className="font-sans">{dict.about_acharya.credentials.delivery}</span>
             </div>
             <div className={styles.credential}>
               <Star size={20} />
-              <span className="font-sans">100% Personalized & Handcrafted</span>
+              <span className="font-sans">{dict.about_acharya.credentials.personalized}</span>
             </div>
           </div>
 
           <Link href="/about" className={`${styles.readMore} font-sans`}>
-            Read Full Bio <span>→</span>
+            {dict.about_acharya.read_more} <span>→</span>
           </Link>
           </div>
         </div>

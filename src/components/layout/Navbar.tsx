@@ -46,6 +46,25 @@ export default function Navbar() {
   const pathname = usePathname();
   const { locale, setLocale, dict } = useLanguage();
 
+  const getNavTranslation = (label: string) => {
+    switch(label) {
+      case 'Reports': return dict.nav.reports;
+      case 'Premium Kundli': return dict.nav.reports_premium;
+      case 'Digital Kundli': return dict.nav.reports_digital;
+      case 'Consultation': return dict.nav.consultation;
+      case 'Astrology Consultation': return dict.nav.consultation_astrology;
+      case '₹51 Quick Consultation': return dict.nav.consultation_quick;
+      case 'Vastu': return dict.nav.vastu;
+      case 'Online Analysis': return dict.nav.vastu_online;
+      case 'Home Visit': return dict.nav.vastu_home;
+      case 'About': return dict.nav.about;
+      case 'Testimonials': return dict.nav.testimonials;
+      case 'Contact': return dict.nav.contact;
+      case 'FAQ': return dict.nav.faq;
+      default: return label;
+    }
+  };
+
   const dashboardHref = '/dashboard';
   const dashboardLabel = 'DASHBOARD';
 
@@ -101,7 +120,7 @@ export default function Navbar() {
               {item.dropdown ? (
                 <>
                   <button className={`${styles.link} font-sans`}>
-                    {item.label}
+                    {getNavTranslation(item.label)}
                     <span className={styles.linkArrow}><ChevronDown size={14} /></span>
                   </button>
                   <div className={styles.dropdown}>
@@ -111,26 +130,19 @@ export default function Navbar() {
                         href={sub.href}
                         className={`${styles.dropdownLink} font-sans`}
                       >
-                        {sub.label}
+                        {getNavTranslation(sub.label)}
                       </Link>
                     ))}
                   </div>
                 </>
               ) : (
                 <Link href={item.href!} className={`${styles.link} font-sans`}>
-                  {item.label}
+                  {getNavTranslation(item.label)}
                 </Link>
               )}
             </div>
           ))}
-          <div className={styles.loginBtn} style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-            <button 
-               onClick={() => setLocale(locale === 'en' ? 'hi' : 'en')}
-               className="font-sans"
-               style={{ background: 'none', border: '1px solid var(--color-gold)', color: 'var(--color-gold)', padding: '0.25rem 0.5rem', borderRadius: '4px', cursor: 'pointer', fontSize: '0.85rem' }}
-            >
-              {locale === 'en' ? 'हिन्दी' : 'EN'}
-            </button>
+          <div className={styles.loginBtn} style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
             {user ? (
               <Link href={dashboardHref}>
                 <Button variant="primary">{dict.nav.dashboard}</Button>
@@ -140,6 +152,14 @@ export default function Navbar() {
                 <Button variant="primary">{dict.nav.login}</Button>
               </Link>
             )}
+            <button 
+               onClick={() => setLocale(locale === 'en' ? 'hi' : 'en')}
+               className="font-sans"
+               style={{ background: 'none', border: 'none', color: 'var(--color-gold)', cursor: 'pointer', fontSize: '0.95rem', fontWeight: 600, padding: 0, letterSpacing: '0.05em' }}
+               title={locale === 'en' ? 'Switch to Hindi' : 'Switch to English'}
+            >
+              {locale === 'en' ? 'HI' : 'EN'}
+            </button>
           </div>
         </div>
 
@@ -167,7 +187,7 @@ export default function Navbar() {
           <div key={item.label}>
             {item.dropdown ? (
               <>
-                <span className={`${styles.mobileLink} font-sans`}>{item.label}</span>
+                <span className={`${styles.mobileLink} font-sans`}>{getNavTranslation(item.label)}</span>
                 {item.dropdown.map((sub) => (
                   <Link
                     key={sub.label}
@@ -175,7 +195,7 @@ export default function Navbar() {
                     className={`${styles.mobileSubLink} font-sans`}
                     onClick={() => setMobileOpen(false)}
                   >
-                    {sub.label}
+                    {getNavTranslation(sub.label)}
                   </Link>
                 ))}
               </>
@@ -185,28 +205,30 @@ export default function Navbar() {
                 className={`${styles.mobileLink} font-sans`}
                 onClick={() => setMobileOpen(false)}
               >
-                {item.label}
+                {getNavTranslation(item.label)}
               </Link>
             )}
           </div>
         ))}
-        <div className={styles.mobileLoginBtn} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <div className={styles.mobileLoginBtn} style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <div style={{ flex: 1 }}>
+            {user ? (
+              <Link href={dashboardHref}>
+                <Button variant="primary" style={{ width: '100%' }}>{dict.nav.dashboard}</Button>
+              </Link>
+            ) : (
+              <Link href="/login">
+                <Button variant="primary" style={{ width: '100%' }}>{dict.nav.login}</Button>
+              </Link>
+            )}
+          </div>
           <button 
              onClick={() => setLocale(locale === 'en' ? 'hi' : 'en')}
              className="font-sans"
-             style={{ background: 'none', border: '1px solid var(--color-gold)', color: 'var(--color-gold)', padding: '0.5rem', borderRadius: '4px', cursor: 'pointer', fontSize: '0.9rem', width: '100%' }}
+             style={{ background: 'none', border: 'none', color: 'var(--color-gold)', cursor: 'pointer', fontSize: '1.1rem', fontWeight: 600, padding: '0.5rem' }}
           >
-            {locale === 'en' ? 'Switch to हिन्दी' : 'Switch to English'}
+            {locale === 'en' ? 'HI' : 'EN'}
           </button>
-          {user ? (
-            <Link href={dashboardHref}>
-              <Button variant="primary" style={{ width: '100%' }}>{dict.nav.dashboard}</Button>
-            </Link>
-          ) : (
-            <Link href="/login">
-              <Button variant="primary" style={{ width: '100%' }}>{dict.nav.login}</Button>
-            </Link>
-          )}
         </div>
       </div>
     </>
