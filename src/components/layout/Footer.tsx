@@ -55,8 +55,9 @@ export default function Footer() {
             © {new Date().getFullYear()} Kundaliwaale. All rights reserved.
           </p>
           <div className={styles.legalLinks}>
-            <Link href="#" className="font-sans">Privacy Policy</Link>
-            <Link href="#" className="font-sans">Terms of Service</Link>
+            <Link href="/privacy" className="font-sans">Privacy Policy</Link>
+            <Link href="/terms" className="font-sans">Terms of Service</Link>
+            <Link href="/refund" className="font-sans">Refund Policy</Link>
           </div>
         </div>
       </footer>

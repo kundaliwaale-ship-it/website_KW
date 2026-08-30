@@ -1,0 +1,44 @@
+.page {
+  min-height: 100vh;
+  padding: 8rem 1rem 4rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  color: var(--text-primary);
+}
+
+.container {
+  max-width: 800px;
+  width: 100%;
+  padding: 3rem;
+  border-radius: 12px;
+}
+
+.container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-gold);
+}
+
+.content h2 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: var(--color-gold);
+}
+
+.content p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 2rem;
+  }
+  .container h1 {
+    font-size: 2rem;
+  }
+}
