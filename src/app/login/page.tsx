@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 import { login, signup } from '@/actions/auth'
 import styles from './login.module.css'
 import { Sparkles, ShieldCheck } from 'lucide-react'
@@ -75,6 +76,13 @@ export default function LoginPage() {
           <div className={styles.formGroup}>
             <label className="font-sans">Password</label>
             <input type="password" name="password" required placeholder="••••••••" minLength={6} />
+            {isLogin && (
+              <div style={{ textAlign: 'right', marginTop: '0.5rem' }}>
+                <Link href="/forgot-password" className="font-sans" style={{ color: 'var(--color-gold)', fontSize: '0.85rem', textDecoration: 'none' }}>
+                  Forgot Password?
+                </Link>
+              </div>
+            )}
           </div>
 
           <button

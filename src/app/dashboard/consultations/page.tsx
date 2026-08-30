@@ -1,14 +1,59 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from '../dashboard.module.css';
 import Button from '@/components/ui/Button';
+import { createClient } from '@/utils/supabase/client';
+import { User } from '@supabase/supabase-js';
+
+interface ConsultData {
+  id: string;
+  service: string;
+  date: string;
+  time: string;
+  status: string;
+  link: string | null;
+  sortDate: Date;
+}
 
 export default function UserConsultationsPage() {
-  const allConsultations = [
-    { id: 'APT-001', service: 'Astrology Consultation', date: '05 Aug 2026', time: '10:00 AM', status: 'Upcoming', link: 'https://zoom.us/j/123456789' },
-    { id: 'APT-002', service: '₹51 Quick Consultation', date: '10 Jan 2026', time: 'Callback', status: 'Completed', link: null },
-  ];
+  const supabase = createClient();
+  const [consultations, setConsultations] = useState<ConsultData[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchConsultations = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) {
+        setLoading(false);
+        return;
+      }
+
+      const { data, error } = await supabase
+        .from('consultation_orders')
+        .select('*')
+        .eq('user_id', user.id)
+        .order('created_at', { ascending: false });
+
+      if (data) {
+        setConsultations(data.map(o => {
+          const selectedTime = new Date(o.selected_time);
+          return {
+            id: o.id.split('-')[0].toUpperCase(),
+            service: 'Astrology Consultation',
+            date: selectedTime.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }),
+            time: selectedTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+            status: o.status,
+            link: null, // Depending on backend this could be added to DB later
+            sortDate: new Date(o.created_at)
+          };
+        }));
+      }
+      setLoading(false);
+    };
+
+    fetchConsultations();
+  }, [supabase]);
 
   const getStatusColor = (status: string) => {
     switch (status) {
@@ -18,6 +63,10 @@ export default function UserConsultationsPage() {
       default: return { bg: 'rgba(255, 255, 255, 0.1)', text: 'var(--text-primary)' };
     }
   };
+
+  if (loading) {
+    return <div className={styles.loadingState}>Loading consultations...</div>;
+  }
 
   return (
     <div>
@@ -37,7 +86,7 @@ export default function UserConsultationsPage() {
               </tr>
             </thead>
             <tbody>
-              {allConsultations.map((apt) => {
+              {consultations.length > 0 ? consultations.map((apt) => {
                 const colors = getStatusColor(apt.status);
                 return (
                   <tr key={apt.id}>
@@ -60,7 +109,13 @@ export default function UserConsultationsPage() {
                     </td>
                   </tr>
                 );
-              })}
+              }) : (
+                <tr>
+                  <td colSpan={5} className="font-sans" style={{ textAlign: 'center', padding: '2rem', color: 'var(--text-secondary)' }}>
+                    You do not have any consultations yet.
+                  </td>
+                </tr>
+              )}
             </tbody>
           </table>
         </div>

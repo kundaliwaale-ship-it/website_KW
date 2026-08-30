@@ -37,17 +37,17 @@ export async function POST(request: Request) {
         user_id: user.id,
         kundali_type: tier,
         amount,
-        full_name: formData.name,
+        full_name: formData.fullName,
         dob: formData.dob,
         tob: formData.tob,
         pob: formData.pob,
-        fathers_name: formData.fathers_name || 'N/A',
-        mothers_name: formData.mothers_name || 'N/A',
-        grandfathers_name: formData.grandfathers_name || 'N/A',
-        grandmothers_name: formData.grandmothers_name || 'N/A',
-        mobile_number_1: formData.mobile_number_1 || formData.phone || 'N/A',
-        mobile_number_2: formData.mobile_number_2 || null,
-        delivery_address: formData.delivery_address || 'N/A',
+        fathers_name: formData.fathersName || 'N/A',
+        mothers_name: formData.mothersName || 'N/A',
+        grandfathers_name: formData.grandfathersName || 'N/A',
+        grandmothers_name: formData.grandmothersName || 'N/A',
+        mobile_number_1: formData.mobile1 || 'N/A',
+        mobile_number_2: formData.mobile2 || null,
+        delivery_address: formData.deliveryAddress || 'N/A',
         razorpay_order_id: rzpOrder.id
       }]).select()
       dbError = error
@@ -55,9 +55,9 @@ export async function POST(request: Request) {
     } else if (category === 'consultation') {
       const { data, error } = await supabase.from('consultation_orders').insert([{
         user_id: user.id,
-        name: formData.name,
-        mobile_number: formData.phone,
-        selected_time: formData.date ? new Date(formData.date).toISOString() : new Date().toISOString(),
+        name: formData.fullName,
+        mobile_number: formData.mobile1,
+        selected_time: formData.selectedTime ? new Date(formData.selectedTime).toISOString() : new Date().toISOString(),
         amount,
         razorpay_order_id: rzpOrder.id
       }]).select()
@@ -68,14 +68,14 @@ export async function POST(request: Request) {
         user_id: user.id,
         vastu_type: tier,
         amount,
-        complete_address: formData.address,
-        mobile_number: formData.phone,
+        complete_address: formData.completeAddress,
+        mobile_number: formData.mobile1,
         state: formData.state,
         district: formData.district,
         town: formData.town,
         distance_calculated: formData.distance ? parseFloat(formData.distance) : null,
-        blueprint_pdf: formData.blueprint_pdf_url || null,
-        house_images: formData.house_images_urls || null,
+        blueprint_pdf: formData.pdfUrl || null,
+        house_images: formData.imageUrls || null,
         razorpay_order_id: rzpOrder.id
       }]).select()
       dbError = error

@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Script from 'next/script';
 import Button from '@/components/ui/Button';
 import { useRouter } from 'next/navigation';
+import { createClient } from '@/utils/supabase/client';
 
 export default function BookingForm({ category, tier, price }: { category: string, tier: string, price: number }) {
   const router = useRouter();
@@ -53,7 +54,7 @@ export default function BookingForm({ category, tier, price }: { category: strin
     const res = await fetch('/api/payment/create-order', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ amount: actualPrice, category, tier, orderData })
+      body: JSON.stringify({ amount: actualPrice, category, tier, formData: orderData })
     });
     const orderDetails = await res.json();
     
@@ -70,7 +71,7 @@ export default function BookingForm({ category, tier, price }: { category: strin
       handler: async function (response: { razorpay_order_id: string; razorpay_payment_id: string; razorpay_signature: string }) {
         // 3. Verify Payment
         try {
-          const verifyRes = await fetch('/api/payment/verify-payment', {
+          const verifyRes = await fetch('/api/payment/verify', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -80,7 +81,8 @@ export default function BookingForm({ category, tier, price }: { category: strin
               category,
               tier,
               amount: actualPrice,
-              orderData
+              formData: orderData,
+              dbOrderId: orderDetails.dbOrderId
             })
           });
           
@@ -119,12 +121,36 @@ export default function BookingForm({ category, tier, price }: { category: strin
 
     try {
       // If Vastu Blueprint, upload files to Supabase Storage first
-      const pdfUrl = '';
+      let pdfUrl = '';
       const imageUrls: string[] = [];
       
       if (category === 'vastu' && formData.vastuType === 'blueprint_analysis') {
-         // TODO: Upload files via supabase-js before payment, get URLs
-         // (Implementation requires Supabase storage bucket setup)
+         const supabase = createClient();
+         const bucketName = 'Vastu-Blueprints';
+         
+         if (!blueprintPdf) throw new Error('Please upload the blueprint PDF.');
+         if (!houseImages || houseImages.length === 0) throw new Error('Please upload at least one house image.');
+
+         // 1. Upload PDF
+         const pdfExt = blueprintPdf.name.split('.').pop();
+         const pdfFileName = `blueprint-${Date.now()}.${pdfExt}`;
+         const { error: pdfError } = await supabase.storage.from(bucketName).upload(pdfFileName, blueprintPdf);
+         if (pdfError) throw new Error('Failed to upload Blueprint PDF: ' + pdfError.message);
+         
+         const { data: pdfPublicUrl } = supabase.storage.from(bucketName).getPublicUrl(pdfFileName);
+         pdfUrl = pdfPublicUrl.publicUrl;
+
+         // 2. Upload Images
+         for (let i = 0; i < houseImages.length; i++) {
+           const file = houseImages[i];
+           const imgExt = file.name.split('.').pop();
+           const imgFileName = `house-${Date.now()}-${i}.${imgExt}`;
+           const { error: imgError } = await supabase.storage.from(bucketName).upload(imgFileName, file);
+           if (imgError) throw new Error('Failed to upload House Images: ' + imgError.message);
+           
+           const { data: imgPublicUrl } = supabase.storage.from(bucketName).getPublicUrl(imgFileName);
+           imageUrls.push(imgPublicUrl.publicUrl);
+         }
       }
 
       await handleRazorpayPayment({ ...formData, pdfUrl, imageUrls });

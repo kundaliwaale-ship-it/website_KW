@@ -44,8 +44,16 @@ export const metadata: Metadata = {
     title: "Kundaliwaale — Your Cosmic Guide",
     description:
       "Premium Vedic Astrology & Vastu consultations. Get your personalized Kundli today.",
+    url: "https://kundaliwaale.com",
+    siteName: "Kundaliwaale",
     type: "website",
     locale: "en_IN",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Kundaliwaale — Your Cosmic Guide | Vedic Astrology & Vastu",
+    description:
+      "Now you can have the best possible authentic Handwritten Kundlis delivered directly to your home. Personalized Vedic astrology, expert Vastu consultations, and honest guidance from Kundaliwaale.",
   },
 };
 
