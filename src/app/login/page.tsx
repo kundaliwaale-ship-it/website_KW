@@ -9,7 +9,6 @@ import { Sparkles, ShieldCheck } from 'lucide-react'
 export default function LoginPage() {
   const router = useRouter()
   const [isLogin, setIsLogin] = useState(true)
-  const [role, setRole] = useState('user')
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
 
@@ -50,27 +49,6 @@ export default function LoginPage() {
             : 'Create an account to get started with your cosmic journey'}
         </p>
 
-        {/* Role Toggle */}
-        <div className={styles.roleToggle}>
-          <button
-            type="button"
-            className={`${styles.roleOption} ${role === 'user' ? styles.roleOptionActive : ''} font-sans`}
-            onClick={() => setRole('user')}
-          >
-            <Sparkles size={14} style={{ marginRight: '6px', verticalAlign: '-2px' }} />
-            Customer
-          </button>
-          <button
-            type="button"
-            className={`${styles.roleOption} ${role === 'admin' ? styles.roleOptionActive : ''} font-sans`}
-            onClick={() => setRole('admin')}
-          >
-            <ShieldCheck size={14} style={{ marginRight: '6px', verticalAlign: '-2px' }} />
-            Admin
-          </button>
-        </div>
-        {/* Hidden input so role is included in FormData */}
-        <input type="hidden" name="role" value={role} />
 
         {error && <div className={styles.error}>{error}</div>}
 
@@ -88,12 +66,6 @@ export default function LoginPage() {
             </div>
           )}
 
-          {role === 'admin' && !isLogin && (
-            <div className={styles.formGroup}>
-              <label className="font-sans">Admin Invite Code</label>
-              <input type="password" name="adminCode" required placeholder="Enter invite code" />
-            </div>
-          )}
 
           <div className={styles.formGroup}>
             <label className="font-sans">Email Address</label>

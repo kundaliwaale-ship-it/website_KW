@@ -15,17 +15,17 @@ export async function login(formData: FormData) {
     role: formData.get('role') as string || 'user',
   }
 
-  const { error } = await supabase.auth.signInWithPassword({
+  const { data: authData, error } = await supabase.auth.signInWithPassword({
     email: data.email,
     password: data.password,
   })
 
-  if (error) {
-    return { error: error.message }
+  if (error || !authData.user) {
+    return { error: error?.message || 'Login failed' }
   }
 
   revalidatePath('/', 'layout')
-  return { redirectTo: data.role === 'admin' ? '/admin' : '/dashboard' }
+  return { redirectTo: '/dashboard' }
 }
 
 export async function signup(formData: FormData) {
@@ -48,29 +48,30 @@ export async function signup(formData: FormData) {
     password: formData.get('password') as string,
     fullName: formData.get('fullName') as string,
     phone: formData.get('phone') as string,
-    role: formData.get('role') as string || 'user',
-    adminCode: formData.get('adminCode') as string,
   }
 
-  if (data.role === 'admin' && data.adminCode !== process.env.ADMIN_INVITE_CODE) {
-    return { error: 'Invalid Admin Invite Code' }
-  }
 
   // Use Admin API to create user with email_confirm: true
-  const { error: signUpError } = await adminAuthClient.auth.admin.createUser({
+  const { data: authData, error: signUpError } = await adminAuthClient.auth.admin.createUser({
     email: data.email,
     password: data.password,
     email_confirm: true,
     user_metadata: {
       full_name: data.fullName,
       phone_number: data.phone,
-      role: data.role,
     }
   })
 
-  if (signUpError) {
-    return { error: signUpError.message }
+  if (signUpError || !authData.user) {
+    return { error: signUpError?.message || 'Failed to create user' }
   }
+
+  // Insert into profiles table since we bypass trigger
+  await adminAuthClient.from('profiles').insert({
+    id: authData.user.id,
+    full_name: data.fullName,
+    phone_number: data.phone,
+  })
 
   // Log the user in to establish the session cookies for the client
   const { error: signInError } = await supabase.auth.signInWithPassword({
@@ -83,7 +84,7 @@ export async function signup(formData: FormData) {
   }
 
   revalidatePath('/', 'layout')
-  return { redirectTo: data.role === 'admin' ? '/admin' : '/dashboard' }
+  return { redirectTo: '/dashboard' }
 }
 
 export async function logout() {

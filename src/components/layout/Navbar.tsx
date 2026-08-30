@@ -41,12 +41,11 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [user, setUser] = useState<User | null>(null);
-  const [userRole, setUserRole] = useState<string>('user');
   const supabase = createClient();
   const pathname = usePathname();
 
-  const dashboardHref = userRole === 'admin' ? '/admin' : '/dashboard';
-  const dashboardLabel = userRole === 'admin' ? 'ADMIN' : 'DASHBOARD';
+  const dashboardHref = '/dashboard';
+  const dashboardLabel = 'DASHBOARD';
 
   useEffect(() => {
     setMobileOpen(false);
@@ -61,8 +60,7 @@ export default function Navbar() {
       const { data } = await supabase.auth.getUser();
       setUser(data.user);
       if (data.user) {
-        const { data: profile } = await supabase.from('profiles').select('role').eq('id', data.user.id).single();
-        if (profile?.role) setUserRole(profile.role);
+        // Any profile-specific fetching can go here
       }
     };
     getUser();
