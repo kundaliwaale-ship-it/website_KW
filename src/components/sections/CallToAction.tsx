@@ -13,7 +13,7 @@ export default function CallToAction() {
     <section className={styles.section}>
       <div className={styles.inner}>
         <h2 className="font-serif">
-          {dict.call_to_action.title_1} <em>{dict.call_to_action.title_em}</em> {dict.call_to_action.title_2}
+          {dict.call_to_action.title_1} <em>{dict.call_to_action.title_em}</em>
         </h2>
         <p className="font-sans">
           {dict.call_to_action.subtitle}

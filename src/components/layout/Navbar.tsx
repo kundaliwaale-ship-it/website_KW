@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import styles from './Navbar.module.css';
 import Button from '../ui/Button';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Languages } from 'lucide-react';
 import { createClient } from '@/utils/supabase/client';
 import { User } from '@supabase/supabase-js';
 import { usePathname } from 'next/navigation';
@@ -155,10 +155,10 @@ export default function Navbar() {
             <button 
                onClick={() => setLocale(locale === 'en' ? 'hi' : 'en')}
                className="font-sans"
-               style={{ background: 'none', border: 'none', color: 'var(--color-gold)', cursor: 'pointer', fontSize: '0.95rem', fontWeight: 600, padding: 0, letterSpacing: '0.05em' }}
+               style={{ background: 'none', border: 'none', color: 'var(--color-gold)', cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
                title={locale === 'en' ? 'Switch to Hindi' : 'Switch to English'}
             >
-              {locale === 'en' ? 'HI' : 'EN'}
+              <Languages size={20} />
             </button>
           </div>
         </div>
@@ -225,9 +225,9 @@ export default function Navbar() {
           <button 
              onClick={() => setLocale(locale === 'en' ? 'hi' : 'en')}
              className="font-sans"
-             style={{ background: 'none', border: 'none', color: 'var(--color-gold)', cursor: 'pointer', fontSize: '1.1rem', fontWeight: 600, padding: '0.5rem' }}
+             style={{ background: 'none', border: 'none', color: 'var(--color-gold)', cursor: 'pointer', padding: '0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
           >
-            {locale === 'en' ? 'HI' : 'EN'}
+            <Languages size={24} />
           </button>
         </div>
       </div>

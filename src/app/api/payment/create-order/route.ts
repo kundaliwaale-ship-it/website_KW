@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import Razorpay from 'razorpay'
 import { createClient } from '@/utils/supabase/server'
+import { createClient as createServiceClient } from '@supabase/supabase-js'
 
 export async function POST(request: Request) {
   try {
@@ -9,13 +10,18 @@ export async function POST(request: Request) {
       key_secret: process.env.RAZORPAY_KEY_SECRET || 'dummy_secret',
     })
 
-    const supabase = await createClient()
-    
-    // Ensure user is logged in
-    const { data: { user } } = await supabase.auth.getUser()
+    // Use the cookie-based client to check auth
+    const supabaseAuth = await createClient()
+    const { data: { user } } = await supabaseAuth.auth.getUser()
     if (!user) {
       return NextResponse.json({ error: 'Unauthorized. Please login first.' }, { status: 401 })
     }
+
+    // Use service role client for DB inserts (bypasses RLS)
+    const supabase = createServiceClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!,
+    )
 
     const body = await request.json()
     const { amount, receipt, category, tier, formData } = body
@@ -37,17 +43,17 @@ export async function POST(request: Request) {
         user_id: user.id,
         kundali_type: tier,
         amount,
-        full_name: formData.fullName,
+        full_name: formData.name,
         dob: formData.dob,
         tob: formData.tob,
         pob: formData.pob,
-        fathers_name: formData.fathersName || 'N/A',
-        mothers_name: formData.mothersName || 'N/A',
-        grandfathers_name: formData.grandfathersName || 'N/A',
-        grandmothers_name: formData.grandmothersName || 'N/A',
-        mobile_number_1: formData.mobile1 || 'N/A',
-        mobile_number_2: formData.mobile2 || null,
-        delivery_address: formData.deliveryAddress || 'N/A',
+        fathers_name: formData.fathers_name || 'N/A',
+        mothers_name: formData.mothers_name || 'N/A',
+        grandfathers_name: formData.grandfathers_name || 'N/A',
+        grandmothers_name: formData.grandmothers_name || 'N/A',
+        mobile_number_1: formData.mobile_number_1 || 'N/A',
+        mobile_number_2: formData.mobile_number_2 || null,
+        delivery_address: formData.delivery_address || 'N/A',
         razorpay_order_id: rzpOrder.id
       }]).select()
       dbError = error
@@ -55,9 +61,9 @@ export async function POST(request: Request) {
     } else if (category === 'consultation') {
       const { data, error } = await supabase.from('consultation_orders').insert([{
         user_id: user.id,
-        name: formData.fullName,
-        mobile_number: formData.mobile1,
-        selected_time: formData.selectedTime ? new Date(formData.selectedTime).toISOString() : new Date().toISOString(),
+        name: formData.name,
+        mobile_number: formData.phone,
+        selected_time: formData.date ? new Date(formData.date).toISOString() : new Date().toISOString(),
         amount,
         razorpay_order_id: rzpOrder.id
       }]).select()
@@ -68,14 +74,14 @@ export async function POST(request: Request) {
         user_id: user.id,
         vastu_type: tier,
         amount,
-        complete_address: formData.completeAddress,
-        mobile_number: formData.mobile1,
+        complete_address: formData.address,
+        mobile_number: formData.phone,
         state: formData.state,
         district: formData.district,
         town: formData.town,
         distance_calculated: formData.distance ? parseFloat(formData.distance) : null,
-        blueprint_pdf: formData.pdfUrl || null,
-        house_images: formData.imageUrls || null,
+        blueprint_pdf_url: formData.blueprint_pdf_url || null,
+        house_images_urls: formData.house_images_urls || null,
         razorpay_order_id: rzpOrder.id
       }]).select()
       dbError = error

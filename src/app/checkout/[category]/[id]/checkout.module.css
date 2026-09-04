@@ -1,0 +1,307 @@
+.checkoutPage {
+  min-height: 100vh;
+  background: #FFFFFF;
+  padding-top: 120px; /* Space for navbar */
+  padding-bottom: 4rem;
+}
+
+.checkoutContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 5%;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 3rem;
+  align-items: flex-start;
+}
+
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.rightColumn {
+  position: sticky;
+  top: 120px;
+}
+
+/* Steps */
+.stepHeader {
+  margin-bottom: 2rem;
+}
+
+.stepHeader h1 {
+  font-size: 2.5rem;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.steps {
+  display: flex;
+  gap: 1rem;
+  border-bottom: 1px solid rgba(226, 160, 63, 0.2);
+  padding-bottom: 1rem;
+}
+
+.stepIndicator {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  padding-bottom: 0.5rem;
+  position: relative;
+}
+
+.activeStep {
+  color: var(--color-gold);
+}
+
+.activeStep::after {
+  content: '';
+  position: absolute;
+  bottom: -1rem;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--color-gold);
+}
+
+/* Cards */
+.formCard {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(226, 160, 63, 0.2);
+  border-radius: 24px;
+  padding: 2.5rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+}
+
+.summaryCard {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(226, 160, 63, 0.2);
+  border-radius: 24px;
+  padding: 2.5rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+}
+
+.summaryCard h3 {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(226, 160, 63, 0.15);
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+.summaryTotal {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed rgba(226, 160, 63, 0.3);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.summaryTotal span:last-child {
+  color: var(--color-gold);
+  font-size: 1.5rem;
+}
+
+/* Forms */
+.formGroup {
+  margin-bottom: 1.5rem;
+}
+
+.formGroup label {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.formGroup input,
+.formGroup select,
+.formGroup textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(226, 160, 63, 0.2);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.formGroup input:focus,
+.formGroup select:focus,
+.formGroup textarea:focus {
+  outline: none;
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 3px rgba(226, 160, 63, 0.1);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.formActions {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Success State */
+.successWrapper {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.successIcon {
+  color: var(--accent-green);
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.successWrapper h3 {
+  font-size: 2.5rem;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.successWrapper p {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .checkoutPage {
+    padding-top: 100px;
+  }
+
+  .checkoutContainer {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .rightColumn {
+    position: static;
+    order: -1; /* Put summary on top */
+  }
+
+  .stepHeader h1 {
+    font-size: 2rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .checkoutPage {
+    padding-top: 80px;
+    padding-bottom: 2rem;
+  }
+
+  .checkoutContainer {
+    padding: 0 1rem;
+    gap: 1rem;
+  }
+
+  .stepHeader {
+    margin-bottom: 1rem;
+  }
+
+  .stepHeader h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .steps {
+    gap: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .stepIndicator {
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+  }
+  
+  .formCard, .summaryCard {
+    padding: 1.25rem;
+    border-radius: 16px;
+  }
+
+  .summaryCard h3 {
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .summaryRow {
+    font-size: 0.9rem;
+    padding: 0.5rem 0;
+  }
+
+  .summaryTotal {
+    font-size: 1.05rem;
+  }
+
+  .summaryTotal span:last-child {
+    font-size: 1.2rem;
+  }
+
+  .formGroup {
+    margin-bottom: 1rem;
+  }
+
+  .formGroup label {
+    font-size: 0.8rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .formGroup input,
+  .formGroup select,
+  .formGroup textarea {
+    padding: 0.7rem 0.85rem;
+    font-size: 0.9rem;
+    border-radius: 10px;
+  }
+  
+  .row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .formActions {
+    margin-top: 1.25rem;
+  }
+
+  .successWrapper {
+    padding: 2rem 1rem;
+  }
+
+  .successWrapper h3 {
+    font-size: 1.75rem;
+  }
+
+  .successWrapper p {
+    font-size: 0.95rem;
+  }
+}

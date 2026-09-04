@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import crypto from 'crypto'
-import { createClient } from '@/utils/supabase/server'
+import { createClient } from '@supabase/supabase-js'
 
 export async function POST(request: Request) {
   try {
@@ -25,7 +25,11 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Invalid Payment Signature' }, { status: 400 })
     }
 
-    const supabase = await createClient()
+    // Use service role client for DB updates (bypasses RLS)
+    const supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!,
+    )
     
     // Update order status in DB
     const updateData = {

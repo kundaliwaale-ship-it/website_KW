@@ -164,7 +164,7 @@
 
 .bentoGrid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 0;
   border-top: 1px solid rgba(226, 160, 63, 0.15);
   border-left: 1px solid rgba(226, 160, 63, 0.15);
@@ -354,6 +354,7 @@
 
 @media (max-width: 1024px) {
   .heroCtaArea { flex-direction: column; gap: 2rem; }
+  .bentoGrid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 640px) {
@@ -367,22 +368,22 @@
   .bentoSection { padding: 4rem 1rem; }
   .bentoGrid { grid-template-columns: repeat(2, 1fr); gap: 0; }
   .bentoCard { 
-    padding: 1.25rem 0.75rem; 
-    flex-direction: row; 
-    align-items: flex-start; 
-    text-align: left;
-    gap: 0.75rem; 
+    padding: 1rem 0.5rem; 
+    flex-direction: column; 
+    align-items: center; 
+    text-align: center;
+    gap: 0.5rem; 
   }
   .bentoIcon {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     flex-shrink: 0;
   }
   .bentoIcon svg {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
   }
-  .bentoText p { font-size: 0.85rem; }
+  .bentoText p { font-size: 0.75rem; line-height: 1.4; }
   .sectionHeader h2 { font-size: 2.25rem; }
   
   .processSection { padding: 3rem 1rem; }

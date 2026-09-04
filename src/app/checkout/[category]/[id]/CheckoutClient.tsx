@@ -2,46 +2,32 @@
 
 import React, { useState, useEffect } from 'react';
 import Button from '@/components/ui/Button';
-import { X, ArrowRight, ArrowLeft, CheckCircle } from 'lucide-react';
+import { ArrowRight, CheckCircle, ShieldCheck } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import styles from './modal.module.css';
+import styles from './checkout.module.css';
 import { createClient } from '@/utils/supabase/client';
 import { useLanguage } from '@/i18n/LanguageContext';
 
-interface BookingModalProps {
-  isOpen: boolean;
-  onClose: () => void;
+interface CheckoutClientProps {
   category: string;
-  tier: string;
-  price: number;
-  serviceName: string;
+  tier: { id: string; name: string; price: number; originalPrice?: number; description: string };
 }
 
-export default function BookingModal({ isOpen, onClose, category, tier, price, serviceName }: BookingModalProps) {
+export default function CheckoutClient({ category, tier }: CheckoutClientProps) {
   const router = useRouter();
   const { dict } = useLanguage();
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [formData, setFormData] = useState<any>({});
-
+  
+  // Ensure we are at the top of the page when loaded
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-      setStep(1);
-      setFormData({});
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => { document.body.style.overflow = ''; };
-  }, [isOpen]);
-
-  if (!isOpen) return null;
+    window.scrollTo(0, 0);
+  }, [step]);
 
   const handleNext = (e: React.FormEvent) => {
     e.preventDefault();
-    setStep(2);
+    handlePayment();
   };
 
   const loadRazorpayScript = () => {
@@ -101,10 +87,10 @@ export default function BookingModal({ isOpen, onClose, category, tier, price, s
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          amount: price,
+          amount: tier.price,
           receipt: `rcpt_${Math.floor(Math.random() * 10000)}`,
           category,
-          tier,
+          tier: tier.id,
           formData: finalFormData,
         }),
       });
@@ -112,7 +98,7 @@ export default function BookingModal({ isOpen, onClose, category, tier, price, s
       const order = await res.json();
       
       if (!res.ok) {
-        throw new Error(order.error || 'Failed to create order');
+        throw new Error(order.error || 'Failed to create order. Make sure you are logged in.');
       }
 
       const resScript = await loadRazorpayScript();
@@ -123,11 +109,11 @@ export default function BookingModal({ isOpen, onClose, category, tier, price, s
       }
 
       const options = {
-        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || '', // Needs to be set in env
+        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || '',
         amount: order.amount,
         currency: order.currency,
         name: 'Kundaliwaale',
-        description: serviceName,
+        description: tier.name,
         order_id: order.id,
         handler: async function (response: { razorpay_order_id: string; razorpay_payment_id: string; razorpay_signature: string }) {
           try {
@@ -153,43 +139,38 @@ export default function BookingModal({ isOpen, onClose, category, tier, price, s
           }
         },
         prefill: {
-          name: formData.name || '',
-          email: '', // could be added to formData
-          contact: formData.phone || '',
+          name: formData.name || formData.name || '',
+          email: '', 
+          contact: formData.phone || formData.mobile_number_1 || '',
         },
         theme: {
           color: '#ffce73',
         },
       };
 
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const paymentObject = new (window as any).Razorpay(options);
       paymentObject.open();
 
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       paymentObject.on('payment.failed', function (response: any) {
         alert('Payment failed! ' + response.error.description);
       });
 
-    } catch (err: unknown) {
-      alert((err as Error).message || 'Payment initiation failed');
+    } catch (err: any) {
+      alert(err.message || 'Payment initiation failed');
     } finally {
       setLoading(false);
     }
   };
 
   const handleFinish = () => {
-    onClose();
     router.push('/dashboard');
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const updateField = (field: string, value: any) => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     setFormData((prev: any) => ({ ...prev, [field]: value }));
   };
 
-  const renderStep1Fields = () => {
+  const renderFormFields = () => {
     if (category === 'kundali') {
       return (
         <>
@@ -260,7 +241,7 @@ export default function BookingModal({ isOpen, onClose, category, tier, price, s
             <label>{dict.booking_modal.form.whatsapp_label}</label>
             <input type="tel" required placeholder={dict.booking_modal.form.phone1_ph} onChange={(e) => updateField('phone', e.target.value)} />
           </div>
-          {tier !== 'quick' && (
+          {tier.id !== 'quick' && (
             <div className={styles.formGroup}>
               <label>{dict.booking_modal.form.date_label}</label>
               <input type="date" required onChange={(e) => updateField('date', e.target.value)} />
@@ -320,7 +301,7 @@ export default function BookingModal({ isOpen, onClose, category, tier, price, s
             <label>{dict.booking_modal.form.full_address_label}</label>
             <textarea required rows={3} placeholder={dict.booking_modal.form.full_address_ph} onChange={(e) => updateField('address', e.target.value)}></textarea>
           </div>
-          {tier === 'online' && (
+          {tier.id === 'online' && (
             <>
               <div className={styles.formGroup}>
                 <label>{dict.booking_modal.form.upload_bp_label}</label>
@@ -332,7 +313,7 @@ export default function BookingModal({ isOpen, onClose, category, tier, price, s
               </div>
             </>
           )}
-          {tier === 'home-visit' && (
+          {tier.id === 'home-visit' && (
             <div className={styles.formGroup}>
               <label>{dict.booking_modal.form.dist_km_label}</label>
               <input type="number" placeholder={dict.booking_modal.form.dist_km_ph} onChange={(e) => updateField('distance', e.target.value)} />
@@ -344,66 +325,11 @@ export default function BookingModal({ isOpen, onClose, category, tier, price, s
     return null;
   };
 
-  return (
-    <div className={styles.overlay}>
-      <div className={styles.modal}>
-        <button className={styles.closeBtn} onClick={onClose} aria-label="Close modal">
-          <X size={24} />
-        </button>
-
-        {/* Step Indicator */}
-        <div className={styles.header}>
-          <h2 className="font-serif">{serviceName}</h2>
-          <div className={styles.steps}>
-            <div className={`${styles.stepIndicator} ${step >= 1 ? styles.activeStep : ''}`}>{dict.booking_modal.steps.s1}</div>
-            <div className={`${styles.stepIndicator} ${step >= 2 ? styles.activeStep : ''}`}>{dict.booking_modal.steps.s2}</div>
-            <div className={`${styles.stepIndicator} ${step === 3 ? styles.activeStep : ''}`}>{dict.booking_modal.steps.s3}</div>
-          </div>
-        </div>
-
-        <div className={styles.body}>
-          {step === 1 && (
-            <form onSubmit={handleNext}>
-              <div className={styles.formWrapper}>
-                {renderStep1Fields()}
-              </div>
-              <div className={styles.footer}>
-                <Button variant="primary" style={{ width: '100%', display: 'flex', justifyContent: 'center', gap: '0.5rem' }}>
-                  {dict.booking_modal.actions.continue_payment} <ArrowRight size={18} />
-                </Button>
-              </div>
-            </form>
-          )}
-
-          {step === 2 && (
-            <div className={styles.paymentWrapper}>
-              <div className={styles.summaryCard}>
-                <h3 className="font-sans">{dict.booking_modal.summary.title}</h3>
-                <div className={styles.summaryRow}>
-                  <span>{serviceName}</span>
-                  <span>₹{price}</span>
-                </div>
-                <div className={styles.summaryRow}>
-                  <span>{dict.booking_modal.summary.taxes}</span>
-                  <span>₹0</span>
-                </div>
-                <div className={`${styles.summaryRow} ${styles.summaryTotal}`}>
-                  <span>{dict.booking_modal.summary.total}</span>
-                  <span>₹{price}</span>
-                </div>
-              </div>
-              <div className={styles.footerRow}>
-                <button type="button" className={styles.backBtn} onClick={() => setStep(1)}>
-                  <ArrowLeft size={18} /> {dict.booking_modal.actions.back}
-                </button>
-                <Button variant="primary" onClick={handlePayment} disabled={loading} style={{ flex: 1 }}>
-                  {loading ? dict.booking_modal.actions.processing : dict.booking_modal.actions.pay_now.replace('{{price}}', price.toString())}
-                </Button>
-              </div>
-            </div>
-          )}
-
-          {step === 3 && (
+  if (step === 3) {
+    return (
+      <div className={styles.checkoutPage}>
+        <div className={styles.checkoutContainer} style={{ display: 'flex', justifyContent: 'center' }}>
+          <div className={styles.formCard} style={{ maxWidth: '600px', width: '100%' }}>
             <div className={styles.successWrapper}>
               <div className={styles.successIcon}>
                 <CheckCircle size={64} />
@@ -414,7 +340,55 @@ export default function BookingModal({ isOpen, onClose, category, tier, price, s
                 {dict.booking_modal.actions.go_dashboard}
               </Button>
             </div>
-          )}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className={styles.checkoutPage}>
+      <div className={styles.checkoutContainer}>
+        {/* Left Column - Form */}
+        <div className={styles.leftColumn}>
+          <div className={styles.stepHeader}>
+            <h1 className="font-serif">Complete your booking</h1>
+            <div className={styles.steps}>
+              <div className={`${styles.stepIndicator} ${step >= 1 ? styles.activeStep : ''}`}>1. Details</div>
+              <div className={`${styles.stepIndicator} ${step >= 2 ? styles.activeStep : ''}`}>2. Payment</div>
+            </div>
+          </div>
+
+          <form className={styles.formCard} onSubmit={handleNext}>
+            {renderFormFields()}
+            <div className={styles.formActions}>
+              <Button variant="primary" type="submit" disabled={loading} style={{ width: '100%', display: 'flex', justifyContent: 'center', gap: '0.5rem' }}>
+                 {loading ? 'Processing...' : `Proceed to Pay ₹${tier.price}`} <ArrowRight size={18} />
+              </Button>
+            </div>
+            <div style={{ marginTop: '1.5rem', textAlign: 'center', color: 'var(--text-secondary)', fontSize: '0.85rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
+              <ShieldCheck size={16} color="var(--accent-green)" /> Secure Checkout via Razorpay
+            </div>
+          </form>
+        </div>
+
+        {/* Right Column - Summary */}
+        <div className={styles.rightColumn}>
+          <div className={styles.summaryCard}>
+            <h3 className="font-serif">Order Summary</h3>
+            <div className={styles.summaryRow}>
+              <span>{tier.name}</span>
+              <span>₹{tier.price}</span>
+            </div>
+            <div className={styles.summaryRow}>
+              <span>Taxes & Fees</span>
+              <span>₹0</span>
+            </div>
+            <div className={`${styles.summaryRow} ${styles.summaryTotal}`}>
+              <span>Total Amount</span>
+              <span>₹{tier.price}</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>

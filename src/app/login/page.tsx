@@ -6,9 +6,11 @@ import Link from 'next/link'
 import { login, signup } from '@/actions/auth'
 import styles from './login.module.css'
 import { Sparkles, ShieldCheck, ArrowLeft } from 'lucide-react'
+import { useLanguage } from '@/i18n/LanguageContext'
 
 export default function LoginPage() {
   const router = useRouter()
+  const { dict } = useLanguage()
   const [isLogin, setIsLogin] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
@@ -39,20 +41,20 @@ export default function LoginPage() {
       <div className={styles.authContainer}>
         <div style={{ marginBottom: '1rem' }}>
           <Link href="/" className="font-sans" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.2s ease' }} onMouseOver={(e) => e.currentTarget.style.color = 'var(--color-gold)'} onMouseOut={(e) => e.currentTarget.style.color = 'var(--text-secondary)'}>
-            <ArrowLeft size={16} /> Back to Home
+            <ArrowLeft size={16} /> {dict.auth_page.back_home}
           </Link>
         </div>
         <h1 className="font-serif">
           {isLogin ? (
-            <>Welcome <em>Back</em></>
+            <>{dict.auth_page.login.title_1} <em>{dict.auth_page.login.title_em}</em></>
           ) : (
-            <>Join <em>Kundaliwaale</em></>
+            <>{dict.auth_page.signup.title_1} <em>{dict.auth_page.signup.title_em}</em></>
           )}
         </h1>
         <p className={`${styles.subtitle} font-sans`}>
           {isLogin
-            ? 'Sign in to access your dashboard and orders'
-            : 'Create an account to get started with your cosmic journey'}
+            ? dict.auth_page.login.subtitle
+            : dict.auth_page.signup.subtitle}
         </p>
 
 
@@ -62,29 +64,29 @@ export default function LoginPage() {
           {!isLogin && (
             <div className={styles.formRow}>
               <div className={styles.formGroup}>
-                <label className="font-sans">Full Name</label>
-                <input type="text" name="fullName" required placeholder="John Doe" />
+                <label className="font-sans">{dict.auth_page.form.name_label}</label>
+                <input type="text" name="fullName" required placeholder={dict.auth_page.form.name_ph} />
               </div>
               <div className={styles.formGroup}>
-                <label className="font-sans">Phone Number</label>
-                <input type="tel" name="phone" required placeholder="+91 98765 00000" />
+                <label className="font-sans">{dict.auth_page.form.phone_label}</label>
+                <input type="tel" name="phone" required placeholder={dict.auth_page.form.phone_ph} />
               </div>
             </div>
           )}
 
 
           <div className={styles.formGroup}>
-            <label className="font-sans">Email Address</label>
-            <input type="email" name="email" required placeholder="you@example.com" />
+            <label className="font-sans">{dict.auth_page.form.email_label}</label>
+            <input type="email" name="email" required placeholder={dict.auth_page.form.email_ph} />
           </div>
 
           <div className={styles.formGroup}>
-            <label className="font-sans">Password</label>
-            <input type="password" name="password" required placeholder="••••••••" minLength={6} />
+            <label className="font-sans">{dict.auth_page.form.pass_label}</label>
+            <input type="password" name="password" required placeholder={dict.auth_page.form.pass_ph} minLength={6} />
             {isLogin && (
               <div style={{ textAlign: 'right', marginTop: '0.5rem' }}>
                 <Link href="/forgot-password" className="font-sans" style={{ color: 'var(--color-gold)', fontSize: '0.85rem', textDecoration: 'none' }}>
-                  Forgot Password?
+                  {dict.auth_page.form.forgot_pass}
                 </Link>
               </div>
             )}
@@ -95,16 +97,16 @@ export default function LoginPage() {
             className={`${styles.submitBtn} font-sans`}
             disabled={loading}
           >
-            {loading ? 'Processing...' : isLogin ? 'Sign In' : 'Create Account'}
+            {loading ? dict.auth_page.processing : isLogin ? dict.auth_page.login.btn : dict.auth_page.signup.btn}
           </button>
         </form>
 
         <div className={styles.toggleText}>
           <span className="font-sans">
-            {isLogin ? "Don't have an account?" : "Already have an account?"}
+            {isLogin ? dict.auth_page.login.toggle_text : dict.auth_page.signup.toggle_text}
           </span>
           <button type="button" className="font-sans" onClick={() => { setIsLogin(!isLogin); setError(null); }}>
-            {isLogin ? 'Sign up' : 'Sign in'}
+            {isLogin ? dict.auth_page.login.toggle_btn : dict.auth_page.signup.toggle_btn}
           </button>
         </div>
       </div>

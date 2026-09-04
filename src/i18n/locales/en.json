@@ -347,5 +347,280 @@
         ]
       }
     }
-  }
+  },
+  "booking_modal": {
+    "steps": {
+      "s1": "1. Details",
+      "s2": "2. Payment",
+      "s3": "3. Confirm"
+    },
+    "form": {
+      "name_label": "Full Name",
+      "name_ph": "John Doe",
+      "dob_label": "Date of Birth",
+      "tob_label": "Time of Birth",
+      "pob_label": "Place of Birth",
+      "pob_ph": "City, State, Country",
+      "father_label": "Father's Name",
+      "father_ph": "Father's Full Name",
+      "mother_label": "Mother's Name",
+      "mother_ph": "Mother's Full Name",
+      "gfather_label": "Grandfather's Name",
+      "gfather_ph": "Grandfather's Full Name",
+      "gmother_label": "Grandmother's Name",
+      "gmother_ph": "Grandmother's Full Name",
+      "phone1_label": "Primary Phone",
+      "phone1_ph": "+91 98765 00000",
+      "phone2_label": "Alternate Phone (Optional)",
+      "phone2_ph": "+91 98765 00000",
+      "address_label": "Delivery Address",
+      "address_ph": "Full Delivery Address",
+      "whatsapp_label": "Phone Number (WhatsApp)",
+      "date_label": "Preferred Date",
+      "topic_label": "Topic of Concern",
+      "topic_select": "Select a topic...",
+      "topic_career": "Career & Wealth",
+      "topic_love": "Love & Marriage",
+      "topic_health": "Health",
+      "topic_other": "Other",
+      "prop_label": "Property Type",
+      "prop_select": "Select type...",
+      "prop_home": "Residential / Home",
+      "prop_office": "Commercial / Office",
+      "prop_factory": "Factory / Industrial",
+      "state_label": "State",
+      "state_ph": "E.g., Maharashtra",
+      "dist_label": "District",
+      "dist_ph": "E.g., Mumbai",
+      "town_label": "Town/City",
+      "town_ph": "E.g., Andheri",
+      "full_address_label": "Complete Property Address",
+      "full_address_ph": "Enter full address...",
+      "upload_bp_label": "Upload Blueprint (PDF)",
+      "upload_img_label": "Upload House Images (JPG/PNG)",
+      "dist_km_label": "Approx. Distance from Varanasi (km) - Optional",
+      "dist_km_ph": "E.g., 250"
+    },
+    "actions": {
+      "continue_payment": "Continue to Payment",
+      "back": "Back",
+      "pay_now": "Pay ₹{{price}} Now",
+      "processing": "Processing...",
+      "go_dashboard": "Go to Dashboard"
+    },
+    "summary": {
+      "title": "Order Summary",
+      "taxes": "Taxes & Fees",
+      "total": "Total Amount"
+    },
+    "success": {
+      "title": "Booking Confirmed!",
+      "desc": "Your order has been placed successfully. You will receive an email confirmation shortly."
+    }
+  },
+  "auth_page": {
+    "back_home": "Back to Home",
+    "login": {
+      "title_1": "Welcome",
+      "title_em": "Back",
+      "subtitle": "Sign in to access your dashboard and orders",
+      "btn": "Sign In",
+      "toggle_text": "Don't have an account?",
+      "toggle_btn": "Sign up"
+    },
+    "signup": {
+      "title_1": "Join",
+      "title_em": "Kundaliwaale",
+      "subtitle": "Create an account to get started with your cosmic journey",
+      "btn": "Create Account",
+      "toggle_text": "Already have an account?",
+      "toggle_btn": "Sign in"
+    },
+    "form": {
+      "name_label": "Full Name",
+      "name_ph": "John Doe",
+      "phone_label": "Phone Number",
+      "phone_ph": "+91 98765 00000",
+      "email_label": "Email Address",
+      "email_ph": "you@example.com",
+      "pass_label": "Password",
+      "pass_ph": "••••••••",
+      "forgot_pass": "Forgot Password?"
+    },
+    "processing": "Processing..."
+  },
+  "forgot_password_page": {
+    "title_1": "Recover",
+    "title_em": "Account",
+    "subtitle": "Enter your email address and we will send you a password reset link.",
+    "success": "Check your email for the reset link!",
+    "btn_sending": "Sending...",
+    "btn_send": "Send Reset Link",
+    "back_login": "Back to Login"
+  },
+  "reset_password_page": {
+    "title_1": "New",
+    "title_em": "Password",
+    "subtitle": "Enter your new password below.",
+    "success": "Password updated successfully! Redirecting...",
+    "new_pass_label": "New Password",
+    "btn_updating": "Updating...",
+    "btn_update": "Update Password"
+  },
+  "dashboard_page": {
+    "loading": "Loading dashboard data...",
+    "welcome": "Welcome back!",
+    "subtitle": "You are securely logged in as",
+    "subtitle_after": ". Here is a summary of your recent activity and orders.",
+    "total_orders": "Total Orders",
+    "active_services": "Active Services",
+    "recent_activity": "Recent Orders & Activity",
+    "table": {
+      "order_id": "Order ID",
+      "service": "Service",
+      "date": "Date",
+      "status": "Status"
+    },
+    "empty": {
+      "title": "No Cosmic Journey Yet",
+      "desc": "You haven't placed any orders or consultations yet. Your journey to clarity awaits.",
+      "btn": "Explore Services"
+    },
+    "services": {
+      "kundali": "Kundali",
+      "vastu": "Vastu",
+      "consultation": "Consultation"
+    }
+  },
+  "privacy_page": {
+    "title": "Privacy Policy",
+    "updated": "Last updated: August 2026",
+    "s1_title": "1. Information We Collect",
+    "s1_text": "We collect personal information that you provide to us, including your name, email address, phone number, and specific birth details (Date, Time, Place of Birth) required for astrological calculations.",
+    "s2_title": "2. How We Use Your Information",
+    "s2_text": "The information we collect is used solely to provide and improve our services to you, process transactions, and communicate with you about your orders.",
+    "s3_title": "3. Data Security",
+    "s3_text": "We implement a variety of security measures to maintain the safety of your personal information. Your astrological data is strictly confidential and is never shared with third-party marketers.",
+    "s4_title": "4. Payment Information",
+    "s4_text": "All payments are processed securely through Razorpay. We do not store your credit card details or bank information on our servers.",
+    "s5_title": "5. Cookies",
+    "s5_text": "We use cookies to enhance your experience, gather general visitor information, and track visits to our website.",
+    "s6_title": "6. Contact Us",
+    "s6_text": "If you have any questions regarding this privacy policy, you may contact us using the information on our Contact page."
+  },
+  "terms_page": {
+    "title": "Terms & Conditions",
+    "updated": "Last updated: August 2026",
+    "s1_title": "1. Introduction",
+    "s1_text": "Welcome to Kundaliwaale. By accessing our website and using our services (Vedic Astrology, Vastu, Kundli creation), you agree to comply with and be bound by the following terms and conditions of use.",
+    "s2_title": "2. Services Offered",
+    "s2_text": "Kundaliwaale provides astrological consultations, handcrafted Kundli reports, and Vastu analysis. All readings and reports are based on the principles of Vedic Astrology.",
+    "s3_title": "3. Intellectual Property",
+    "s3_text": "All content on this website, including but not limited to text, graphics, logos, and digital downloads, is the property of Kundaliwaale and protected by international copyright laws.",
+    "s4_title": "4. User Responsibilities",
+    "s4_text": "You agree to provide accurate information (Date, Time, and Place of birth) when booking our services. Kundaliwaale is not responsible for inaccurate reports generated due to incorrect information provided by the user.",
+    "s5_title": "5. Limitation of Liability",
+    "s5_text": "Astrology is an ancient science and art. The advice and reports provided by Kundaliwaale are for guidance purposes only. We are not liable for any personal, financial, or emotional decisions made based on our consultations.",
+    "s6_title": "6. Modifications",
+    "s6_text": "We reserve the right to modify these terms at any time. Changes will be posted on this page."
+  },
+  "refund_page": {
+    "title": "Refund & Cancellation Policy",
+    "updated": "Last updated: August 2026",
+    "s1_title": "1. Consultations",
+    "s1_text": "Cancellations for astrology or Vastu consultations must be made at least 24 hours in advance to receive a full refund. Cancellations made within 24 hours of the appointment will not be refunded.",
+    "s2_title": "2. Handwritten Kundli Reports",
+    "s2_text": "Because our Kundli reports are entirely handcrafted and personalized based on the specific details you provide, we cannot offer refunds once work on the report has commenced (typically within 1 hour of placing the order).",
+    "s3_title": "3. Incorrect Details Provided",
+    "s3_text": "If you realize you have provided incorrect birth details, please contact us immediately. If the report has not yet been started, we can update the details. We do not offer refunds or free revisions if the report was completed using incorrect details originally provided by the customer.",
+    "s4_title": "4. Refund Processing",
+    "s4_text": "Approved refunds will be processed and credited back to the original method of payment within 5-7 business days, depending on your bank or credit card issuer."
+  },
+  "testimonials_page": {
+    "title_1": "Customer",
+    "title_em": "Reviews",
+    "subtitle": "Real stories from real people whose lives were transformed through Vedic astrology."
+  },
+  "testimonials_data": [
+    {
+      "id": 1,
+      "name": "Priya Sharma",
+      "avatar": "https://randomuser.me/api/portraits/women/44.jpg",
+      "location": "Delhi",
+      "rating": 5,
+      "service": "Handwritten Kundli",
+      "text": "Receiving the handwritten Kundli delivered to my home was a special experience. The calligraphy, detailed planetary charts, and clear guidance gave me immense peace of mind.",
+      "date": "2026-06-15"
+    },
+    {
+      "id": 2,
+      "name": "Rajesh Kumar",
+      "avatar": "https://randomuser.me/api/portraits/men/32.jpg",
+      "location": "Mumbai",
+      "rating": 5,
+      "service": "Vastu Consultation",
+      "text": "After implementing the practical Vastu corrections suggested during our consultation, our home atmosphere became noticeably calmer and more harmonious. Highly recommended!",
+      "date": "2026-05-22"
+    },
+    {
+      "id": 3,
+      "name": "Anita Desai",
+      "avatar": "https://randomuser.me/api/portraits/women/68.jpg",
+      "location": "Bangalore",
+      "rating": 5,
+      "service": "Astrology Consultation",
+      "text": "I was looking for genuine astrological advice without fear-mongering. The consultation was honest, deeply insightful, and practical.",
+      "date": "2026-07-01"
+    },
+    {
+      "id": 4,
+      "name": "Vikram Singh",
+      "avatar": "https://randomuser.me/api/portraits/men/45.jpg",
+      "location": "Jaipur",
+      "rating": 5,
+      "service": "Handwritten Kundli",
+      "text": "The physical handwritten Kundli arrived safely in beautiful sacred packaging. It feels like an authentic family keepsake. Very happy with the quality.",
+      "date": "2026-04-10"
+    },
+    {
+      "id": 5,
+      "name": "Meera Patel",
+      "avatar": "https://randomuser.me/api/portraits/women/33.jpg",
+      "location": "Ahmedabad",
+      "rating": 5,
+      "service": "Handwritten Kundli",
+      "text": "Ordered handwritten Kundlis for our family. The attention to detail and traditional Vedic calculations are completely unmatched by computer printouts.",
+      "date": "2026-03-28"
+    },
+    {
+      "id": 6,
+      "name": "Suresh Nair",
+      "avatar": "https://randomuser.me/api/portraits/men/22.jpg",
+      "location": "Kerala",
+      "rating": 5,
+      "service": "₹51 Consultation",
+      "text": "Tried the quick consultation first. The Purohit was courteous, knowledgeable, and provided prompt clarity on my question.",
+      "date": "2026-06-30"
+    },
+    {
+      "id": 7,
+      "name": "Kavita Joshi",
+      "avatar": "https://randomuser.me/api/portraits/women/12.jpg",
+      "location": "Pune",
+      "rating": 5,
+      "service": "Vastu Consultation",
+      "text": "The online Vastu analysis was thorough and clear. I shared my floor plan and received a practical room-by-room assessment.",
+      "date": "2026-05-05"
+    },
+    {
+      "id": 8,
+      "name": "Arjun Reddy",
+      "avatar": "https://randomuser.me/api/portraits/men/78.jpg",
+      "location": "Hyderabad",
+      "rating": 5,
+      "service": "Astrology Consultation",
+      "text": "Clear, grounded guidance with zero superstition. Kundaliwaale provided actionable direction that gave me real clarity for my career.",
+      "date": "2026-07-15"
+    }
+  ]
 }

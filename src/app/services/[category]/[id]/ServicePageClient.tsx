@@ -3,9 +3,9 @@
 import React, { useState, useEffect } from 'react';
 import Button from '@/components/ui/Button';
 import { ArrowRight, ShieldCheck, Sparkles, Target, Gift, ScrollText } from 'lucide-react';
-import BookingModal from './BookingModal';
 import styles from './service.module.css';
 import { useLanguage } from '@/i18n/LanguageContext';
+import { useRouter } from 'next/navigation';
 
 export default function ServicePageClient({
   category,
@@ -15,7 +15,7 @@ export default function ServicePageClient({
   tier: { id: string; name: string; price: number; originalPrice?: number; description: string; popular?: boolean; features: string[] };
 }) {
   const { dict } = useLanguage();
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const router = useRouter();
   const [isScrolled, setIsScrolled] = useState(false);
 
   const getTierTranslation = () => {
@@ -63,7 +63,7 @@ export default function ServicePageClient({
                 <span className={`${styles.price} font-serif`}>₹{tier.price}</span>
                 {tier.originalPrice && <span className={`${styles.originalPrice} font-sans`}>₹{tier.originalPrice}</span>}
               </div>
-              <Button variant="primary" onClick={() => setIsModalOpen(true)} className={styles.heroButton}>
+              <Button variant="primary" onClick={() => router.push(`/checkout/${category}/${tier.id}`)} className={styles.heroButton}>
                 {dict.service_page.book_now} <ArrowRight size={20} />
               </Button>
             </div>
@@ -150,20 +150,12 @@ export default function ServicePageClient({
             <h4 className="font-serif">{transTier.name}</h4>
             <span className="font-serif">₹{tier.price}</span>
           </div>
-          <Button variant="primary" onClick={() => setIsModalOpen(true)} className={styles.stickyButton}>
+          <Button variant="primary" onClick={() => router.push(`/checkout/${category}/${tier.id}`)} className={styles.stickyButton}>
             {dict.service_page.book_now}
           </Button>
         </div>
       </div>
 
-      <BookingModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        category={category}
-        tier={tier.id}
-        price={tier.price}
-        serviceName={tier.name}
-      />
     </div>
   );
 }
