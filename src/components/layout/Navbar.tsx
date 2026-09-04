@@ -163,16 +163,27 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Hamburger */}
-        <button
-          className={`${styles.hamburger} ${mobileOpen ? styles.hamburgerOpen : ''}`}
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle menu"
-        >
-          <span />
-          <span />
-          <span />
-        </button>
+        {/* Mobile Actions (Language + Hamburger) */}
+        <div className={styles.mobileActions}>
+          <button 
+             onClick={() => setLocale(locale === 'en' ? 'hi' : 'en')}
+             className={`${styles.mobileLangBtn} font-sans`}
+             title={locale === 'en' ? 'Switch to Hindi' : 'Switch to English'}
+          >
+            <Languages size={22} />
+          </button>
+
+          {/* Hamburger */}
+          <button
+            className={`${styles.hamburger} ${mobileOpen ? styles.hamburgerOpen : ''}`}
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle menu"
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+        </div>
       </nav>
 
       {/* Mobile Overlay */}
@@ -222,13 +233,6 @@ export default function Navbar() {
               </Link>
             )}
           </div>
-          <button 
-             onClick={() => setLocale(locale === 'en' ? 'hi' : 'en')}
-             className="font-sans"
-             style={{ background: 'none', border: 'none', color: 'var(--color-gold)', cursor: 'pointer', padding: '0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-          >
-            <Languages size={24} />
-          </button>
         </div>
       </div>
     </>

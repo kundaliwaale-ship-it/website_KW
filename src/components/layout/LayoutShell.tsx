@@ -11,12 +11,13 @@ export default function LayoutShell({ children }: { children: React.ReactNode })
   const pathname = usePathname();
   const isAuthPage = AUTH_ROUTES.includes(pathname);
   const isDashboard = pathname.startsWith('/dashboard');
+  const isCheckout = pathname.startsWith('/checkout');
 
   return (
     <LanguageProvider>
       {!isAuthPage && <Navbar />}
       <main>{children}</main>
-      {!isAuthPage && !isDashboard && <Footer />}
+      {!isAuthPage && !isDashboard && !isCheckout && <Footer />}
     </LanguageProvider>
   );
 }

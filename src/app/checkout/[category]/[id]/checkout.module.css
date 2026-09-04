@@ -204,7 +204,6 @@
   
   .rightColumn {
     position: static;
-    order: -1; /* Put summary on top */
   }
 
   .stepHeader h1 {
