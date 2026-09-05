@@ -63,7 +63,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${jakarta.variable} ${cormorant.variable} ${lora.variable} font-body`}>
         <AuthProvider>
           <LayoutShell>{children}</LayoutShell>

@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 5%;
+  padding: 0 5%;
   position: fixed;
   top: 0;
   left: 0;
@@ -27,18 +27,22 @@
   text-decoration: none;
 }
 
-.logo span {
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  line-height: 1.2;
+.logoImg {
+  width: auto;
+  height: 110px;
+  transition: height var(--transition-normal);
 }
 
-.logo small {
-  font-size: 0.75rem;
-  color: var(--text-secondary);
-  letter-spacing: 2px;
-  text-transform: uppercase;
+@media (max-width: 1024px) {
+  .logoImg {
+    height: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .logoImg {
+    height: 65px;
+  }
 }
 
 /* Desktop Links */

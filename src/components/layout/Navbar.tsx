@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import styles from './Navbar.module.css';
 import Button from '../ui/Button';
 import { ChevronDown, Languages } from 'lucide-react';
@@ -109,8 +110,7 @@ export default function Navbar() {
     <>
       <nav className={`${styles.nav} ${scrolled ? styles.navScrolled : ''}`}>
         <Link href="/" className={styles.logo} onClick={() => setMobileOpen(false)}>
-          <span className="font-serif">Kundaliwaale</span>
-          <small className="font-sans">Your Cosmic Guide</small>
+          <Image src="/images/KW-logo.png" alt="Kundaliwaale Logo" width={223} height={100} priority className={styles.logoImg} />
         </Link>
 
         {/* Desktop Navigation */}
