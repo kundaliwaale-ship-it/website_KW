@@ -25,7 +25,8 @@ export async function login(formData: FormData) {
   }
 
   revalidatePath('/', 'layout')
-  return { redirectTo: '/dashboard' }
+  const redirectTo = formData.get('redirectTo') as string || '/dashboard'
+  return { redirectTo }
 }
 
 export async function signup(formData: FormData) {
@@ -84,7 +85,8 @@ export async function signup(formData: FormData) {
   }
 
   revalidatePath('/', 'layout')
-  return { redirectTo: '/dashboard' }
+  const redirectTo = formData.get('redirectTo') as string || '/dashboard'
+  return { redirectTo }
 }
 
 export async function logout() {

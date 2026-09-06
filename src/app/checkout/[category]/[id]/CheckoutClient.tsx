@@ -25,6 +25,19 @@ export default function CheckoutClient({ category, tier }: CheckoutClientProps) 
     window.scrollTo(0, 0);
   }, [step]);
 
+  // Check auth
+  useEffect(() => {
+    const checkAuth = async () => {
+      const supabase = createClient();
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) {
+        const currentPath = window.location.pathname;
+        router.push(`/login?redirect=${encodeURIComponent(currentPath)}`);
+      }
+    };
+    checkAuth();
+  }, [router]);
+
   const handleNext = (e: React.FormEvent) => {
     e.preventDefault();
     handlePayment();

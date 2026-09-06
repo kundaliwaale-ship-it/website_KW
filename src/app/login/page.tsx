@@ -22,6 +22,14 @@ export default function LoginPage() {
     
     const formData = new FormData(e.currentTarget)
     
+    // Check if there is a redirect URL in the query string
+    if (typeof window !== 'undefined') {
+      const redirectUrl = new URLSearchParams(window.location.search).get('redirect')
+      if (redirectUrl) {
+        formData.append('redirectTo', redirectUrl)
+      }
+    }
+    
     try {
       const result = isLogin ? await login(formData) : await signup(formData)
       if (result?.error) {
