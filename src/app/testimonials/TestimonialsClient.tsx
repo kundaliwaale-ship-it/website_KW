@@ -6,7 +6,7 @@ import { useLanguage } from '@/i18n/LanguageContext';
 import Image from 'next/image';
 
 interface Testimonial {
-  id: string;
+  id: string | number;
   name: string;
   location: string;
   avatar: string;
