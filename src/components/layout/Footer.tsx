@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import styles from './Footer.module.css';
 import { Phone, MessageCircle, Mail, MapPin } from 'lucide-react';
@@ -17,8 +18,8 @@ export default function Footer() {
         <div className={styles.footerGrid}>
           {/* Brand Column */}
           <div className={styles.brand}>
-            <Link href="/" className="font-serif" style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--text-primary)' }}>
-              Kundaliwaale
+            <Link href="/">
+              <Image src="/images/KW-logo.png" alt="Kundaliwaale Logo" width={223} height={100} style={{ width: 'auto', height: '60px', marginBottom: '0.5rem' }} />
             </Link>
             <p className="font-sans">
               {dict.footer.brand_desc}

@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import styles from './Navbar.module.css';
 import Button from '../ui/Button';
-import { ChevronDown, Languages } from 'lucide-react';
+import { ChevronDown, Languages, User as UserIcon } from 'lucide-react';
 import { createClient } from '@/utils/supabase/client';
 import { User } from '@supabase/supabase-js';
 import { usePathname } from 'next/navigation';
@@ -67,11 +67,6 @@ export default function Navbar() {
   };
 
   const dashboardHref = '/dashboard';
-  const dashboardLabel = 'DASHBOARD';
-
-  useEffect(() => {
-    setMobileOpen(false);
-  }, [pathname]);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -163,8 +158,15 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Actions (Language + Hamburger) */}
+        {/* Mobile Actions (Language + User + Hamburger) */}
         <div className={styles.mobileActions}>
+          <Link 
+             href={user ? dashboardHref : '/login'}
+             className={`${styles.mobileLangBtn} font-sans`}
+             title={user ? dict.nav.dashboard : dict.nav.login}
+          >
+            <UserIcon size={22} />
+          </Link>
           <button 
              onClick={() => setLocale(locale === 'en' ? 'hi' : 'en')}
              className={`${styles.mobileLangBtn} font-sans`}

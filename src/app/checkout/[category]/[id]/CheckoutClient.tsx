@@ -18,6 +18,7 @@ export default function CheckoutClient({ category, tier }: CheckoutClientProps) 
   const { dict } = useLanguage();
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [formData, setFormData] = useState<any>({});
   
   // Ensure we are at the top of the page when loaded
@@ -159,17 +160,24 @@ export default function CheckoutClient({ category, tier }: CheckoutClientProps) 
         theme: {
           color: '#ffce73',
         },
+        modal: {
+          ondismiss: function() {
+            setLoading(false);
+          }
+        }
       };
 
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const paymentObject = new (window as any).Razorpay(options);
       paymentObject.open();
 
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       paymentObject.on('payment.failed', function (response: any) {
         alert('Payment failed! ' + response.error.description);
       });
 
-    } catch (err: any) {
-      alert(err.message || 'Payment initiation failed');
+    } catch (err: unknown) {
+      alert((err as Error).message || 'Payment initiation failed');
     } finally {
       setLoading(false);
     }
@@ -179,7 +187,9 @@ export default function CheckoutClient({ category, tier }: CheckoutClientProps) 
     router.push('/dashboard');
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const updateField = (field: string, value: any) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     setFormData((prev: any) => ({ ...prev, [field]: value }));
   };
 

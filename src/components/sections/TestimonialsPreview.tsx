@@ -3,6 +3,7 @@
 import React from 'react';
 import { useLanguage } from '@/i18n/LanguageContext';
 import Link from 'next/link';
+import Image from 'next/image';
 import styles from './TestimonialsPreview.module.css';
 import Button from '@/components/ui/Button';
 import { testimonials } from '@/data/testimonials';
@@ -27,7 +28,7 @@ export default function TestimonialsPreview() {
             <div className={styles.cardTop}>
               <div className={styles.cardTopLeft}>
                 <div className={styles.avatar}>
-                  <img src={t.avatar} alt={t.name} className={styles.avatarImg} />
+                  <Image src={t.avatar} alt={t.name} width={64} height={64} className={styles.avatarImg} />
                 </div>
                 <div className={styles.cardName}>
                   <h4 className="font-serif">{t.name}</h4>

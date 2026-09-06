@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import Razorpay from 'razorpay'
 import { createClient } from '@/utils/supabase/server'
 import { createClient as createServiceClient } from '@supabase/supabase-js'
+import { serviceDetails } from '@/data/services'
 
 export async function POST(request: Request) {
   try {
@@ -24,11 +25,28 @@ export async function POST(request: Request) {
     )
 
     const body = await request.json()
-    const { amount, receipt, category, tier, formData } = body
+    const { receipt, category, tier, formData } = body
 
-    // 1. Create Razorpay Order
+    // 1. Validate Category and Tier to get the true price
+    const categoryDetails = serviceDetails[category as keyof typeof serviceDetails]
+    if (!categoryDetails) {
+      return NextResponse.json({ error: 'Invalid category' }, { status: 400 })
+    }
+    
+    const tierDetails = categoryDetails.tiers.find(t => t.id === tier)
+    if (!tierDetails) {
+      return NextResponse.json({ error: 'Invalid tier' }, { status: 400 })
+    }
+
+    const calculatedAmount = tierDetails.price
+
+    if (!calculatedAmount || calculatedAmount * 100 < 100) {
+      return NextResponse.json({ error: 'Minimum amount must be at least ₹1 (100 paise)' }, { status: 400 })
+    }
+
+    // 2. Create Razorpay Order
     const options = {
-      amount: amount * 100, // amount in smallest currency unit (paise)
+      amount: calculatedAmount * 100, // amount in smallest currency unit (paise)
       currency: 'INR',
       receipt,
     }
@@ -42,7 +60,7 @@ export async function POST(request: Request) {
       const { data, error } = await supabase.from('kundali_orders').insert([{
         user_id: user.id,
         kundali_type: tier,
-        amount,
+        amount: calculatedAmount,
         full_name: formData.name,
         dob: formData.dob,
         tob: formData.tob,
@@ -64,7 +82,7 @@ export async function POST(request: Request) {
         name: formData.name,
         mobile_number: formData.phone,
         selected_time: formData.date ? new Date(formData.date).toISOString() : new Date().toISOString(),
-        amount,
+        amount: calculatedAmount,
         razorpay_order_id: rzpOrder.id
       }]).select()
       dbError = error
@@ -73,7 +91,7 @@ export async function POST(request: Request) {
       const { data, error } = await supabase.from('vastu_orders').insert([{
         user_id: user.id,
         vastu_type: tier,
-        amount,
+        amount: calculatedAmount,
         complete_address: formData.address,
         mobile_number: formData.phone,
         state: formData.state,

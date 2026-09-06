@@ -4,10 +4,8 @@ import React from 'react';
 import styles from './HeroSection.module.css';
 import Button from '@/components/ui/Button';
 import Link from 'next/link';
-import { Sun, Star } from 'lucide-react';
+import Image from 'next/image';
 import { useLanguage } from '@/i18n/LanguageContext';
-
-const zodiacSigns = ['♈', '♉', '♊', '♋', '♌', '♍', '♎', '♏', '♐', '♑', '♒', '♓'];
 
 export default function HeroSection() {
   const { dict } = useLanguage();
@@ -45,10 +43,13 @@ export default function HeroSection() {
 
           <div className={`${styles.heroVisual} slide-in-right`}>
             <div className={styles.chakraWrapper}>
-              <img 
+              <Image 
                 src="/images/vedic_chakra.png" 
                 alt="Vedic Astrology Chakra" 
+                width={800}
+                height={800}
                 className={styles.chakraImage}
+                priority
               />
             </div>
           </div>

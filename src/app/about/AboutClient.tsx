@@ -77,9 +77,11 @@ export default function AboutClient() {
         <div className={styles.aboutInner}>
           <div className={styles.aboutImageCol}>
             <div className={styles.imagePlaceholder}>
-              <img 
+              <Image 
                 src="/images/acharya_portrait.png" 
                 alt="Acharya Ji" 
+                width={600}
+                height={800}
                 className={styles.portraitImg}
               />
             </div>

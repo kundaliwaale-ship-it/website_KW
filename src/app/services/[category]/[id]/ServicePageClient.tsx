@@ -21,7 +21,7 @@ export default function ServicePageClient({
   const getTierTranslation = () => {
     // We can assume category and tier.id are valid keys based on our structure
     try {
-      // @ts-ignore
+      // @ts-expect-error
       return dict.services_data[category]?.[tier.id] || tier;
     } catch {
       return tier;
@@ -36,12 +36,6 @@ export default function ServicePageClient({
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const heroBgMap: Record<string, string> = {
-    kundali: '/images/Astral BG/download (13).jpg',
-    consultation: '/images/Astral BG/download (11).jpg',
-    vastu: '/images/Astral BG/download (14).jpg',
-  };
 
   return (
     <div className={`${styles.page} ambient-glow-wrapper`}>

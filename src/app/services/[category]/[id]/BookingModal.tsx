@@ -29,6 +29,7 @@ export default function BookingModal({ isOpen, onClose, category, tier, price, s
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setStep(1);
       setFormData({});
     } else {

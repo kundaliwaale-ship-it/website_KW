@@ -5,7 +5,7 @@ import { useLanguage } from '@/i18n/LanguageContext';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './AboutAcharya.module.css';
-import { GraduationCap, Book, Globe, Star, User } from 'lucide-react';
+import { GraduationCap, Book, Globe, Star } from 'lucide-react';
 
 export default function AboutAcharya() {
   const { dict } = useLanguage();
@@ -15,9 +15,11 @@ export default function AboutAcharya() {
       <div className={styles.inner}>
         <div className={styles.imageCol}>
           <div className={styles.imagePlaceholder}>
-            <img 
+            <Image 
               src="/images/acharya_portrait.png" 
               alt="Acharya Ji" 
+              width={600}
+              height={800}
               className={styles.portraitImg}
             />
           </div>

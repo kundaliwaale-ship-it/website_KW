@@ -13,6 +13,10 @@ export async function POST(request: Request) {
       dbOrderId
     } = body
 
+    if (!razorpay_order_id || !razorpay_payment_id || !razorpay_signature) {
+      return NextResponse.json({ error: 'Missing payment verification fields' }, { status: 400 })
+    }
+
     const secret = process.env.RAZORPAY_KEY_SECRET!
 
     // Verify signature
