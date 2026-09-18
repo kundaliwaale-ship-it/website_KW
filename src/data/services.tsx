@@ -5,7 +5,7 @@ export const services = [
   {
     id: 'kundali',
     title: 'Premium Kundli Report',
-    shortDescription: 'Get a detailed, handwritten Janam Kundli crafted by Kundaliwaale himself — covering life, career, love, health & more.',
+    shortDescription: 'Get a detailed, handwritten Janam Kundli crafted by Dashakundli himself — covering life, career, love, health & more.',
     icon: <FileText size={48} color="var(--color-gold)" />,
     href: '/services/kundali',
     highlight: true,
@@ -21,7 +21,7 @@ export const services = [
   {
     id: 'consultation',
     title: 'Astrology Consultation',
-    shortDescription: 'Book a 1-on-1 consultation with Kundaliwaale to get personalized guidance on life decisions, relationships & career.',
+    shortDescription: 'Book a 1-on-1 consultation with Dashakundli to get personalized guidance on life decisions, relationships & career.',
     icon: <Sparkles size={48} color="var(--color-gold)" />,
     href: '/services/consultation',
     highlight: false,
@@ -36,9 +36,9 @@ export const serviceDetails = {
         name: 'Premium Handwritten Kundli',
         price: 2999,
         originalPrice: 4999,
-        description: 'A comprehensive, handwritten Janam Kundli prepared by Kundaliwaale, delivered to your doorstep.',
+        description: 'A comprehensive, handwritten Janam Kundli prepared by Dashakundli, delivered to your doorstep.',
         features: [
-          'Handwritten by Kundaliwaale personally',
+          'Handwritten by Dashakundli personally',
           'Complete Janam Kundli analysis',
           'Dasha analysis for 20+ years',
           'Career, Love & Health insights',
@@ -92,9 +92,9 @@ export const serviceDetails = {
         name: 'Home Visit Consultation',
         price: 4999,
         originalPrice: 7999,
-        description: 'Kundaliwaale visits your home/office in person for a thorough on-site Vastu evaluation.',
+        description: 'Dashakundli visits your home/office in person for a thorough on-site Vastu evaluation.',
         features: [
-          'In-person visit by Kundaliwaale',
+          'In-person visit by Dashakundli',
           'Complete property inspection',
           'On-site energy assessment',
           'Detailed written report',
@@ -114,7 +114,7 @@ export const serviceDetails = {
         name: 'Standard Consultation',
         price: 999,
         originalPrice: 1499,
-        description: 'A 45-minute 1-on-1 video or phone consultation with Kundaliwaale.',
+        description: 'A 45-minute 1-on-1 video or phone consultation with Dashakundli.',
         features: [
           '45-minute session',
           'Video or phone call',

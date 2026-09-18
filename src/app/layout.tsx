@@ -25,11 +25,11 @@ const lora = Lora({
 
 export const metadata: Metadata = {
   title: {
-    default: "Kundaliwaale — Your Cosmic Guide | Vedic Astrology & Vastu",
-    template: "%s | Kundaliwaale",
+    default: "Dashakundli — Your Cosmic Guide | Vedic Astrology & Vastu",
+    template: "%s | Dashakundli",
   },
   description:
-    "Now you can have the best possible authentic Handwritten Kundlis delivered directly to your home. Personalized Vedic astrology, expert Vastu consultations, and honest guidance from Kundaliwaale.",
+    "Now you can have the best possible authentic Handwritten Kundlis delivered directly to your home. Personalized Vedic astrology, expert Vastu consultations, and honest guidance from Dashakundli.",
   keywords: [
     "astrology",
     "kundli",
@@ -41,19 +41,19 @@ export const metadata: Metadata = {
     "astrologer",
   ],
   openGraph: {
-    title: "Kundaliwaale — Your Cosmic Guide",
+    title: "Dashakundli — Your Cosmic Guide",
     description:
       "Premium Vedic Astrology & Vastu consultations. Get your personalized Kundli today.",
-    url: "https://kundaliwaale.com",
-    siteName: "Kundaliwaale",
+    url: "https://dashakundli.com",
+    siteName: "Dashakundli",
     type: "website",
     locale: "en_IN",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kundaliwaale — Your Cosmic Guide | Vedic Astrology & Vastu",
+    title: "Dashakundli — Your Cosmic Guide | Vedic Astrology & Vastu",
     description:
-      "Now you can have the best possible authentic Handwritten Kundlis delivered directly to your home. Personalized Vedic astrology, expert Vastu consultations, and honest guidance from Kundaliwaale.",
+      "Now you can have the best possible authentic Handwritten Kundlis delivered directly to your home. Personalized Vedic astrology, expert Vastu consultations, and honest guidance from Dashakundli.",
   },
 };
 

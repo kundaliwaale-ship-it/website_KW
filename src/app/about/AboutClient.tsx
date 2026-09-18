@@ -72,7 +72,7 @@ export default function AboutClient() {
         </div>
       </section>
 
-      {/* About the Kundaliwaale */}
+      {/* About the Dashakundli */}
       <section className={styles.about}>
         <div className={styles.aboutInner}>
           <div className={styles.aboutImageCol}>

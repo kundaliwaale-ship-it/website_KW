@@ -4,7 +4,7 @@ import AboutClient from './AboutClient';
 
 export const metadata: Metadata = {
   title: 'About Us',
-  description: 'Discover Kundaliwaale — bringing the finest authentic, handwritten Vedic Kundlis and genuine astrology guidance directly to your doorstep.',
+  description: 'Discover Dashakundli — bringing the finest authentic, handwritten Vedic Kundlis and genuine astrology guidance directly to your doorstep.',
 };
 
 export default function AboutPage() {

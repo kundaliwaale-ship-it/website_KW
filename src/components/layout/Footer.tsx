@@ -19,7 +19,7 @@ export default function Footer() {
           {/* Brand Column */}
           <div className={styles.brand}>
             <Link href="/">
-              <Image src="/images/KW-logo.png" alt="Kundaliwaale Logo" width={223} height={100} style={{ width: 'auto', height: '60px', marginBottom: '0.5rem' }} />
+              <Image src="/images/KW-logo.png" alt="Dashakundli Logo" width={223} height={100} style={{ width: 'auto', height: '60px', marginBottom: '0.5rem' }} />
             </Link>
             <p className="font-sans">
               {dict.footer.brand_desc}
@@ -43,7 +43,7 @@ export default function Footer() {
             </div>
             <div className={styles.contactItem}>
               <span className={styles.contactIcon}><Mail size={18} /></span>
-              <span className="font-sans">contact@kundaliwaale.com</span>
+              <span className="font-sans">contact@dashakundli.com</span>
             </div>
             <div className={styles.contactItem}>
               <span className={styles.contactIcon}><MapPin size={18} /></span>
@@ -55,7 +55,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className={styles.bottomBar}>
           <p className={`${styles.copyright} font-sans`}>
-            © {new Date().getFullYear()} Kundaliwaale. {dict.footer.rights}
+            © {new Date().getFullYear()} Dashakundli. {dict.footer.rights}
           </p>
           <div className={styles.legalLinks}>
             <Link href="/privacy" className="font-sans">{dict.footer.privacy}</Link>

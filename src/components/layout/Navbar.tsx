@@ -105,7 +105,7 @@ export default function Navbar() {
     <>
       <nav className={`${styles.nav} ${scrolled ? styles.navScrolled : ''}`}>
         <Link href="/" className={styles.logo} onClick={() => setMobileOpen(false)}>
-          <Image src="/images/KW-logo.png" alt="Kundaliwaale Logo" width={223} height={100} priority className={styles.logoImg} />
+          <Image src="/images/KW-logo.png" alt="Dashakundli Logo" width={223} height={100} priority className={styles.logoImg} />
         </Link>
 
         {/* Desktop Navigation */}

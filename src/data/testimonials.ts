@@ -76,7 +76,7 @@ export const testimonials = [
     location: 'Hyderabad',
     rating: 5,
     service: 'Astrology Consultation',
-    text: 'Clear, grounded guidance with zero superstition. Kundaliwaale provided actionable direction that gave me real clarity for my career.',
+    text: 'Clear, grounded guidance with zero superstition. Dashakundli provided actionable direction that gave me real clarity for my career.',
     date: '2026-07-15',
   },
 ];

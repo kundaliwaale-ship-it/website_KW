@@ -127,7 +127,7 @@ export default function BookingModal({ isOpen, onClose, category, tier, price, s
         key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || '', // Needs to be set in env
         amount: order.amount,
         currency: order.currency,
-        name: 'Kundaliwaale',
+        name: 'Dashakundli',
         description: serviceName,
         order_id: order.id,
         handler: async function (response: { razorpay_order_id: string; razorpay_payment_id: string; razorpay_signature: string }) {

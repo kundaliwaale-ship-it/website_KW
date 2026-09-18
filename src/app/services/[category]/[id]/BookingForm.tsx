@@ -65,7 +65,7 @@ export default function BookingForm({ category, tier, price }: { category: strin
       key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || 'rzp_test_YOUR_KEY', 
       amount: orderDetails.amount,
       currency: "INR",
-      name: "Kundaliwaale",
+      name: "Dashakundli",
       description: `${category} - ${tier}`,
       order_id: orderDetails.id,
       handler: async function (response: { razorpay_order_id: string; razorpay_payment_id: string; razorpay_signature: string }) {

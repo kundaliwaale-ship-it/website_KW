@@ -120,7 +120,7 @@ export default function ContactPage() {
                 <span className={styles.infoIcon}><Mail size={24} /></span>
                 <div>
                   <h4 className="font-sans">{dict.contact_page.info.email}</h4>
-                  <p className="font-sans">info@kundaliwaale.com</p>
+                  <p className="font-sans">info@dashakundli.com</p>
                 </div>
               </div>
 

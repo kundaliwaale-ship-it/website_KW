@@ -8,8 +8,8 @@ export interface FAQItem {
 export const faqData: FAQItem[] = [
   {
     id: 1,
-    question: 'Who is Kundaliwaale?',
-    answer: 'Kundaliwaale is dedicated to bringing authentic, handwritten Janam Kundlis and genuine Vedic astrology directly to your home. Our certified Jyotish Acharyas prepare every chart with traditional calculations and personal attention, ensuring you receive honest, actionable guidance without automated shortcuts.',
+    question: 'Who is Dashakundli?',
+    answer: 'Dashakundli is dedicated to bringing authentic, handwritten Janam Kundlis and genuine Vedic astrology directly to your home. Our certified Jyotish Acharyas prepare every chart with traditional calculations and personal attention, ensuring you receive honest, actionable guidance without automated shortcuts.',
     category: 'general',
   },
   {
@@ -21,7 +21,7 @@ export const faqData: FAQItem[] = [
   {
     id: 3,
     question: 'What is the difference between the Premium and Digital Kundli?',
-    answer: 'The Premium Kundli is handwritten by Kundaliwaale personally, includes 20+ years of Dasha analysis, and is delivered physically via courier. The Digital Kundli is a computer-generated report reviewed by our experts, covering 5 years of insights, and delivered instantly as a PDF via email.',
+    answer: 'The Premium Kundli is handwritten by Dashakundli personally, includes 20+ years of Dasha analysis, and is delivered physically via courier. The Digital Kundli is a computer-generated report reviewed by our experts, covering 5 years of insights, and delivered instantly as a PDF via email.',
     category: 'kundali',
   },
   {

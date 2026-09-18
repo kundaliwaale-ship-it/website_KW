@@ -126,7 +126,7 @@ export default function CheckoutClient({ category, tier }: CheckoutClientProps) 
         key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || '',
         amount: order.amount,
         currency: order.currency,
-        name: 'Kundaliwaale',
+        name: 'Dashakundli',
         description: tier.name,
         order_id: order.id,
         handler: async function (response: { razorpay_order_id: string; razorpay_payment_id: string; razorpay_signature: string }) {

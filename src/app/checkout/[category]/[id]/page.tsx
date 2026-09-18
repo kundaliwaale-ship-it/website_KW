@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: { params: Promise<{ category:
   if (!tier) return { title: 'Not Found' };
 
   return {
-    title: `Checkout | ${tier.name} | Kundaliwaale`,
+    title: `Checkout | ${tier.name} | Dashakundli`,
     description: `Complete your booking for ${tier.name}`,
   };
 }
