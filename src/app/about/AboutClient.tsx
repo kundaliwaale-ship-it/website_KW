@@ -130,14 +130,47 @@ export default function AboutClient() {
         </div>
       </section>
 
-      {/* Mission Banner */}
+      {/* Mission Section */}
       <section className={styles.missionSection}>
-        <div className={styles.missionCard}>
-          <div className={styles.missionIconWrapper}>
-            <Sparkles size={32} />
+        <div className={styles.missionInner}>
+          <div className={styles.missionLeft}>
+            <div className={styles.missionBadge}>
+              <Sparkles size={14} />
+              <span>{dict.about_page.mission.title}</span>
+            </div>
+            <h2 className="font-serif">
+              {locale === 'hi' 
+                ? 'वैदिक परंपरा का पुनरुद्धार' 
+                : 'Reviving the Sacred'} <em>{locale === 'hi' ? 'एवं शुद्ध ज्योतिष' : 'Manuscript Tradition'}</em>
+            </h2>
+            <div className={styles.missionAssurances}>
+              <div className={styles.assuranceItem}>
+                <CheckCircle2 size={18} className={styles.assuranceIcon} />
+                <span className="font-sans">
+                  {locale === 'hi' ? '100% व्यक्तिगत एवं हस्तलिखित गणना' : '100% Personally Calculated & Hand-Inscribed'}
+                </span>
+              </div>
+              <div className={styles.assuranceItem}>
+                <CheckCircle2 size={18} className={styles.assuranceIcon} />
+                <span className="font-sans">
+                  {locale === 'hi' ? 'शून्य स्वचालित सॉफ्टवेयर या कंप्यूटर पीडीएफ' : 'Zero Automated Generators or Generic PDFs'}
+                </span>
+              </div>
+              <div className={styles.assuranceItem}>
+                <CheckCircle2 size={18} className={styles.assuranceIcon} />
+                <span className="font-sans">
+                  {locale === 'hi' ? 'भय-मुक्त, सकारात्मक एवं प्रामाणिक वैदिक उपाय' : 'Practical Vedic Remedies & Life-Affirming Clarity'}
+                </span>
+              </div>
+            </div>
           </div>
-          <h2 className="font-serif">{dict.about_page.mission.title}</h2>
-          <p className="font-sans">{dict.about_page.mission.desc}</p>
+
+          <div className={styles.missionRight}>
+            <div className={styles.missionQuoteBox}>
+              <Quote size={28} className={styles.missionQuoteIcon} />
+              <p className="font-sans">{dict.about_page.mission.desc}</p>
+            </div>
+          </div>
         </div>
       </section>
 

@@ -1,5 +1,5 @@
 .page {
-  padding-top: 80px;
+  padding-top: 95px;
   background: var(--bg-primary);
   min-height: 100vh;
   position: relative;
@@ -8,7 +8,7 @@
 
 /* Hero Section */
 .hero {
-  padding: 5rem 5% 4rem;
+  padding: 3.5rem 5% 3.5rem;
   background: radial-gradient(circle at 50% 20%, rgba(226, 160, 63, 0.08) 0%, transparent 70%);
   text-align: center;
   position: relative;
@@ -102,50 +102,103 @@
 
 /* Mission Section */
 .missionSection {
-  padding: 1.5rem 5% 3.5rem;
-  display: flex;
-  justify-content: center;
+  padding: 1.5rem 5% 4rem;
+  background: var(--bg-primary);
 }
 
-.missionCard {
-  max-width: 860px;
-  width: 100%;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(254, 250, 244, 0.95) 100%);
+.missionInner {
+  max-width: 1160px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem;
+  align-items: center;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.75) 0%, rgba(254, 250, 244, 0.9) 100%);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(226, 160, 63, 0.3);
+  border: 1px solid rgba(226, 160, 63, 0.25);
   border-radius: 24px;
   padding: 3rem 3.5rem;
-  text-align: center;
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.04), inset 0 0 20px rgba(226, 160, 63, 0.04);
-  position: relative;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.04), inset 0 0 25px rgba(226, 160, 63, 0.04);
 }
 
-.missionIconWrapper {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
+.missionBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.9rem;
   background: rgba(226, 160, 63, 0.12);
+  border: 1px solid rgba(226, 160, 63, 0.3);
+  border-radius: var(--radius-full);
   color: var(--color-gold);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.missionLeft h2 {
+  font-size: 2.25rem;
+  color: var(--text-primary);
+  line-height: 1.25;
+  margin-bottom: 1.75rem;
+}
+
+.missionLeft h2 em {
+  color: var(--color-gold);
+  font-style: normal;
+}
+
+.missionAssurances {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.assuranceItem {
   display: flex;
   align-items: center;
-  justify-content: center;
-  margin: 0 auto 1.5rem;
-  border: 1px solid rgba(226, 160, 63, 0.25);
+  gap: 0.75rem;
 }
 
-.missionCard h2 {
-  font-size: 2rem;
+.assuranceIcon {
   color: var(--color-gold);
-  margin-bottom: 1.25rem;
+  flex-shrink: 0;
 }
 
-.missionCard p {
-  font-size: 1.1rem;
-  line-height: 1.8;
+.assuranceItem span {
+  font-size: 0.95rem;
   color: var(--text-primary);
-  max-width: 720px;
-  margin: 0 auto;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.missionRight {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.missionQuoteBox {
+  position: relative;
+  background: rgba(255, 255, 255, 0.8);
+  border-left: 3px solid var(--color-gold);
+  border-radius: 0 18px 18px 0;
+  padding: 2.25rem 2.25rem 2.25rem 2rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03);
+}
+
+.missionQuoteIcon {
+  color: var(--color-gold);
+  margin-bottom: 1rem;
+  opacity: 0.8;
+}
+
+.missionQuoteBox p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
 }
 
 /* About Founder & Vision Story */
@@ -515,8 +568,13 @@
   line-height: 1.4;
 }
 
-/* Responsive Media Queries */
 @media (max-width: 1024px) {
+  .missionInner {
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+    padding: 2.5rem 2rem;
+  }
+
   .storyInner {
     grid-template-columns: 1fr;
     gap: 3rem;
@@ -541,7 +599,7 @@
 
 @media (max-width: 640px) {
   .hero {
-    padding: 3.5rem 1.25rem 2.5rem;
+    padding: 3rem 1.25rem 2rem;
   }
 
   .hero h1 {
@@ -564,16 +622,28 @@
     height: 1px;
   }
 
-  .missionCard {
-    padding: 2rem 1.25rem;
+  .missionInner {
+    padding: 1.75rem 1.25rem;
+    border-radius: 18px;
+    gap: 1.5rem;
   }
 
-  .missionCard h2 {
-    font-size: 1.6rem;
+  .missionLeft h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1.25rem;
   }
 
-  .missionCard p {
+  .assuranceItem span {
+    font-size: 0.88rem;
+  }
+
+  .missionQuoteBox {
+    padding: 1.25rem;
+  }
+
+  .missionQuoteBox p {
     font-size: 0.95rem;
+    line-height: 1.6;
   }
 
   .storyContentBox {
