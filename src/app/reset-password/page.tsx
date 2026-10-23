@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/utils/supabase/client'
 import styles from '../login/login.module.css'
@@ -14,6 +14,34 @@ export default function ResetPasswordPage() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [success, setSuccess] = useState(false)
+
+  useEffect(() => {
+    async function initSession() {
+      if (typeof window !== 'undefined') {
+        const params = new URLSearchParams(window.location.search)
+        const code = params.get('code')
+        if (code) {
+          const { error: codeErr } = await supabase.auth.exchangeCodeForSession(code)
+          if (codeErr) {
+            console.error('Code exchange failed:', codeErr.message)
+            setError('This password reset link is invalid or has expired. Please request a new one.')
+            return
+          }
+        }
+      }
+
+      // Listen for PASSWORD_RECOVERY or SIGNED_IN event
+      const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+        if (session || event === 'PASSWORD_RECOVERY') {
+          setError(null)
+        }
+      })
+
+      return () => subscription.unsubscribe()
+    }
+
+    initSession()
+  }, [supabase])
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()

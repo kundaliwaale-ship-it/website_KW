@@ -13,8 +13,12 @@ export async function GET(request: Request) {
     if (!error) {
       return NextResponse.redirect(`${origin}${next}`)
     }
+    console.error('Auth code exchange error:', error.message)
   }
 
-  // return the user to an error page with instructions
-  return NextResponse.redirect(`${origin}/auth/auth-code-error`)
+  // If code exchange fails or is missing, redirect to appropriate page with error message
+  const fallback = next.includes('reset-password')
+    ? `${origin}/forgot-password?error=Invalid+or+expired+reset+link`
+    : `${origin}/login?error=Could+not+authenticate`
+  return NextResponse.redirect(fallback)
 }
