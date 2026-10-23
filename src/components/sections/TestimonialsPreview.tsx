@@ -8,8 +8,13 @@ import styles from './TestimonialsPreview.module.css';
 import Button from '@/components/ui/Button';
 import { testimonials } from '@/data/testimonials';
 
+function formatDate(dateStr: string) {
+  return new Date(dateStr).toLocaleDateString('en-IN', { month: 'short', year: 'numeric' });
+}
+
 export default function TestimonialsPreview() {
   const { dict } = useLanguage();
+  const displayed = testimonials.slice(0, 4);
 
   return (
     <section className={`${styles.section} ambient-glow-wrapper`}>
@@ -23,26 +28,50 @@ export default function TestimonialsPreview() {
       </div>
 
       <div className={`${styles.grid} relative-z`}>
-        {testimonials.map((t) => (
-          <div key={t.id} className={`${styles.card} glass-card`}>
-            <div className={styles.cardTop}>
-              <div className={styles.cardTopLeft}>
-                <div className={styles.avatar}>
-                  <Image src={t.avatar} alt={t.name} width={64} height={64} className={styles.avatarImg} />
+        {displayed.map((t) => (
+          <div key={t.id} className={styles.card}>
+            <div className={styles.cardInner}>
+
+              {/* Header: Avatar + Name + Stars */}
+              <div className={styles.cardTop}>
+                <div className={styles.cardTopLeft}>
+                  <div className={styles.avatarWrap}>
+                    <div className={styles.avatar}>
+                      <Image
+                        src={t.avatar}
+                        alt={t.name}
+                        width={52}
+                        height={52}
+                        className={styles.avatarImg}
+                      />
+                    </div>
+                    <span className={styles.verifiedBadge} aria-label="Verified customer">✓</span>
+                  </div>
+                  <div className={styles.cardName}>
+                    <h4 className="font-serif">{t.name}</h4>
+                    <span className="font-sans">{t.location}</span>
+                  </div>
                 </div>
-                <div className={styles.cardName}>
-                  <h4 className="font-serif">{t.name}</h4>
-                  <span className="font-sans">{t.location}</span>
+                <div className={styles.stars} aria-label={`${t.rating} stars`}>
+                  {'★'.repeat(t.rating)}{'☆'.repeat(5 - t.rating)}
                 </div>
               </div>
-              <div className={styles.stars}>
-                {'★'.repeat(t.rating)}{'☆'.repeat(5 - t.rating)}
+
+              {/* Gold accent divider */}
+              <div className={styles.divider} />
+
+              {/* Review text */}
+              <p className={`${styles.cardText} font-sans`}>
+                {t.text}
+              </p>
+
+              {/* Footer: badge + date */}
+              <div className={styles.cardFooter}>
+                <span className={`${styles.serviceBadge} font-sans`}>{t.service}</span>
+                <span className={`${styles.cardDate} font-sans`}>{formatDate(t.date)}</span>
               </div>
+
             </div>
-            <p className={`${styles.cardText} font-sans`}>
-              &ldquo;{t.text}&rdquo;
-            </p>
-            <span className={`${styles.serviceBadge} font-sans`}>{t.service}</span>
           </div>
         ))}
       </div>
