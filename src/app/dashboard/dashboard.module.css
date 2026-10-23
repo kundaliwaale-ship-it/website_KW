@@ -2,9 +2,9 @@
 .dashboardLayout {
   display: flex;
   min-height: 100vh;
-  padding-top: 110px; /* Reduced gap from Navbar */
+  padding-top: 130px; /* Navbar logo is ~110px + ~0.8rem vertical padding ≈ 123px; 130px gives clear breathing room */
   width: 100%;
-  max-width: 1600px; /* Expansive layout for ultra-wide screens */
+  max-width: 1600px;
   margin: 0 auto;
   gap: 3rem;
   padding-left: 5%;
@@ -31,9 +31,9 @@
   border-radius: 24px;
   padding: 2rem 0;
   position: sticky;
-  top: 110px; /* Keep in sync with layout top padding */
+  top: 130px; /* Keep in sync with dashboardLayout padding-top */
   height: max-content;
-  max-height: calc(100vh - 120px);
+  max-height: calc(100vh - 140px);
   overflow-y: auto;
   z-index: 20;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
