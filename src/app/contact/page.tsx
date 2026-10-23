@@ -104,7 +104,9 @@ export default function ContactPage() {
                 <span className={styles.infoIcon}><Phone size={24} /></span>
                 <div>
                   <h4 className="font-sans">{dict.contact_page.info.phone}</h4>
-                  <p className="font-sans">+91 98765 43210</p>
+                  <p className="font-sans">
+                    <a href="tel:+919801359380" style={{ color: 'inherit', textDecoration: 'none' }}>+91 98013 59380</a>
+                  </p>
                 </div>
               </div>
               
@@ -112,7 +114,9 @@ export default function ContactPage() {
                 <span className={styles.infoIcon}><MessageCircle size={24} /></span>
                 <div>
                   <h4 className="font-sans">{dict.contact_page.info.whatsapp}</h4>
-                  <p className="font-sans">+91 98765 43210</p>
+                  <p className="font-sans">
+                    <a href="https://wa.me/919801359380" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>+91 98013 59380</a>
+                  </p>
                 </div>
               </div>
 
@@ -120,7 +124,9 @@ export default function ContactPage() {
                 <span className={styles.infoIcon}><Mail size={24} /></span>
                 <div>
                   <h4 className="font-sans">{dict.contact_page.info.email}</h4>
-                  <p className="font-sans">info@dashakundli.com</p>
+                  <p className="font-sans">
+                    <a href="mailto:info@dashakundli.com" style={{ color: 'inherit', textDecoration: 'none' }}>info@dashakundli.com</a>
+                  </p>
                 </div>
               </div>
 

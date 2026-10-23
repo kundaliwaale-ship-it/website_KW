@@ -39,11 +39,11 @@ export default function Footer() {
             <h4 className={`${styles.columnTitle} font-sans`}>{dict.footer.contact_us}</h4>
             <div className={styles.contactItem}>
               <span className={styles.contactIcon}><Phone size={18} /></span>
-              <span className="font-sans">+91 620 381 9040</span>
+              <a href="tel:+919801359380" className="font-sans" style={{ color: 'inherit', textDecoration: 'none' }}>+91 98013 59380</a>
             </div>
             <div className={styles.contactItem}>
               <span className={styles.contactIcon}><Mail size={18} /></span>
-              <span className="font-sans">contact@dashakundli.com</span>
+              <a href="mailto:contact@dashakundli.com" className="font-sans" style={{ color: 'inherit', textDecoration: 'none' }}>contact@dashakundli.com</a>
             </div>
             <div className={styles.contactItem}>
               <span className={styles.contactIcon}><MapPin size={18} /></span>
@@ -68,7 +68,7 @@ export default function Footer() {
       {/* WhatsApp Floating CTA - Only on Homepage */}
       {isHomepage && (
         <a
-          href="https://wa.me/916203819040"
+          href="https://wa.me/919801359380"
           target="_blank"
           rel="noopener noreferrer"
           className={styles.whatsappFloat}
