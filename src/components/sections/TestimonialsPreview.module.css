@@ -277,8 +277,8 @@
 /* ─── FOOTER: badge + date ────────────────────────────────── */
 .cardFooter {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 0.5rem;
 }
 
@@ -306,10 +306,10 @@
 }
 
 .cardDate {
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   color: var(--text-secondary);
-  opacity: 0.6;
-  white-space: nowrap;
+  opacity: 0.55;
+  padding-left: 0.15rem;
 }
 
 .viewAll {
