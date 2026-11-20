@@ -104,8 +104,8 @@ export default function Navbar() {
   return (
     <>
       <nav className={`${styles.nav} ${scrolled ? styles.navScrolled : ''}`}>
-        <Link href="/" className={styles.logo} onClick={() => setMobileOpen(false)}>
-          <Image src="/images/KW-logo.png" alt="Dashakundli Logo" width={223} height={100} priority className={styles.logoImg} />
+        <Link href="/" className={styles.logo} onClick={() => setMobileOpen(false)} aria-label="Dashakundli Home">
+          <Image src="/images/KW-logo.png" alt="Dashakundli Logo" width={269} height={385} priority className={styles.logoImg} />
         </Link>
 
         {/* Desktop Navigation */}
@@ -196,6 +196,21 @@ export default function Navbar() {
 
       {/* Mobile Drawer */}
       <div className={`${styles.mobileDrawer} ${mobileOpen ? styles.mobileDrawerOpen : ''}`}>
+        <Link href="/" className={styles.mobileDrawerBrand} onClick={() => setMobileOpen(false)}>
+          <Image
+            src="/images/KW-logo.png"
+            alt="Dashakundli Logo"
+            width={269}
+            height={385}
+            className={styles.mobileDrawerLogo}
+          />
+          <div className={styles.mobileDrawerBrandText}>
+            <span className={`${styles.mobileDrawerTitle} font-serif`}>Dashakundli</span>
+            <small className={`${styles.mobileDrawerTagline} font-sans`}>
+              {locale === 'hi' ? 'दशाकुण्डली • आपका मार्गदर्शक' : 'Your Cosmic Guide'}
+            </small>
+          </div>
+        </Link>
         {navItems.map((item) => (
           <div key={item.label}>
             {item.dropdown ? (

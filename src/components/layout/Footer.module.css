@@ -13,12 +13,20 @@
 }
 
 .brand p {
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   color: var(--text-secondary);
   font-size: 0.95rem;
   line-height: 1.6;
   max-width: 320px;
   margin-bottom: 2rem;
+}
+
+.footerLogo {
+  width: auto;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+  display: block;
 }
 
 .columnTitle {
@@ -166,9 +174,14 @@
     font-size: 1.4rem !important;
   }
 
-  .brand p {
-    font-size: 0.8rem;
+  .footerLogo {
+    height: 75px;
     margin-bottom: 0.5rem;
+  }
+
+  .brand p {
+    font-size: 0.85rem;
+    margin-bottom: 0.75rem;
     line-height: 1.5;
   }
 

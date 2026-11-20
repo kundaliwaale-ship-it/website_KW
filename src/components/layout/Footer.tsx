@@ -18,8 +18,8 @@ export default function Footer() {
         <div className={styles.footerGrid}>
           {/* Brand Column */}
           <div className={styles.brand}>
-            <Link href="/">
-              <Image src="/images/KW-logo.png" alt="Dashakundli Logo" width={223} height={100} style={{ width: 'auto', height: '60px', marginBottom: '0.5rem' }} />
+            <Link href="/" aria-label="Dashakundli Home">
+              <Image src="/images/KW-logo.png" alt="Dashakundli Logo" width={269} height={385} className={styles.footerLogo} />
             </Link>
             <p className="font-sans">
               {dict.footer.brand_desc}

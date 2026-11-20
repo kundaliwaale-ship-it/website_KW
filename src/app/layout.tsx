@@ -40,12 +40,29 @@ export const metadata: Metadata = {
     "birth chart",
     "astrologer",
   ],
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png", sizes: "512x512" },
+    ],
+    apple: [
+      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
   openGraph: {
     title: "Dashakundli — Your Cosmic Guide",
     description:
       "Premium Vedic Astrology & Vastu consultations. Get your personalized Kundli today.",
     url: "https://dashakundli.com",
     siteName: "Dashakundli",
+    images: [
+      {
+        url: "/images/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Dashakundli — Your Cosmic Guide",
+      },
+    ],
     type: "website",
     locale: "en_IN",
   },
@@ -54,6 +71,7 @@ export const metadata: Metadata = {
     title: "Dashakundli — Your Cosmic Guide | Vedic Astrology & Vastu",
     description:
       "Now you can have the best possible authentic Handwritten Kundlis delivered directly to your home. Personalized Vedic astrology, expert Vastu consultations, and honest guidance from Dashakundli.",
+    images: ["/images/og-image.png"],
   },
 };
 
