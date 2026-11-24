@@ -46,7 +46,7 @@ export default function Navbar() {
   const { locale, setLocale, dict } = useLanguage();
 
   const getNavTranslation = (label: string) => {
-    switch(label) {
+    switch (label) {
       case 'Reports': return dict.nav.reports;
       case 'Premium Kundli': return dict.nav.reports_premium;
       case 'Digital Kundli': return dict.nav.reports_digital;
@@ -69,7 +69,7 @@ export default function Navbar() {
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
-    
+
     // Auth state setup
     const getUser = async () => {
       const { data } = await supabase.auth.getUser();
@@ -145,11 +145,11 @@ export default function Navbar() {
                 <Button variant="primary">{dict.nav.login}</Button>
               </Link>
             )}
-            <button 
-               onClick={() => setLocale(locale === 'en' ? 'hi' : 'en')}
-               className="font-sans"
-               style={{ background: 'none', border: 'none', color: 'var(--color-gold)', cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-               title={locale === 'en' ? 'Switch to Hindi' : 'Switch to English'}
+            <button
+              onClick={() => setLocale(locale === 'en' ? 'hi' : 'en')}
+              className="font-sans"
+              style={{ background: 'none', border: 'none', color: 'var(--color-gold)', cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+              title={locale === 'en' ? 'Switch to Hindi' : 'Switch to English'}
             >
               <Languages size={20} />
             </button>
@@ -158,17 +158,17 @@ export default function Navbar() {
 
         {/* Mobile Actions (Language + User + Hamburger) */}
         <div className={styles.mobileActions}>
-          <Link 
-             href={user ? dashboardHref : '/login'}
-             className={`${styles.mobileLangBtn} font-sans`}
-             title={user ? dict.nav.dashboard : dict.nav.login}
+          <Link
+            href={user ? dashboardHref : '/login'}
+            className={`${styles.mobileLangBtn} font-sans`}
+            title={user ? dict.nav.dashboard : dict.nav.login}
           >
             <UserIcon size={22} />
           </Link>
-          <button 
-             onClick={() => setLocale(locale === 'en' ? 'hi' : 'en')}
-             className={`${styles.mobileLangBtn} font-sans`}
-             title={locale === 'en' ? 'Switch to Hindi' : 'Switch to English'}
+          <button
+            onClick={() => setLocale(locale === 'en' ? 'hi' : 'en')}
+            className={`${styles.mobileLangBtn} font-sans`}
+            title={locale === 'en' ? 'Switch to Hindi' : 'Switch to English'}
           >
             <Languages size={22} />
           </button>
