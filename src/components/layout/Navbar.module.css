@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.4rem 5%;
+  padding: 0.35rem 5%;
   position: fixed;
   top: 0;
   left: 0;
@@ -32,34 +32,34 @@
 
 .logoImg {
   width: auto;
-  height: 75px;
+  height: 92px;
   object-fit: contain;
   transition: height var(--transition-normal);
 }
 
 @media (max-width: 1024px) {
   .logoImg {
-    height: 68px;
+    height: 84px;
   }
 }
 
 @media (max-width: 768px) {
   .nav {
-    padding: 0.35rem 4%;
+    padding: 0.25rem 4%;
   }
 
   .logoImg {
-    height: 62px;
+    height: 78px;
   }
 }
 
 @media (max-width: 480px) {
   .nav {
-    padding: 0.3rem 3.5%;
+    padding: 0.2rem 3.5%;
   }
 
   .logoImg {
-    height: 58px;
+    height: 76px;
   }
 }
 
@@ -121,7 +121,8 @@
   top: 100%;
   left: 0;
   min-width: 220px;
-  background: #ffffff; /* White background for dropdown */
+  background: #ffffff;
+  /* White background for dropdown */
   border: 1px solid rgba(226, 160, 63, 0.2);
   border-radius: var(--radius-md);
   padding: 0.5rem;
@@ -141,7 +142,8 @@
 .dropdownLink {
   display: block;
   padding: 0.6rem 0.75rem;
-  color: var(--text-primary); /* Dark text for dropdown */
+  color: var(--text-primary);
+  /* Dark text for dropdown */
   font-size: 0.9rem;
   border-radius: var(--radius-sm);
   transition: all var(--transition-fast);
@@ -220,7 +222,7 @@
 
 .mobileDrawerLogo {
   width: auto;
-  height: 60px;
+  height: 80px;
   object-fit: contain;
 }
 

@@ -2,7 +2,7 @@
 .dashboardLayout {
   display: flex;
   min-height: 100vh;
-  padding-top: 105px; /* Navbar logo is ~75px + ~0.8rem vertical padding ≈ 88px; 105px gives clean clearance */
+  padding-top: 112px; /* Navbar logo is ~88px + ~0.7rem vertical padding ≈ 100px; 112px gives clean clearance */
   width: 100%;
   max-width: 1600px;
   margin: 0 auto;
@@ -31,7 +31,7 @@
   border-radius: 24px;
   padding: 2rem 0;
   position: sticky;
-  top: 105px; /* Keep in sync with dashboardLayout padding-top */
+  top: 112px; /* Keep in sync with dashboardLayout padding-top */
   height: max-content;
   max-height: calc(100vh - 120px);
   overflow-y: auto;
@@ -376,7 +376,7 @@
 
 @media (max-width: 640px) {
   .dashboardLayout {
-    padding-top: 80px;
+    padding-top: 92px;
   }
   
   .pageTitle { font-size: 1.75rem; margin-bottom: 0.25rem; }
