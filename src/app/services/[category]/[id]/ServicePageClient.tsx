@@ -21,7 +21,7 @@ export default function ServicePageClient({
   const getTierTranslation = () => {
     // We can assume category and tier.id are valid keys based on our structure
     try {
-      // @ts-expect-error
+      // @ts-expect-error dynamic indexing for locale translation
       return dict.services_data[category]?.[tier.id] || tier;
     } catch {
       return tier;

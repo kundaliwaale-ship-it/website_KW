@@ -75,7 +75,7 @@ export default function UserDashboardOverview() {
     };
 
     fetchDashboardData();
-  }, [supabase]);
+  }, [supabase, dict]);
 
   if (loading) {
      return <div className={styles.loadingState}>{dict.dashboard_page.loading}</div>;

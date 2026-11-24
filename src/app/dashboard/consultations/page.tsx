@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react';
 import styles from '../dashboard.module.css';
 import Button from '@/components/ui/Button';
 import { createClient } from '@/utils/supabase/client';
-import { User } from '@supabase/supabase-js';
 
 interface ConsultData {
   id: string;
@@ -29,7 +28,7 @@ export default function UserConsultationsPage() {
         return;
       }
 
-      const { data, error } = await supabase
+      const { data } = await supabase
         .from('consultation_orders')
         .select('*')
         .eq('user_id', user.id)

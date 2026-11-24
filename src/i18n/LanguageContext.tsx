@@ -22,6 +22,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     // Load preference from local storage on initial mount
     const saved = localStorage.getItem('site_locale') as Locale;
     if (saved === 'hi' || saved === 'en') {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setLocaleState(saved);
     }
   }, []);

@@ -149,7 +149,7 @@ export default function BookingModal({ isOpen, onClose, category, tier, price, s
             } else {
               alert('Payment verification failed: ' + verifyData.error);
             }
-          } catch (err) {
+          } catch {
             alert('Payment verification error.');
           }
         },

@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { createClient } from '@/utils/supabase/client'
 import styles from '../login/login.module.css'
 import Link from 'next/link'
@@ -11,18 +11,13 @@ export default function ForgotPasswordPage() {
   const { dict } = useLanguage()
   const [email, setEmail] = useState('')
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
-  const [success, setSuccess] = useState(false)
-
-  useEffect(() => {
+  const [error, setError] = useState<string | null>(() => {
     if (typeof window !== 'undefined') {
-      const params = new URLSearchParams(window.location.search)
-      const err = params.get('error')
-      if (err) {
-        setError(err)
-      }
+      return new URLSearchParams(window.location.search).get('error')
     }
-  }, [])
+    return null
+  })
+  const [success, setSuccess] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()

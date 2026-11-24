@@ -8,7 +8,6 @@ import Button from '../ui/Button';
 import { ChevronDown, Languages, User as UserIcon } from 'lucide-react';
 import { createClient } from '@/utils/supabase/client';
 import { User } from '@supabase/supabase-js';
-import { usePathname } from 'next/navigation';
 import { useLanguage } from '@/i18n/LanguageContext';
 
 const navItems = [
@@ -44,7 +43,6 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [user, setUser] = useState<User | null>(null);
   const supabase = createClient();
-  const pathname = usePathname();
   const { locale, setLocale, dict } = useLanguage();
 
   const getNavTranslation = (label: string) => {

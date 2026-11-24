@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { login, signup } from '@/actions/auth'
 import styles from './login.module.css'
-import { Sparkles, ShieldCheck, ArrowLeft } from 'lucide-react'
+import { ArrowLeft } from 'lucide-react'
 import { useLanguage } from '@/i18n/LanguageContext'
 
 export default function LoginPage() {

@@ -148,7 +148,7 @@ export default function CheckoutClient({ category, tier }: CheckoutClientProps) 
             } else {
               alert('Payment verification failed: ' + verifyData.error);
             }
-          } catch (err) {
+          } catch {
             alert('Payment verification error.');
           }
         },

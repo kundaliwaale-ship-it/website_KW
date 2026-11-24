@@ -90,7 +90,7 @@ export default function BookingForm({ category, tier, price }: { category: strin
           
           alert('Order Placed Successfully!');
           router.push('/dashboard');
-        } catch(err) {
+        } catch {
           setError('Payment Verification failed. Please contact support.');
           setLoading(false);
         }

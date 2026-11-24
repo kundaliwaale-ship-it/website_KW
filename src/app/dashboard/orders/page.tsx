@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from '../dashboard.module.css';
 import { createClient } from '@/utils/supabase/client';
-import { User } from '@supabase/supabase-js';
 
 interface OrderData {
   id: string;
